@@ -13,9 +13,8 @@
   "main": "index.js",
   "scripts": {
     "build": "tsup",
-    "dev": "tsup --watch",
+    "dev": "storybook dev -p 6006",
     "lint": "eslint \"**/*.ts*\"",
-    "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "license": "MIT",
