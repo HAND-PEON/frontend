@@ -14,7 +14,7 @@ export const Button = ({
   return (
     <div className="bg-brandblue">
       {/* custom className 적용되는지 확인용 */}
-      ddddddddddddddd
+      커스텀 버튼이에요
       <button
         style={{
           backgroundColor: primary ? "red" : "blue",
