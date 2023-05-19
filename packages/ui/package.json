@@ -13,7 +13,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsup",
-    "dev": "storybook dev -p 6006",
+    "dev": "concurrently --kill-others \"storybook dev -p 6006\" \"tsup --watch\"",
     "lint": "eslint \"**/*.ts*\"",
     "build-storybook": "storybook build"
   },
@@ -30,6 +30,7 @@
     "@types/react": "^18.2.6",
     "@types/react-dom": "^18.2.4",
     "autoprefixer": "^10.4.14",
+    "concurrently": "^8.0.1",
     "eslint-config-custom": "*",
     "eslint-plugin-storybook": "^0.6.12",
     "postcss": "^8.4.23",
