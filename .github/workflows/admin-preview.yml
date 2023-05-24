@@ -6,20 +6,19 @@ env:
 
 on:
   push:
-    branches: ["main"]
-  pull_request:
-    types: [opened, synchronize]
+    branches:
+      - '**'
     paths:
       - apps/admin/**
       - packages/**
       - .npmrc
       - .nvmrc
+      - .eslintrc.js
       - "*.config.js"
       - .github/workflows/admin-preview.yml
-
+  
 jobs:
-  build:
-    name: Build and Lint
+  Admin-Build:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -46,8 +45,8 @@ jobs:
       - name: Lint
         run : turbo lint
 
-  Deploy-Admin-Preview:
-    needs: build
+  Admin-Deploy-Preview:
+    needs: Admin-Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -64,7 +63,7 @@ jobs:
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > admin_deployment_url.txt
 
-      - name: Read web URL from file
+      - name: Read Admin Preview URL from file
         id: read-url
         run: |
           url=$(cat admin_deployment_url.txt)
