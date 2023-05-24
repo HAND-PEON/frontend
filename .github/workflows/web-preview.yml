@@ -1,0 +1,91 @@
+name: Web test workflow
+
+env:
+  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_WEB_PROJECT_ID }}
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - apps/web/**
+      - packages/**
+      - .npmrc
+      - .nvmrc
+      - "*.config.js"
+      - .github/workflows/web-preview.yml
+ 
+
+jobs:
+  build:
+    name: Build and Lint
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'yarn'
+
+      - name: Install Turbo CLI
+        run: npm install --global turbo@latest
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build
+        run: turbo build --filter=ui --filter=web
+
+      - name: Lint
+        run : turbo lint
+
+  Deploy-Web-Preview:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+    
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+      
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project Artifacts
+        run:  vercel build --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > web_deployment_url.txt
+
+      - name: Read web URL from file
+        id: read-url
+        run: |
+          url=$(cat web_deployment_url.txt)
+          echo "PREVIEW_URL=${url}" >> $GITHUB_OUTPUT
+
+      - name: Create Pull Request Comment
+        uses: actions/github-script@v6
+        if: ${{ success() }}
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN_PR_COMMENT }}
+        with:
+          github-token: ${{ secrets.ACCESS_TOKEN_PR_COMMENT }}
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const url = "${{ steps.read-url.outputs.PREVIEW_URL }}";
+            const { data: comment } = await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+              body: `Web Preview: ${url}`,
+            });
+            console.log(`Comment created: ${comment.html_url}`);
+ 
