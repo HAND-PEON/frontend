@@ -74,9 +74,9 @@ jobs:
         uses: actions/github-script@v6
         if: ${{ success() }}
         env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN_PR_COMMENT }}
         with:
-          github-token: ${{ secrets.ACCESS_TOKEN }}
+          github-token: ${{ secrets.ACCESS_TOKEN_PR_COMMENT }}
           script: |
             const prNumber = context.payload.pull_request.number;
             const url = "${{ steps.read-url.outputs.PREVIEW_URL }}";
