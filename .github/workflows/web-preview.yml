@@ -19,10 +19,9 @@ on:
  
 
 jobs:
-  Web-Build:
-    name: Build and Lint
+  build:
+    name: Web Build and Lint
     runs-on: ubuntu-latest
-    timeout-minutes: 15
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -47,8 +46,8 @@ jobs:
       - name: Lint
         run : turbo lint
 
-  Web-Deploy-Preview:
-    needs: Web-Build
+  Deploy-Web-Preview:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -65,7 +64,7 @@ jobs:
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > web_deployment_url.txt
 
-      - name: Read Web Preview URL from file
+      - name: Read web URL from file
         id: read-url
         run: |
           url=$(cat web_deployment_url.txt)

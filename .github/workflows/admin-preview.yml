@@ -18,9 +18,9 @@ on:
       - .github/workflows/admin-preview.yml
   
 jobs:
-  Admin-Build:
+  build:
+    name: Admin Build and Lint
     runs-on: ubuntu-latest
-    timeout-minutes: 15
     steps:
       - name: Check out code
         uses: actions/checkout@v3
@@ -46,7 +46,7 @@ jobs:
         run : turbo lint
 
   Admin-Deploy-Preview:
-    needs: Admin-Build
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -63,7 +63,7 @@ jobs:
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > admin_deployment_url.txt
 
-      - name: Read Admin Preview URL from file
+      - name: Read web URL from file
         id: read-url
         run: |
           url=$(cat admin_deployment_url.txt)
