@@ -9,6 +9,7 @@ export default function Home() {
         <Button />
         <div className="brandblue ui-brandblue bg-brandblue">
           tttttttttttttttttttttttttttttteeeeeeeeeeeeeeeeeeeeeeeesssssssssstttttttt
+          어드민 테스트 문구 입니다.
         </div>
       </div>
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
