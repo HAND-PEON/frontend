@@ -5,22 +5,18 @@ env:
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_WEB_PROJECT_ID }}
 
 on:
-  push:
-    branches:
-      - '**'
+  pull_request:
+    types: [opened, synchronize]
     paths:
       - apps/web/**
       - packages/**
       - .npmrc
       - .nvmrc
-      - .eslintrc.js
       - "*.config.js"
       - .github/workflows/web-preview.yml
  
-
 jobs:
-  build:
-    name: Web Build and Lint
+  Web-Build:
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -47,7 +43,7 @@ jobs:
         run : turbo lint
 
   Deploy-Web-Preview:
-    needs: build
+    needs: Web-Build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
