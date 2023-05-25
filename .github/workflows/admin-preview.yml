@@ -8,8 +8,8 @@ on:
   pull_request:
     types: [opened, synchronize]
     paths:
-      - apps/admin/**
-      - packages/**
+      - "apps/admin/**"
+      - "packages/**"
       - .npmrc
       - .nvmrc
       - "*.config.js"
