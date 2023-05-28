@@ -2,7 +2,7 @@ name: Web preview workflow
 
 env:
   CACHED_DEPENDENCY_PATHS: "**/node_modules"
-  BUILD_CACHE_DEPENDENCY_KEYS: ${{ github.sha }}
+  BUILD_CACHE_DEPENDENCY_KEYS: ${{ github.sha }}-web-preview
 
 on:
   pull_request:

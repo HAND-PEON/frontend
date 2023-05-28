@@ -2,7 +2,7 @@ name: Admin preview workflow
 
 env:
   CACHED_DEPENDENCY_PATHS: "**/node_modules"
-  BUILD_CACHE_DEPENDENCY_KEYS: ${{ github.sha }}
+  BUILD_CACHE_DEPENDENCY_KEYS: ${{ github.sha }}-admin-preview
 
 on:
   pull_request:
