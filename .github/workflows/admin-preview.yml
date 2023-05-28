@@ -1,8 +1,8 @@
 name: Admin preview workflow
 
 env:
-  VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-  VERCEL_PROJECT_ID: ${{ secrets.VERCEL_ADMIN_PROJECT_ID }}
+  CACHED_DEPENDENCY_PATHS: "**/node_modules"
+  BUILD_CACHE_DEPENDENCY_KEYS: ${{ github.sha }}
 
 on:
   pull_request:
@@ -16,7 +16,8 @@ on:
       - .github/workflows/admin-preview.yml
 
 jobs:
-  Admin-Build:
+  job_install_dependencies:
+    name: Install dependencies
     runs-on: ubuntu-latest
     steps:
       - name: Check out code
@@ -24,38 +25,100 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'yarn'
+      - name: Compute dependencies hash key
+        id: compute_lockfile_hash
+        run: echo "::set-output name=key::${{ hashFiles('**/yarn.lock') }}"
 
-      - name: Install Turbo CLI
-        run: npm install --global turbo@latest
+      - name: Restore node_modules cache
+        id: restore_dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.CACHED_DEPENDENCY_PATHS }}
+          key: ${{ runner.os }}-modules-${{ steps.compute_lockfile_hash.outputs.key }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
+            ${{ runner.os }}-
 
       - name: Install dependencies
+        if: steps.restore_dependencies.outputs.cache-hit != 'true'
         run: yarn install
+    outputs:
+      dependencies_cache_key: ${{ runner.os }}-modules-${{ steps.compute_lockfile_hash.outputs.key }}
 
-      - name: Build
-        run: turbo build --filter=ui --filter=admin
+  job_lint:
+    name: Lint
+    needs: job_install_dependencies
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Check dependencies cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.CACHED_DEPENDENCY_PATHS }}
+          key: ${{ needs.job_install_dependencies.outputs.dependencies_cache_key }}
 
       - name: Lint
-        run : turbo lint
+        run: yarn lint
 
-  Admin-Deploy-Preview:
-    needs: Admin-Build
+  job_build:
+    name: Build
+    needs: job_install_dependencies
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-    
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Check dependencies cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.CACHED_DEPENDENCY_PATHS }}
+          key: ${{ needs.job_install_dependencies.outputs.dependencies_cache_key }}
+
+      - name: Restore bundle
+        id: restore_bundle
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.CACHED_DEPENDENCY_PATHS }}
+          key: ${{ env.BUILD_CACHE_DEPENDENCY_KEYS }}-${{ github.ref_name }}
+
+      - name: Build DEV bundle
+        if: steps.restore_bundle.outputs.cache-hit != 'true'
+        run: yarn build --filter=admin...
+
+  job_deploy_preview:
+    name: Deploy to Preview
+    needs: [job_install_dependencies, job_lint, job_build]
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_ADMIN_PROJECT_ID }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
       - name: Install Vercel CLI
         run: npm install --global vercel@latest
-      
+
+      - name: Check bundle cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.CACHED_DEPENDENCY_PATHS }}
+          key: ${{ env.BUILD_CACHE_DEPENDENCY_KEYS }}-${{ github.ref_name }}
+
+      - name: Build DEV bundle
+        run: yarn build --filter=admin... # 무조건 풀 캐싱 적용 되는 부분임, pull 직전에 turbo run build를 해줘야 종속성이 안 꼬임
+
       - name: Pull Vercel Environment Information
         run: vercel pull --yes --environment=preview --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Build Project Artifacts
-        run:  vercel build --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel build --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy Project Artifacts to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.VERCEL_TOKEN }} > admin_deployment_url.txt
@@ -83,4 +146,3 @@ jobs:
               body: `Admin Preview: ${url}`,
             });
             console.log(`Comment created: ${comment.html_url}`);
- 
