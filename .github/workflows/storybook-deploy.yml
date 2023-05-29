@@ -1,0 +1,95 @@
+# Name of our action
+name: 'chromatic-test'
+# The event that will trigger the action
+env:
+  CACHED_DEPENDENCY_PATHS: "**/node_modules"
+
+on:
+  pull_request:
+    types: [opened, synchronize]
+    paths:
+      - "apps/**"
+      - "packages/**"
+      - .npmrc
+      - .nvmrc
+      - "*.config.js"
+      - .github/workflows/storybook-deploy.yml
+
+env:
+  CACHED_DEPENDENCY_PATH: node_modules
+  cache-name: cache-node-modules
+
+jobs:
+  job_install_dependencies:
+    name: Install dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Compute dependencies hash key
+        id: compute_lockfile_hash
+        run: echo "::set-output name=key::${{ hashFiles('**/yarn.lock') }}"
+
+      - name: Restore node_modules cache
+        id: restore_dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.CACHED_DEPENDENCY_PATHS }}
+          key: ${{ runner.os }}-modules-${{ steps.compute_lockfile_hash.outputs.key }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
+            ${{ runner.os }}-
+
+      - name: Install dependencies
+        if: steps.restore_dependencies.outputs.cache-hit != 'true'
+        run: yarn install
+    outputs:
+      dependencies_cache_key: ${{ runner.os }}-modules-${{ steps.compute_lockfile_hash.outputs.key }}
+
+  job_lint:
+    name: Lint
+    needs: job_install_dependencies
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Check dependencies cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.CACHED_DEPENDENCY_PATHS }}
+          key: ${{ needs.job_install_dependencies.outputs.dependencies_cache_key }}
+
+      - name: Lint
+        run: yarn lint
+
+  job_publish_to_chromatic:
+    name: Publish to chromatic
+    needs: [job_install_dependencies,job_lint]
+    runs-on: ubuntu-latest
+    env:
+      CHROMACTIC_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+    
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Check dependencies cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.CACHED_DEPENDENCY_PATHS }}
+          key: ${{ needs.job_install_dependencies.outputs.dependencies_cache_key }}
+
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        # Options required for Chromatic's GitHub Action
+        with:
+          #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/design-systems-for-developers/react/ko/review/ to obtain it
+          projectToken: ${{ env.CHROMACTIC_TOKEN }}
+          workingDir: packages/ui
