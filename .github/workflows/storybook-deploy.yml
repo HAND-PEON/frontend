@@ -1,5 +1,5 @@
 # Name of our action
-name: 'chromatic-test'
+name: "chromatic-test"
 # The event that will trigger the action
 env:
   CACHED_DEPENDENCY_PATHS: "**/node_modules"
@@ -14,10 +14,6 @@ on:
       - .nvmrc
       - "*.config.js"
       - .github/workflows/storybook-deploy.yml
-
-env:
-  CACHED_DEPENDENCY_PATH: node_modules
-  cache-name: cache-node-modules
 
 jobs:
   job_install_dependencies:
@@ -69,11 +65,11 @@ jobs:
 
   job_publish_to_chromatic:
     name: Publish to chromatic
-    needs: [job_install_dependencies,job_lint]
+    needs: [job_install_dependencies, job_lint]
     runs-on: ubuntu-latest
     env:
       CHROMACTIC_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-    
+
     steps:
       - name: Check out code
         uses: actions/checkout@v3
