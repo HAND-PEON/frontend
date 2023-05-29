@@ -1,5 +1,5 @@
 # Name of our action
-name: "chromatic-test"
+name: "Chromatic storybook workflow"
 # The event that will trigger the action
 env:
   CACHED_DEPENDENCY_PATHS: "**/node_modules"
