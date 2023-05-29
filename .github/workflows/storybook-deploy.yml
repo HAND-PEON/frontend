@@ -83,9 +83,16 @@ jobs:
           key: ${{ needs.job_install_dependencies.outputs.dependencies_cache_key }}
 
       - name: Publish to Chromatic
+        id: chromatic_url
         uses: chromaui/action@v1
         # Options required for Chromatic's GitHub Action
         with:
           #👇 Chromatic projectToken, see https://storybook.js.org/tutorials/design-systems-for-developers/react/ko/review/ to obtain it
           projectToken: ${{ env.CHROMACTIC_TOKEN }}
           workingDir: packages/ui
+
+      - name: test chromatic
+        run: |
+          echo url : ${{ steps.chromatic_url.outputs.url }}
+          echo buildUrl : ${{ steps.chromatic_url.outputs.buildUrl }}
+          echo storybookUrl : ${{ steps.chromatic_url.outputs.storybookUrl }}
