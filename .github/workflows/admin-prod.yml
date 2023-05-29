@@ -1,0 +1,149 @@
+name: Admin Production workflow
+
+env:
+  CACHED_DEPENDENCY_PATHS: "**/node_modules"
+  BUILD_CACHE_DEPENDENCY_KEYS: ${{ github.sha }}-admin-prod
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "apps/admin/**"
+      - "packages/**"
+      - .npmrc
+      - .nvmrc
+      - "*.config.js"
+      - .github/workflows/admin-prod.yml
+
+jobs:
+  job_install_dependencies:
+    name: Install dependencies
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Compute dependencies hash key
+        id: compute_lockfile_hash
+        run: echo "::set-output name=key::${{ hashFiles('**/yarn.lock') }}"
+
+      - name: Restore node_modules cache
+        id: restore_dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.CACHED_DEPENDENCY_PATHS }}
+          key: ${{ runner.os }}-modules-${{ steps.compute_lockfile_hash.outputs.key }}
+          restore-keys: |
+            ${{ runner.os }}-modules-
+            ${{ runner.os }}-
+
+      - name: Install dependencies
+        if: steps.restore_dependencies.outputs.cache-hit != 'true'
+        run: yarn install
+    outputs:
+      dependencies_cache_key: ${{ runner.os }}-modules-${{ steps.compute_lockfile_hash.outputs.key }}
+
+  job_lint:
+    name: Lint
+    needs: job_install_dependencies
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Check dependencies cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.CACHED_DEPENDENCY_PATHS }}
+          key: ${{ needs.job_install_dependencies.outputs.dependencies_cache_key }}
+
+      - name: Lint
+        run: yarn lint
+
+  job_build:
+    name: Build
+    needs: job_install_dependencies
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 2
+
+      - name: Check dependencies cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.CACHED_DEPENDENCY_PATHS }}
+          key: ${{ needs.job_install_dependencies.outputs.dependencies_cache_key }}
+
+      - name: Restore bundle
+        id: restore_bundle
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.CACHED_DEPENDENCY_PATHS }}
+          key: ${{ env.BUILD_CACHE_DEPENDENCY_KEYS }}-${{ github.ref_name }}
+
+      - name: Build DEV bundle
+        if: steps.restore_bundle.outputs.cache-hit != 'true'
+        run: yarn build --filter=admin...
+
+  job_deploy_prod:
+    name: Deploy to Production
+    needs: [job_install_dependencies, job_lint, job_build]
+    runs-on: ubuntu-latest
+    env:
+      VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+      VERCEL_PROJECT_ID: ${{ secrets.VERCEL_ADMIN_PROD_PROJECT_ID }}
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Check bundle cache
+        uses: actions/cache@v3
+        with:
+          path: ${{ env.CACHED_DEPENDENCY_PATHS }}
+          key: ${{ env.BUILD_CACHE_DEPENDENCY_KEYS }}-${{ github.ref_name }}
+
+      - name: Build DEV bundle
+        run: yarn build --filter=admin... # 무조건 풀 캐싱 적용 되는 부분임, pull 직전에 turbo run build를 해줘야 종속성 오류가 안 꼬임
+
+      - name: Pull Vercel Environment Information
+        run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Build Project Artifacts
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
+
+      - name: Deploy Project Artifacts to Vercel
+        run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }} > admin_deployment_url.txt
+
+      - name: Read web URL from file
+        id: read-url
+        run: |
+          url=$(cat admin_deployment_url.txt)
+          echo "PREVIEW_URL=${url}" >> $GITHUB_OUTPUT
+
+      - name: Create Pull Request Comment
+        uses: actions/github-script@v6
+        if: ${{ success() }}
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN_PR_COMMENT }}
+        with:
+          github-token: ${{ secrets.ACCESS_TOKEN_PR_COMMENT }}
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const url = "${{ steps.read-url.outputs.PREVIEW_URL }}";
+            const { data: comment } = await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+              body: `Admin Production: ${url}`,
+            });
+            console.log(`Comment created: ${comment.html_url}`);
