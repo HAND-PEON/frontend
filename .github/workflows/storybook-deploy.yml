@@ -91,8 +91,26 @@ jobs:
           projectToken: ${{ env.CHROMACTIC_TOKEN }}
           workingDir: packages/ui
 
-      - name: test chromatic
-        run: |
-          echo url : ${{ steps.chromatic_url.outputs.url }}
-          echo buildUrl : ${{ steps.chromatic_url.outputs.buildUrl }}
-          echo storybookUrl : ${{ steps.chromatic_url.outputs.storybookUrl }}
+      - name: Create Pull Request Comment
+        uses: actions/github-script@v6
+        if: ${{ success() }}
+        env:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN_PR_COMMENT }}
+        with:
+          github-token: ${{ secrets.ACCESS_TOKEN_PR_COMMENT }}
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const buildUrl = "${{ steps.chromatic_url.outputs.url }}";
+            const storybookUrl = "${{ steps.chromatic_url.outputs.storybookUrl }}";
+            const { data: comment } = await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: prNumber,
+              body: `## 🚀 Chromatic 및 Storybook 배포 완료 🚀
+
+            ✨ 배포 결과를 확인해주세요!
+
+            🎨 [Chromatic](${buildUrl}) - 시각적 테스트 및 UI 리뷰관련 URL
+            📚 [Storybook](${storybookUrl}) - 스토리북 배포 URL`
+            });
+            console.log(`Comment created: ${comment.html_url}`);
