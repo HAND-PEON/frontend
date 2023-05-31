@@ -95,7 +95,7 @@ jobs:
         uses: actions/github-script@v6
         if: ${{ success() }}
         with:
-           github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const prNumber = context.payload.pull_request.number;
             const buildUrl = "${{ steps.chromatic_url.outputs.url }}";
