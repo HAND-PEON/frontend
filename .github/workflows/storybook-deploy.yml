@@ -112,5 +112,3 @@ jobs:
             📚 [Storybook](${storybookUrl}) - 스토리북 배포 URL`
             });
             console.log(`Comment created: ${comment.html_url}`);
-
-            
