@@ -44,5 +44,7 @@
     "tsup": "^6.7.0",
     "typescript": "^5.0.4",
     "vite": "^4.3.8"
-  }
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "ui@0.0.0"
 }

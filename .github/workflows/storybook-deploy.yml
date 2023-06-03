@@ -105,10 +105,9 @@ jobs:
               repo: context.repo.repo,
               issue_number: prNumber,
               body: `## 🚀 Chromatic 및 Storybook 배포 완료 🚀
-
-            ✨ 배포 결과를 확인해주세요!
-
-            🎨 [Chromatic](${buildUrl}) - 시각적 테스트 및 UI 리뷰관련 URL
-            📚 [Storybook](${storybookUrl}) - 스토리북 배포 URL`
+              | | URL | 설명 |
+              |:---|:---|:---|
+              | 🎨 | [Chromatic](${buildUrl}) | 시각적 테스트 및 UI 리뷰관련 URL |
+              | 📚 | [Storybook](${storybookUrl}) | 스토리북 배포 URL |`
             });
             console.log(`Comment created: ${comment.html_url}`);
