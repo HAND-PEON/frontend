@@ -6,12 +6,6 @@ module.exports = {
   extends: ['next', 'turbo', 'prettier', 'plugin:prettier/recommended'],
   rules: {
     '@next/next/no-html-link-for-pages': 'off',
-    'prettier/prettier': [
-      'error',
-      {
-        endOfLine: 'auto',
-      },
-    ],
   },
   parserOptions: {
     babelOptions: {

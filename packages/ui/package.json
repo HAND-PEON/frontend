@@ -15,7 +15,7 @@
     "build": "tsup",
     "dev": "concurrently --kill-others \"storybook dev -p 6006\" \"tsup --watch\"",
     "lint": "eslint \"**/*.ts*\"",
-    "lint-fix": "eslint --fix \"./**/*.{js,ts,tsx}\" --ignore-path .gitignore",
+    "lint-fix": "eslint --fix \"./**/*.{js,ts,tsx}\"",
     "build-storybook": "storybook build"
   },
   "license": "MIT",
