@@ -8,8 +8,7 @@
 
 - apps/web : 일반 사용자들에게 보여주는 웹사이트
 - apps/admin : 어드민 관리자 사이트
-- packages/ui : 디자인 시스템 컴포넌트 
-
+- packages/ui : 디자인 시스템 컴포넌트
 
 ## Progress
 
@@ -20,17 +19,14 @@
 - [ ] 핫트렌드 상세페이지
 - [ ] 이번주 행사품목 상세 페이지
 - [ ] 검색페이지
-- [ ] 추천 콘텐츠 
-
+- [ ] 추천 콘텐츠
 
 ### 개발
 
 - [x] 개발 모노래포 환경 세팅
-- [x] 개발 프로덕션 배포 CI/CD 
-- [x] PR 별 프리뷰 CI/CD 
+- [x] 개발 프로덕션 배포 CI/CD
+- [x] PR 별 프리뷰 CI/CD
 
-      
-      
 ## How to start
 
 ```shell
@@ -60,4 +56,3 @@ turbo dev
 ├── turbo.json
 └── yarn.lock
 ```
-
