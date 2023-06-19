@@ -36,7 +36,7 @@ export default function TabCategory({ data }: TabCategoryProps) {
           </OneCategory>
         ))}
       </div>
-      <div>{currentChildren}</div>
+      {currentChildren && <div>{currentChildren}</div>}
     </div>
   );
 }

@@ -3,6 +3,7 @@
 import BannerSlides, { BannerInfo } from '@/components/BannerSlides';
 import TabCategory from '@/components/TabCategory';
 
+import { Convenience } from '../type';
 import CategoryChildren from './CategoryChildren';
 import DiscountItems from './DiscountItems';
 import Header from './Header';
@@ -17,53 +18,17 @@ const bannerData: BannerInfo[] = [
   { src: '/image/banner6.png', url: '' },
 ];
 
-const categoryInfoList = [
-  {
-    label: 'ALL',
-    children: (
-      <CategoryChildren>
-        <HotTrend convenience="ALL" />
-        <DiscountItems convenience="ALL" />
-      </CategoryChildren>
-    ),
-  },
-  {
-    label: 'CU',
-    children: (
-      <CategoryChildren>
-        <HotTrend convenience="CU" />
-        <DiscountItems convenience="CU" />
-      </CategoryChildren>
-    ),
-  },
-  {
-    label: 'GS25',
-    children: (
-      <CategoryChildren>
-        <HotTrend convenience="GS25" />
-        <DiscountItems convenience="GS25" />
-      </CategoryChildren>
-    ),
-  },
-  {
-    label: '7Eleven',
-    children: (
-      <CategoryChildren>
-        <HotTrend convenience="7Eleven" />
-        <DiscountItems convenience="7Eleven" />
-      </CategoryChildren>
-    ),
-  },
-  {
-    label: 'Emart24',
-    children: (
-      <CategoryChildren>
-        <HotTrend convenience="Emart24" />
-        <DiscountItems convenience="Emart24" />
-      </CategoryChildren>
-    ),
-  },
-];
+const conveniences: Convenience[] = ['ALL', 'CU', 'GS25', '7Eleven', 'Emart24'];
+
+const categoryInfoList = conveniences.map((name, index) => ({
+  label: name,
+  children: (
+    <CategoryChildren index={index}>
+      <HotTrend convenience={name} />
+      <DiscountItems convenience={name} />
+    </CategoryChildren>
+  ),
+}));
 
 export default function Main() {
   return (
