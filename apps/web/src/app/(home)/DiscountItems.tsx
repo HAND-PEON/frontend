@@ -1,5 +1,7 @@
+import { Convenience } from '../type';
+
 interface HotTrendProps {
-  convenience: 'ALL' | 'CU' | 'GS25' | '7Eleven' | 'Emart24';
+  convenience: Convenience;
 }
 
 export default function DiscountItems({ convenience }: HotTrendProps) {
