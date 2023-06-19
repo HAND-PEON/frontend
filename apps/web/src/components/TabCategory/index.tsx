@@ -21,14 +21,16 @@ export default function TabCategory({ data }: TabCategoryProps) {
   )?.children;
 
   return (
-    <div>
+    <div className="bg-white">
       <div className="flex border-b-[1px] border-[#EEEEEE] px-5">
         {data.map(({ label, href }) => (
           <OneCategory
             key={label}
             href={href}
             isActive={label === currentCategory}
-            onClick={() => setCurrentCategory(label)}
+            onClick={() => {
+              setCurrentCategory(label);
+            }}
           >
             {label}
           </OneCategory>
