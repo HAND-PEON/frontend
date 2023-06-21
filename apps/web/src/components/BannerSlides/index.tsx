@@ -47,11 +47,13 @@ export default function BannerSlides({
       >
         {data.map(({ src, url }, idx) => (
           <SwiperSlide key={`${idx}-${src}`}>
-            <Link href={url}>
+            <Link href={url} className="relative">
               <Image
                 className="!relative !object-cover"
                 alt={src}
                 src={src}
+                sizes="(min-width: 768px) 100vw, (max-width: 1200px) 100vw"
+                priority
                 fill
               />
             </Link>
