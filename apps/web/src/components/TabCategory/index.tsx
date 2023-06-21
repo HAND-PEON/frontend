@@ -1,7 +1,10 @@
 'use client';
 
-import { ReactNode, useState } from 'react';
+import { ReactNode, useMemo, useState } from 'react';
 
+import { arrayToObj } from '@/utils';
+
+import MatchDisplay from '../MatchDisplay';
 import OneCategory from './OneCategory';
 
 export type CategoryInfo = {
@@ -16,9 +19,10 @@ interface TabCategoryProps {
 
 export default function TabCategory({ data }: TabCategoryProps) {
   const [currentCategory, setCurrentCategory] = useState(data[0].label);
-  const currentChildren = data.find(
-    (one) => one.label === currentCategory,
-  )?.children;
+  const labelChildrenObj = useMemo(
+    () => arrayToObj(data, 'label', 'children'),
+    [data],
+  );
 
   return (
     <div className="bg-white">
@@ -36,7 +40,7 @@ export default function TabCategory({ data }: TabCategoryProps) {
           </OneCategory>
         ))}
       </div>
-      {currentChildren && <div>{currentChildren}</div>}
+      <MatchDisplay value={currentCategory} cases={labelChildrenObj} />
     </div>
   );
 }

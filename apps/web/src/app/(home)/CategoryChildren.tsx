@@ -1,7 +1,8 @@
 'use client';
 
-import { ReactNode, useEffect, useState } from 'react';
+import { ReactNode, useState } from 'react';
 
+import MatchDisplay from '@/components/MatchDisplay';
 import TabBar from '@/components/TabBar';
 
 interface CategoryChildrenProps {
@@ -13,8 +14,7 @@ export default function CategoryChildren({
   index,
   children,
 }: CategoryChildrenProps) {
-  const [currentIndexList, setCurrentIndexList] = useState([0, 0, 0, 0, 0]);
-  const currentIndex = currentIndexList[index];
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
     <div className="bg-[#F7F7F7]">
@@ -22,16 +22,17 @@ export default function CategoryChildren({
         <TabBar
           currentIndex={currentIndex}
           onClick={(tabIndex) => {
-            setCurrentIndexList((prev) =>
-              prev.map((one, idx) => (idx === index ? tabIndex : one)),
-            );
+            setCurrentIndex(tabIndex);
           }}
         />
       </div>
-      <div>
-        {currentIndex === 0 && children[0]}
-        {currentIndex === 1 && children[1]}
-      </div>
+      <MatchDisplay
+        value={`${currentIndex}`}
+        cases={{
+          0: children[0],
+          1: children[1],
+        }}
+      />
     </div>
   );
 }
