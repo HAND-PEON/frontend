@@ -17,8 +17,8 @@ export default function CategoryChildren({
   const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
-    <div className="bg-[#F7F7F7]">
-      <div className="px-[20px] py-[19px]">
+    <div>
+      <div className="sticky top-[53px] z-auto bg-[#F7F7F7] px-[20px] py-[19px]">
         <TabBar
           currentIndex={currentIndex}
           onClick={(tabIndex) => {
