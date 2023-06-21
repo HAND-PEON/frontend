@@ -7,18 +7,18 @@ import OneCategory from './OneCategory';
 export type CategoryInfo = {
   label: string;
   href?: string;
-  children?: ReactNode;
 };
 
 interface TabCategoryProps {
   data: CategoryInfo[];
+  currentTab: string;
 }
 
-export default function TabCategory({ data }: TabCategoryProps) {
-  const [currentCategory, setCurrentCategory] = useState(data[0].label);
-  const currentChildren = data.find(
-    (one) => one.label === currentCategory,
-  )?.children;
+export default function TabCategory({ data, currentTab }: TabCategoryProps) {
+  const [currentCategory, setCurrentCategory] = useState(currentTab);
+  // const currentChildren = data.find(
+  //   (one) => one.label === currentCategory,
+  // )?.children;
 
   return (
     <div className="bg-white">
@@ -36,7 +36,8 @@ export default function TabCategory({ data }: TabCategoryProps) {
           </OneCategory>
         ))}
       </div>
-      {currentChildren && <div>{currentChildren}</div>}
+      {/* 이쪽에서 currentChildren 하나 제외한 나머지는 unmount 시켜서 state 유지가 안 되고 있음 */}
+      {/* {currentChildren && <div>{currentChildren}</div>} */}
     </div>
   );
 }

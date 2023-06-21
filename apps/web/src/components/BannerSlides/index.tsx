@@ -47,7 +47,8 @@ export default function BannerSlides({
       >
         {data.map(({ src, url }, idx) => (
           <SwiperSlide key={`${idx}-${src}`}>
-            <Link href={url}>
+            {/* https://nextjs.org/docs/app/api-reference/components/image#fill  image에 fill 속성이 있을 경우 상위 요소에 position이 있어야 함*/}
+            <Link href={url} className="relative">
               <Image
                 className="!relative !object-cover"
                 alt={src}
