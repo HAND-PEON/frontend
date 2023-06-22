@@ -7,7 +7,7 @@ interface OneTabProps {
   isActive?: boolean;
   children: ReactNode;
   href?: string;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export default function OneCategory({
