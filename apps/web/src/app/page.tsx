@@ -1,5 +1,5 @@
-import Main from './(home)/Main';
+import { redirect } from 'next/navigation';
 
 export default function Home() {
-  return <Main />;
+  redirect('/ALL');
 }

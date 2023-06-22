@@ -4,7 +4,7 @@ import OneBar from './OneBar';
 
 interface TabBarProps {
   currentIndex: number;
-  onClick: (value: any) => void;
+  onClick: (value: number) => void;
 }
 
 export default function TabBar({ currentIndex, onClick }: TabBarProps) {

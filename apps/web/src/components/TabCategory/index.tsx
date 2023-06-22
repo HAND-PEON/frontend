@@ -9,7 +9,6 @@ import OneCategory from './OneCategory';
 export type CategoryInfo = {
   label: string;
   href?: string;
-  children?: ReactNode;
 };
 
 interface TabCategoryProps {
