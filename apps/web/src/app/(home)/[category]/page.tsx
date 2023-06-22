@@ -4,8 +4,8 @@ import { Convenience } from '@/app/type';
 import TabCategory from '@/components/TabCategory';
 
 import CategoryChildren from '../CategoryChildren';
-import DiscountItems from '../DiscountItems';
-import HotTrend from '../HotTrend';
+import DiscountItems from './DiscountItems';
+import HotTrend from './HotTrend';
 
 interface CategoryPageProps {
   params: { category: Convenience };

@@ -1,4 +1,4 @@
-import { Convenience } from '../type';
+import { Convenience } from '../../type';
 
 interface HotTrendProps {
   convenience: Convenience;
