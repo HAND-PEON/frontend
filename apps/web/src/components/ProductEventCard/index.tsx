@@ -24,7 +24,7 @@ const ProductEventCard = ({ imageUrl }: Props) => {
         </div>
       </div>
       <div className="border border-black rounded-[4px] w-min py-[2px] px-[7px] flex justify-center items-center mb-[8px]">
-        <span className="text-xs font-bold">CU</span>
+        <span className="text-xs font-bold">Emart24</span>
       </div>
       <div className="leading-5">
         <div className="truncate">
