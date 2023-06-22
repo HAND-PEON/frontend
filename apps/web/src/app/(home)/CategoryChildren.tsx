@@ -6,14 +6,10 @@ import MatchDisplay from '@/components/MatchDisplay';
 import TabBar from '@/components/TabBar';
 
 interface CategoryChildrenProps {
-  index: number;
   children: ReactNode;
 }
 
-export default function CategoryChildren({
-  index,
-  children,
-}: CategoryChildrenProps) {
+export default function CategoryChildren({ children }: CategoryChildrenProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   return (

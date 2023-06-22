@@ -23,7 +23,7 @@ const conveniences: Convenience[] = ['ALL', 'CU', 'GS25', '7Eleven', 'Emart24'];
 const categoryInfoList = conveniences.map((name, index) => ({
   label: name,
   children: (
-    <CategoryChildren index={index}>
+    <CategoryChildren key={index}>
       <HotTrend convenience={name} />
       <DiscountItems convenience={name} />
     </CategoryChildren>
