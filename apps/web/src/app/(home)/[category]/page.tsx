@@ -23,7 +23,7 @@ export default function CategoryPage({
   return (
     <div>
       <TabCategory categoryData={categoryInfoList} currentCategory={category} />
-      <CategoryChildren>
+      <CategoryChildren convenience={category}>
         <HotTrend convenience={category} />
         <DiscountItems convenience={category} />
       </CategoryChildren>
