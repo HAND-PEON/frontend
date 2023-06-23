@@ -3,9 +3,10 @@
 import { ReactNode } from 'react';
 
 import TabBar from '@/components/TabBar';
-import { selectTabIndex, useTabBarStore } from '@/store';
 
 import { Convenience } from '../type';
+import { useStateStore } from '@/store';
+import { selectTabIndex } from '@/store/tabBar';
 
 interface CategoryChildrenProps {
   convenience: Convenience;
@@ -16,8 +17,8 @@ export default function CategoryChildren({
   convenience,
   children,
 }: CategoryChildrenProps) {
-  const currentIndex = useTabBarStore(selectTabIndex(convenience));
-  const setCategoryTabIndex = useTabBarStore(
+  const currentIndex = useStateStore(selectTabIndex(convenience));
+  const setCategoryTabIndex = useStateStore(
     (state) => state.setCategoryTabIndex,
   );
 
