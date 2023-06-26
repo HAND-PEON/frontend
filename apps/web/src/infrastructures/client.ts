@@ -6,7 +6,7 @@ interface RequestConfig {
   signal?: AbortSignal;
 }
 
-export interface IHttp {
+export interface HttpClient {
   baseUrl?: string;
   get?<T>(
     url: string,
@@ -28,12 +28,17 @@ export interface IHttp {
   ): Promise<{ data: T; headers?: Headers }>;
 }
 
-const Http: IHttp = {
-  baseUrl: 'http://localhost:3000',
+// const BASE_URL = 'http://localhost:3000';
+// const baseAPI = (url: string, queryString: string = '') =>
+//   `${BASE_URL}${url}${queryString}`;
+
+const Http: HttpClient = {
   async get<T>(url: string, config: RequestConfig = {}) {
     const queryString = config?.params
       ? qs.stringify(config.params, { addQueryPrefix: true })
       : '';
+
+    // baseAPI()
     const res = await fetch(this.baseUrl.concat(url, queryString), {
       method: 'GET',
       headers: {
@@ -41,15 +46,12 @@ const Http: IHttp = {
       },
     });
     const data: T = await res.json();
-    if (res.ok) {
-      const { headers } = res;
-      return {
-        data,
-        headers,
-      };
-    } else {
-      return Promise.reject(data);
+
+    const { ok, headers } = res;
+    if (ok) {
+      return { data, headers };
     }
+    return Promise.reject(data);
   },
   async post<T>(url: string, body?: any, config: RequestConfig = {}) {
     const res = await fetch(this.baseUrl.concat(url), {
@@ -62,15 +64,12 @@ const Http: IHttp = {
       body: body ? JSON.stringify(body) : undefined,
     });
     const data: T = await res.json();
-    if (res.ok) {
-      const { headers } = res;
-      return {
-        data,
-        headers,
-      };
-    } else {
-      return Promise.reject(data);
+
+    const { ok, headers } = res;
+    if (ok) {
+      return { data, headers };
     }
+    return Promise.reject(data);
   },
   async patch<T>(url: string, body: any, config: RequestConfig = {}) {
     const res = await fetch(this.baseUrl.concat(url), {
@@ -85,17 +84,14 @@ const Http: IHttp = {
     });
 
     const data: T = await res.json();
-    if (res.ok) {
-      const { headers } = res;
-      return {
-        data,
-        headers,
-      };
-    } else {
-      return Promise.reject(data);
+
+    const { ok, headers } = res;
+    if (ok) {
+      return { data, headers };
     }
+    return Promise.reject(data);
   },
-  async delete<T = any>(url: string, config: RequestConfig = {}) {
+  async delete<T>(url: string, config: RequestConfig = {}) {
     const querystring = config?.params
       ? qs.stringify(config?.params, { addQueryPrefix: true })
       : '';
@@ -109,15 +105,12 @@ const Http: IHttp = {
     });
 
     const data: T = await res.json();
-    if (res.ok) {
-      const { headers } = res;
-      return {
-        data,
-        headers,
-      };
-    } else {
-      return Promise.reject(data);
+
+    const { ok, headers } = res;
+    if (ok) {
+      return { data, headers };
     }
+    return Promise.reject(data);
   },
 };
 

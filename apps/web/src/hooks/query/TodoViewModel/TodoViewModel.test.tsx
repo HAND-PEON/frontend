@@ -2,7 +2,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { renderHook, waitFor } from '@testing-library/react';
 import TodoViewModel from './TodoViewModel';
 import TodoRepository from '@/repository/TodoRepository';
-import { type IHttp } from '@/infrastructures/client';
+import { type HttpClient } from '@/infrastructures/client';
 
 const mockedData = {
   todoList: [
@@ -11,7 +11,7 @@ const mockedData = {
   ],
 };
 
-const http: IHttp = {
+const http: HttpClient = {
   async get<T>(url: string) {
     const data: T = mockedData as any;
     return { data };

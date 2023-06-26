@@ -1,7 +1,7 @@
 import { type ITodo } from '@/types/TodoType';
-import { type IHttp } from '@/infrastructures/client';
+import { type HttpClient } from '@/infrastructures/client';
 
-const TodoRepository = (client: IHttp) => {
+const TodoRepository = (client: HttpClient) => {
   const getList = async () => {
     return await client.get<{ todoList: ITodo[] }>('/todo').then((res) => {
       return res.data.todoList;
