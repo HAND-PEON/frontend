@@ -18,9 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body className={pretendard.className}>
-        <main className="flex min-h-screen w-full flex-col items-center ">
+    <html lang="ko" className="h-full">
+      <body className={`${pretendard.className} h-full`}>
+        <main className="flex min-h-full w-full flex-col items-center">
           {children}
         </main>
       </body>

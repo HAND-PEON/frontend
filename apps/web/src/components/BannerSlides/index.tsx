@@ -36,6 +36,7 @@ export default function BannerSlides({
         totalViewText="모두 보기"
       />
       <Swiper
+        className="h-full"
         modules={[Autoplay, A11y]}
         autoplay
         loop
