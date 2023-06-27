@@ -14,7 +14,7 @@ export default function TabBar({ currentIndex, onClick }: TabBarProps) {
         이번주 Hot Trend
       </OneBar>
       <OneBar isActive={1 === currentIndex} onClick={() => onClick(1)}>
-        이번주 ⚡할인품목⚡️
+        이번주 ⚡행사상품⚡️
       </OneBar>
     </div>
   );

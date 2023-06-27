@@ -4,7 +4,7 @@ import { Convenience } from '@/app/type';
 import TabCategory from '@/components/TabCategory';
 
 import CategoryChildren from '../CategoryChildren';
-import DiscountItems from './DiscountItems';
+import EventItems from './EventItem/EventItems';
 import HotTrend from './HotTrend';
 
 interface CategoryPageProps {
@@ -25,7 +25,7 @@ export default function CategoryPage({
       <TabCategory categoryData={categoryInfoList} currentCategory={category} />
       <CategoryChildren convenience={category}>
         <HotTrend convenience={category} />
-        <DiscountItems convenience={category} />
+        <EventItems convenience={category} />
       </CategoryChildren>
     </div>
   );

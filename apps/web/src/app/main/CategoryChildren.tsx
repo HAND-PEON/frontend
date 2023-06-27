@@ -26,8 +26,8 @@ export default function CategoryChildren({
     setCategoryTabIndex({ [convenience]: index });
 
   return (
-    <div>
-      <div className="sticky top-[53px] z-auto bg-[#F7F7F7] px-[20px] py-[19px]">
+    <div className="bg-[#F7F7F7]">
+      <div className="top-[53px] z-auto px-[20px] py-[19px]">
         <TabBar currentIndex={currentIndex} onClick={handleTabBarClick} />
       </div>
       <div>{children[currentIndex]}</div>
