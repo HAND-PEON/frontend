@@ -5,7 +5,7 @@ import { formatNumberWithComma } from '@/app/type';
 
 interface EventItem {
   eventType: 'BOGO' | 'BTGO' | 'SALE' | 'BONUS';
-  imageUrl?: string;
+  imageUrl: string;
   price: number;
   title: string;
   Convenience: Convenience;
@@ -27,7 +27,7 @@ interface Props {
 
 const EventItemCard = ({ EventItem }: Props) => {
   return (
-    <div className="w-[164px]">
+    <div className="w-[calc(50%_-_9px)]">
       <div className="mb-[12px] h-[164px] w-full rounded-[9px] border-2 border-b-[4px] border-r-[4px] border-black p-[5px]">
         <div className="relative flex h-full w-full items-center justify-center">
           <div
@@ -39,7 +39,7 @@ const EventItemCard = ({ EventItem }: Props) => {
               {EventTypeTag[EventItem.eventType].text}
             </span>
           </div>
-          <div className="max-h-[150px] min-h-[150px] min-w-[150px] max-w-[150px] rounded-[3px]">
+          <div className="h-full w-full rounded-[3px]">
             {EventItem.imageUrl && (
               <Image
                 className="rounded-[3px] object-contain"

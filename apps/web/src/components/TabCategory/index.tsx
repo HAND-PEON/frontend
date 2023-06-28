@@ -21,7 +21,7 @@ export default function TabCategory({
   currentCategory,
 }: TabCategoryProps) {
   return (
-    <div className="sticky top-0 z-auto bg-white ">
+    <div className="sticky top-0 z-30 bg-white ">
       <div className="flex border-b-[1px] border-[#EEEEEE] bg-white px-5">
         {categoryData.map(({ label, href }) => (
           <OneCategory
