@@ -14,7 +14,7 @@ export default function EventItems({ convenience }: EventItemsProps) {
         {Array.from({ length: 8 }).map((_, i) => (
           <EventItemCard
             key={i}
-            EventItem={{
+            eventItem={{
               eventType: 'BONUS',
               imageUrl: pyeonImage,
               price: 20000,

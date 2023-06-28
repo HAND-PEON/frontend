@@ -22,11 +22,11 @@ const EventTypeTag: Record<
 };
 
 interface Props {
-  EventItem: EventItem;
+  eventItem: EventItem;
 }
 
 const EventItemCard = ({
-  EventItem: { eventType, imageUrl, convenience, title, price },
+  eventItem: { eventType, imageUrl, convenience, title, price },
 }: Props) => {
   return (
     <div className="w-[calc(50%_-_9px)]">
