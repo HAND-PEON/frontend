@@ -1,7 +1,8 @@
+import Image from 'next/image';
+
 import { Convenience } from '@/app/type';
 import { pyeonImage } from '@/dummy/image';
-import { formatNumberWithComma } from '@/utils/number-formatter';
-import Image from 'next/image';
+import { formatNumberWithComma, prefixZero } from '@/utils/numberFormatter';
 
 interface HotTrendCardProps {
   id: string | number;
@@ -48,7 +49,7 @@ export default function HotTrendCard({
           </div>
         </div>
         <div className="absolute bg-[#1E1C1C] p-2 text-[19px] font-extrabold leading-5 text-white">
-          {rank.toString().padStart(2, '0')}
+          {prefixZero(rank)}
         </div>
       </div>
     </div>
