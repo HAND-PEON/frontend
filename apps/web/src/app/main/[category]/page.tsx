@@ -4,7 +4,7 @@ import { Convenience } from '@/app/type';
 import TabCategory from '@/components/TabCategory';
 
 import CategoryChildren from '../CategoryChildren';
-import EventItems from './EventItem/EventItems';
+import EventItems from './EventItems';
 import HotTrend from './HotTrend';
 
 interface CategoryPageProps {

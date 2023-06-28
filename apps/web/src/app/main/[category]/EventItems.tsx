@@ -1,6 +1,6 @@
 import { Convenience } from '@/app/type';
-import EventItemCard from './EventItemCard';
-import ChevronIcon from '@/assets/chevron.svg';
+import EventItemCard from '@/components/EventItemCard';
+import ChevronIcon from '@/components/icons/ChevronIcon';
 
 interface EventItemsProps {
   convenience: Convenience;
