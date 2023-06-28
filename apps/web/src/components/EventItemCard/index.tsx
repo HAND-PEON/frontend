@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { Convenience } from '@/app/type';
-import { formatNumberWithComma } from '@/utils/number-formatter';
+import { formatNumberWithComma } from '@/utils/numberFormatter';
 
 interface EventItem {
   eventType: 'ONE_PLUS_ONE' | 'TWO_PLUS_ONE' | 'SALE' | 'BONUS';
