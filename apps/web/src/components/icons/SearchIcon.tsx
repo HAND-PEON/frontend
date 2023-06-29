@@ -1,5 +1,5 @@
 import SearchWhite from 'public/icon/icon-search-white.svg';
-import SearchBlack from 'public/icon/icon-search-white.svg';
+import SearchBlack from 'public/icon/icon-search-black.svg';
 
 interface SearchIconProps {
   type: 'white' | 'black';

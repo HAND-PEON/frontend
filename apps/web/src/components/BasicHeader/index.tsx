@@ -5,23 +5,17 @@ import HomeIcon from '../icons/HomeIcon';
 
 const BasicHeader = () => {
   return (
-    <div className="flex items-center justify-between bg-black p-[20px] text-white">
-      <ChevronLeftIcon />
+    <div className="relative flex items-center justify-center bg-black p-[20px] text-white">
+      <div className="absolute left-[20px]">
+        <ChevronLeftIcon />
+      </div>
       <span className="text-lg font-bold text-white">이번주 행사 품목</span>
-      <div className="flex">
+      <div className="absolute right-[20px] flex items-center gap-[18px]">
         <HomeIcon />
-        <SearchIcon type={'white'} />
+        <SearchIcon type="black" />
       </div>
     </div>
   );
 };
-
-// color: #FFF;
-// text-align: center;
-// font-size: 17px;
-// font-family: Pretendard;
-// font-style: normal;
-// font-weight: 700;
-// line-height: 21px;
 
 export default BasicHeader;

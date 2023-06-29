@@ -12,7 +12,7 @@ interface EventItemsProps {
 export default function EventItems({ convenience }: EventItemsProps) {
   const router = useRouter();
   const goEventPage = () => {
-    router.push(`/event/${convenience}`);
+    router.replace(`/event/${convenience}`);
   };
   return (
     <div className="rounded-t-[30px] bg-white px-[20px] pb-[10px] pt-[27px]">
