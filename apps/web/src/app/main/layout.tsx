@@ -17,7 +17,7 @@ interface HomeLayoutProps {
 
 export default function HomeLayout({ children }: HomeLayoutProps) {
   return (
-    <div className="w-full min-w-[360px] max-w-[390px] flex-1">
+    <div className="flex-1">
       <Header />
       <div>
         <BannerSlides data={bannerData} totalViewURL="/recommend" />

@@ -21,7 +21,7 @@ export default function SearchInput({
     >
       <input type="text" {...props} />
       <button onClick={onSearch}>
-        <SearchIcon type={'white'} />
+        <SearchIcon type={'black'} />
       </button>
     </div>
   );
