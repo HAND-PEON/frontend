@@ -1,5 +1,5 @@
 import React from 'react';
-import ArrowTop from 'public/icon/arrow-top.svg';
+import ArrowTop from 'public/icons/arrow-top.svg';
 
 const ArrowTopIcon = () => {
   return <ArrowTop />;

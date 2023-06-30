@@ -1,4 +1,4 @@
-import Chevron from 'public/icon/chevron.svg';
+import Chevron from 'public/icons/chevron.svg';
 import React from 'react';
 const ChevronIcon = () => {
   return <Chevron />;
