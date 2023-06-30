@@ -5,10 +5,10 @@ import { useChipContext } from './hooks/context';
 interface Props {
   onClickChipItem?: () => void;
   myIndex: number;
-  text: string;
+  children: React.ReactNode;
 }
 
-const ChipItem = ({ onClickChipItem, myIndex, text }: Props) => {
+const ChipItem = ({ onClickChipItem, myIndex, children }: Props) => {
   const { currentIndex, setCurrentIndex } = useChipContext();
   return (
     <div
@@ -20,7 +20,7 @@ const ChipItem = ({ onClickChipItem, myIndex, text }: Props) => {
         onClickChipItem?.();
       }}
     >
-      <span className="truncate font-bold">{text}</span>
+      <span className="truncate font-bold">{children}</span>
     </div>
   );
 };

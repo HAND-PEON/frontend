@@ -17,9 +17,10 @@ const EventItemSection = () => {
             <Chip.Item
               myIndex={index}
               key={index}
-              text={item}
               onClickChipItem={() => console.log('클릭!')}
-            />
+            >
+              {item}
+            </Chip.Item>
           ))}
         </Chip>
       </div>
