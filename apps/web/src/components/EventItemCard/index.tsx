@@ -1,6 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
-import { Convenience } from '@/app/type';
+import { Convenience, EventCategory } from '@/app/type';
 import { formatNumberWithComma } from '@/utils/numberFormatter';
 
 interface EventItem {
@@ -8,12 +8,12 @@ interface EventItem {
   imageUrl: string;
   price: number;
   title: string;
-  convenience: 'ALL' | 'CU' | 'GS25' | '7Eleven' | 'Emart24';
+  convenience: Convenience;
 }
 
 const EventTypeTag: Record<
   EventItem['eventType'],
-  { text: string; bg: string }
+  { text: EventCategory; bg: string }
 > = {
   ONE_PLUS_ONE: { text: '1+1', bg: 'bg-[#73F69D]' },
   TWO_PLUS_ONE: { text: '2+1', bg: 'bg-[#E2F981]' },

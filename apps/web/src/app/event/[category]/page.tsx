@@ -6,9 +6,9 @@ import React from 'react';
 import EventItemSection from './components/EventItemSection';
 import HomeIconButton from './components/HomeIconButton';
 import SearchIconButton from './components/SearchIconButton';
+import { CONVENIENCE } from '@/constants/conveniences';
 
-const conveniences: Convenience[] = ['ALL', 'CU', 'GS25', '7Eleven', 'Emart24'];
-const categoryInfoList = conveniences.map((convenience) => ({
+const categoryInfoList = CONVENIENCE.map((convenience) => ({
   label: convenience,
   href: `/event/${convenience}`,
 }));

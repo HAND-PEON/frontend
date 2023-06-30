@@ -3,8 +3,7 @@ import Chip from '@/components/Chip';
 import EventItemCard from '@/components/EventItemCard';
 import { pyeonImage } from '@/dummy/image';
 import React from 'react';
-
-const eventCategory = ['1+1', '2+1', '할인', '+덤'];
+import { EVENT_CATEGORY } from '@/constants/conveniences';
 
 const EventItemSection = () => {
   return (
@@ -14,7 +13,7 @@ const EventItemSection = () => {
       </div>
       <div className="pb-[29px]">
         <Chip>
-          {eventCategory.map((item, index) => (
+          {EVENT_CATEGORY.map((item, index) => (
             <Chip.Item
               myIndex={index}
               key={index}

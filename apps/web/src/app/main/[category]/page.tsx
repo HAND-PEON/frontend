@@ -6,13 +6,13 @@ import TabCategory from '@/components/TabCategory';
 import CategoryChildren from '../CategoryChildren';
 import EventItems from './EventItems';
 import HotTrend from './HotTrend';
+import { CONVENIENCE } from '@/constants/conveniences';
 
 interface CategoryPageProps {
   params: { category: Convenience };
 }
 
-const conveniences: Convenience[] = ['ALL', 'CU', 'GS25', '7Eleven', 'Emart24'];
-const categoryInfoList = conveniences.map((convenience) => ({
+const categoryInfoList = CONVENIENCE.map((convenience) => ({
   label: convenience,
   href: `/main/${convenience}`,
 }));
