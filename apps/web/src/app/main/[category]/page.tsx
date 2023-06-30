@@ -22,7 +22,12 @@ export default function CategoryPage({
 }: CategoryPageProps) {
   return (
     <div>
-      <TabCategory categoryData={categoryInfoList} currentCategory={category} />
+      <div className="sticky top-0 z-30">
+        <TabCategory
+          categoryData={categoryInfoList}
+          currentCategory={category}
+        />
+      </div>
       <CategoryChildren convenience={category}>
         <HotTrend convenience={category} />
         <EventItems convenience={category} />

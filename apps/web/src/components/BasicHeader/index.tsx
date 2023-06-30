@@ -1,19 +1,20 @@
 import React from 'react';
-import ChevronLeftIcon from '../icons/ChevronLeftIcon';
-import SearchIcon from '../icons/SearchIcon';
-import HomeIcon from '../icons/HomeIcon';
 
-const BasicHeader = () => {
+interface Props {
+  headerLeft?: React.ReactNode;
+  headerRight?: React.ReactNode;
+  headerCenter?: React.ReactNode;
+}
+
+const BasicHeader = ({ headerLeft, headerRight, headerCenter }: Props) => {
   return (
-    <div className="relative flex items-center justify-center bg-black p-[20px] text-white">
-      <div className="absolute left-[20px]">
-        <ChevronLeftIcon />
-      </div>
-      <span className="text-lg font-bold text-white">이번주 행사 품목</span>
-      <div className="absolute right-[20px] flex items-center gap-[18px]">
-        <HomeIcon />
-        <SearchIcon type="black" />
-      </div>
+    <div className="relative flex items-center justify-center bg-black px-[20px] py-[15px] text-white">
+      {headerLeft && <div className="absolute left-[20px]">{headerLeft}</div>}
+
+      <span className="text-lg font-bold text-white">{headerCenter}</span>
+      {headerRight && (
+        <div className="absolute right-[20px]">{headerRight}</div>
+      )}
     </div>
   );
 };

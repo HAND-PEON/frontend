@@ -7,6 +7,7 @@ interface OneTabProps {
   isActive?: boolean;
   children: ReactNode;
   href?: string;
+  isRouterReplace?: boolean;
   onClick?: () => void;
 }
 
@@ -14,6 +15,7 @@ export default function OneCategory({
   isActive,
   children,
   href = '',
+  isRouterReplace,
   onClick,
 }: OneTabProps) {
   return (
@@ -23,7 +25,7 @@ export default function OneCategory({
       `}
       onClick={onClick}
     >
-      <Link className="block py-[14px]" href={href}>
+      <Link className="block py-[14px]" href={href} replace={isRouterReplace}>
         {children}
       </Link>
     </div>
