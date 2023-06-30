@@ -1,5 +1,5 @@
 import { SVGProps } from 'react';
-import Chevron from '../../assets/chevron.svg';
+import Chevron from 'public/icon/chevron.svg';
 const ChevronIcon = () => {
   return <Chevron />;
 };

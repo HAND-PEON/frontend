@@ -1,13 +1,13 @@
+'use client';
 import React from 'react';
 import ChevronLeftIcon from '../icons/ChevronLeftIcon';
+import useGoBack from '@/hooks/useGoBack';
 
-interface Props {
-  onClick?: () => void;
-}
+const BackButton = () => {
+  const goBack = useGoBack();
 
-const BackButton = ({ onClick }: Props) => {
   return (
-    <button className="ml-[_-8px] p-[8px]" onClick={onClick}>
+    <button className="ml-[_-8px] p-[8px]" onClick={goBack}>
       <ChevronLeftIcon />
     </button>
   );

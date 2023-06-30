@@ -3,9 +3,9 @@ import BasicLayout from '@/components/BasicLayout';
 import TabCategory from '@/components/TabCategory';
 import TopButton from '@/components/TopButton';
 import React from 'react';
-import EventItemSection from './EventItemSection';
-import HomeIcon from '@/components/icons/HomeIcon';
-import SearchIcon from '@/components/icons/SearchIcon';
+import EventItemSection from './components/EventItemSection';
+import HomeIconButton from './components/HomeIconButton';
+import SearchIconButton from './components/SearchIconButton';
 
 const conveniences: Convenience[] = ['ALL', 'CU', 'GS25', '7Eleven', 'Emart24'];
 const categoryInfoList = conveniences.map((convenience) => ({
@@ -26,12 +26,8 @@ const EventCategoryPage = ({
       headerCenter={'이번주 행사 품목'}
       headerRight={
         <div className="flex items-center">
-          <button className="p-[8px]">
-            <HomeIcon />
-          </button>
-          <button className="mr-[_-8px] p-[8px]">
-            <SearchIcon type="black" />
-          </button>
+          <HomeIconButton />
+          <SearchIconButton />
         </div>
       }
     >

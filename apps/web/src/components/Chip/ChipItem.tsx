@@ -17,7 +17,7 @@ const ChipItem = ({ onClickChipItem, myIndex, text }: Props) => {
       }`}
       onClick={() => {
         setCurrentIndex(myIndex);
-        console.log('hello');
+        onClickChipItem?.();
       }}
     >
       <span className="truncate font-bold">{text}</span>

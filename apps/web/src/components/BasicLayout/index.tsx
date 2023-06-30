@@ -1,8 +1,6 @@
-'use client';
-import useGoBack from '@/hooks/useGoBack';
-import BasicHeader from '../BasicHeader';
 import React from 'react';
 import BackButton from '../BackButton';
+import BasicHeader from '../BasicHeader';
 
 interface Props extends React.ComponentProps<typeof BasicHeader> {
   children: React.ReactNode;
@@ -15,15 +13,12 @@ const BasicLayout = ({
   headerCenter,
   headerRight,
 }: Props) => {
-  const goBack = useGoBack();
   return (
     <>
       <div className="sticky top-0 z-30">
         <BasicHeader
           headerCenter={headerCenter}
-          headerLeft={
-            hasBackButton ? <BackButton onClick={goBack} /> : undefined
-          }
+          headerLeft={hasBackButton ? <BackButton /> : undefined}
           headerRight={headerRight}
         />
       </div>
