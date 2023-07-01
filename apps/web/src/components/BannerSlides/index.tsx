@@ -28,12 +28,12 @@ export default function BannerSlides({
   const [slideIndex, setSlideIndex] = useState(0);
 
   return (
-    <div className="relative h-[210px] overflow-hidden">
+    <div className="relative h-full overflow-hidden">
       <TotalViewButton
         totalViewURL={totalViewURL}
         currentSlideIndex={slideIndex + 1}
         totalLength={data.length}
-        totalViewText="모두 보기"
+        totalViewText="모두보기"
       />
       <Swiper
         className="h-full"

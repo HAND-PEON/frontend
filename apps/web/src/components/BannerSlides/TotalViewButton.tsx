@@ -16,13 +16,13 @@ export default function TotalViewButton({
   totalLength,
 }: TotalViewButtonProps) {
   return (
-    <div className="absolute bottom-5 right-5 z-10 overflow-hidden rounded-full p-2 text-white">
+    <div className="absolute bottom-3 right-3 z-10 flex h-[24px] items-center justify-center overflow-hidden rounded-full px-[8px] text-white">
       <Link className="flex gap-2" href={totalViewURL}>
-        <span className="tracking-widest">
+        <span className="text-xs tracking-widest">
           <span>{currentSlideIndex}/</span>
           <span className="opacity-50">{totalLength}</span>
         </span>
-        <span>{totalViewText}</span>
+        <span className="text-xs">{totalViewText}</span>
       </Link>
       <div className="absolute left-0 top-0 -z-10 h-full w-full bg-black opacity-25"></div>
     </div>
