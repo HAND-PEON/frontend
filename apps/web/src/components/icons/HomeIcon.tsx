@@ -1,4 +1,3 @@
-import React from 'react';
 import Home from 'public/icons/home.svg';
 
 const HomeIcon = () => {

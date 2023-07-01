@@ -1,4 +1,3 @@
-import React from 'react';
 import ArrowTop from 'public/icons/arrow-top.svg';
 
 const ArrowTopIcon = () => {
