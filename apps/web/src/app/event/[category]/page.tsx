@@ -4,8 +4,8 @@ import TabCategory from '@/components/TabCategory';
 import TopButton from '@/components/TopButton';
 import React from 'react';
 import EventItemSection from './components/EventItemSection';
-import HomeIconButton from './components/HomeIconButton';
-import SearchIconButton from './components/SearchIconButton';
+import HomeIconButton from '@/components/HomeIconButton';
+import SearchIconButton from '@/components/SearchIconButton';
 import { CONVENIENCE } from '@/constants/conveniences';
 
 const categoryInfoList = CONVENIENCE.map((convenience) => ({
@@ -23,7 +23,7 @@ const EventCategoryPage = ({
   return (
     <BasicLayout
       hasBackButton
-      headerCenter={'이번주 행사 품목'}
+      headerCenter={'이번주 행사 상품'}
       headerRight={
         <div className="flex items-center">
           <HomeIconButton />
@@ -31,7 +31,7 @@ const EventCategoryPage = ({
         </div>
       }
     >
-      <div className="relative flex-1 pb-[75px]">
+      <div className="bg-white pb-[75px]">
         <div className="sticky top-[58px] z-40">
           <TabCategory
             categoryData={categoryInfoList}

@@ -3,17 +3,17 @@ import Chip from '@/components/Chip';
 import EventItemCard from '@/components/EventItemCard';
 import { pyeonImage } from '@/dummy/image';
 import React from 'react';
-import { EVENT_CATEGORY } from '@/constants/conveniences';
+import { EVENT_TYPE_LIST } from '@/constants/conveniences';
 
 const EventItemSection = () => {
   return (
     <div className="px-[20px]">
       <div className="pb-[18px] pt-[40px]">
-        <span className="text-[1.375rem] font-bold">이번주 행사 품목</span>
+        <span className="text-[1.375rem] font-bold">이번주 행사 상품</span>
       </div>
       <div className="pb-[29px]">
         <Chip>
-          {EVENT_CATEGORY.map((item, index) => (
+          {EVENT_TYPE_LIST.map((item, index) => (
             <Chip.Item
               myIndex={index}
               key={index}

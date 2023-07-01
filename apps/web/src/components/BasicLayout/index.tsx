@@ -22,7 +22,7 @@ const BasicLayout = ({
           headerRight={headerRight}
         />
       </div>
-      <div className="flex-1">{children}</div>
+      <div className="flex-1 bg-[#F7F7F7]">{children}</div>
     </>
   );
 };
