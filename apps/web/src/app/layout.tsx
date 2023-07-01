@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="ko" className="h-full">
       <body className={`${pretendard.className} h-full`}>
         <main className="flex min-h-full w-full justify-center">
-          <div className="flex min-w-[360px] max-w-[390px] flex-col">
+          <div className="flex w-full min-w-[360px] max-w-[390px] flex-col">
             {children}
           </div>
         </main>
