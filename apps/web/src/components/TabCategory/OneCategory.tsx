@@ -21,7 +21,7 @@ export default function OneCategory({
   return (
     <div
       className={`flex-shrink flex-grow basis-0 text-center
-      ${isActive && 'shadow-[inset_0_-3px_0_0_#73F69D]'}
+      ${isActive && 'font-bold shadow-[inset_0_-3px_0_0_#73F69D]'}
       `}
       onClick={onClick}
     >
