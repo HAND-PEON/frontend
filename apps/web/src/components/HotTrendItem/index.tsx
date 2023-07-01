@@ -1,8 +1,9 @@
 import Image from 'next/image';
 
 import { Convenience } from '@/app/type';
+import RankBox from '@/components/RankBox';
 import { pyeonImage } from '@/dummy/image';
-import { formatNumberWithComma, prefixZero } from '@/utils/numberFormatter';
+import { formatNumberWithComma } from '@/utils/numberFormatter';
 
 interface HotTrendCardProps {
   id: string | number;
@@ -48,8 +49,8 @@ export default function HotTrendCard({
             <span>원</span>
           </div>
         </div>
-        <div className="absolute bg-[#1E1C1C] p-2 text-[19px] font-extrabold leading-5 text-white">
-          {prefixZero(rank)}
+        <div className="absolute">
+          <RankBox rank={rank} />
         </div>
       </div>
     </div>
