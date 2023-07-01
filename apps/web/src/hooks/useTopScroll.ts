@@ -20,3 +20,5 @@ const useTopScroll = (initState: Boolean = false) => {
 };
 
 export default useTopScroll;
+
+// event/ALL/detail/1212
