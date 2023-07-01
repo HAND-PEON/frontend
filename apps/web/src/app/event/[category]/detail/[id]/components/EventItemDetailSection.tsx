@@ -6,7 +6,7 @@ import { BANNER_DATA } from '@/constants/assets';
 
 const EventItemDetailSection = () => {
   return (
-    <>
+    <div className="px-[20px]">
       <div className="pb-[20px] pt-[29px]">
         <span className="text-[1.375rem] font-bold">이번주 행사 상품</span>
       </div>
@@ -24,7 +24,7 @@ const EventItemDetailSection = () => {
           <BannerSlides data={BANNER_DATA} totalViewURL="/recommend" />
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
