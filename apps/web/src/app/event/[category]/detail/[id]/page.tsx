@@ -5,8 +5,8 @@ import SearchIconButton from '@/components/SearchIconButton';
 import TabCategory from '@/components/TabCategory';
 import TopButton from '@/components/TopButton';
 import { CONVENIENCE } from '@/constants/conveniences';
-import React from 'react';
 import Link from 'next/link';
+import React from 'react';
 import EventItemDetailSection from './components/EventItemDetailSection';
 
 const categoryInfoList = CONVENIENCE.map((convenience) => ({
