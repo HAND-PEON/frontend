@@ -8,7 +8,7 @@ interface SearchIconButtonProps
 const SearchIconButton = ({ type }: SearchIconButtonProps) => {
   return (
     <Link href="/search">
-      <button className={`mr-[_-8px] p-[8px]`} {...props}>
+      <button className={`mr-[_-8px] p-[8px]`}>
         <SearchIcon type={type} />
       </button>
     </Link>

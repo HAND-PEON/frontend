@@ -1,5 +1,4 @@
-'use client';
-
+import Link from 'next/link';
 import SearchInput from '../../components/SearchInput';
 import LogoIcon from '../../components/icons/LogoIcon';
 
@@ -9,7 +8,11 @@ export default function Header() {
       <div>
         <LogoIcon />
       </div>
-      <SearchInput disabled placeholder="이번주 할인 상품이 궁금하다면-" />
+      <div className="mt-[18px]">
+        <Link href="/search">
+          <SearchInput disabled placeholder="이번주 할인 상품이 궁금하다면-" />
+        </Link>
+      </div>
     </div>
   );
 }
