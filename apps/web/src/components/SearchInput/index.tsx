@@ -26,9 +26,6 @@ export default function SearchInput({
         {...props}
       />
       <SearchIconButton type="black" />
-      {/* <button onClick={onSearch}>
-        <SearchIcon type={'black'} />
-      </button> */}
     </div>
   );
 }
