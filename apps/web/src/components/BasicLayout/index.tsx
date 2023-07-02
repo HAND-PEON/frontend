@@ -29,7 +29,7 @@ const BasicLayout = ({
           />
         )}
       </div>
-      <div className="flex-1 bg-[#F7F7F7]">{children}</div>
+      <div className="flex flex-1 flex-col bg-[#F7F7F7]">{children}</div>
     </>
   );
 };
