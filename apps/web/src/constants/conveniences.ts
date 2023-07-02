@@ -16,4 +16,4 @@ export const EVENT_TYPE_MAP: Record<EventType, { text: string; bg: string }> = {
   TWO_PLUS_ONE: { text: '2+1', bg: 'bg-[#E2F981]' },
   SALE: { text: '할인', bg: 'bg-[#FFA8A5]' },
   BONUS: { text: '+덤', bg: 'bg-[#C29DF6]' },
-};
+} as const;
