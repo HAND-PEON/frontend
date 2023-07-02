@@ -1,5 +1,6 @@
 'use client';
 
+import SearchIconButton from '../SearchIconButton';
 import SearchIcon from '../icons/SearchIcon';
 
 interface SearchInputProps {
@@ -16,13 +17,18 @@ export default function SearchInput({
 }: SearchInputProps) {
   return (
     <div
-      className="mt-[18px] flex h-[48px] items-center justify-between rounded-full bg-white px-[20px] text-[17px] placeholder-[#dddddd]"
+      className="mt-[18px] flex h-[48px] items-center justify-between rounded-full bg-white px-[20px] text-[17px]"
       onClick={onClick}
     >
-      <input type="text" {...props} />
-      <button onClick={onSearch}>
+      <input
+        type="text"
+        className="placeholder-[#dddddd]} w-full bg-transparent"
+        {...props}
+      />
+      <SearchIconButton type="black" />
+      {/* <button onClick={onSearch}>
         <SearchIcon type={'black'} />
-      </button>
+      </button> */}
     </div>
   );
 }

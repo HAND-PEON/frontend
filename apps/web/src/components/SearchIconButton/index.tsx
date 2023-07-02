@@ -1,10 +1,20 @@
 import SearchIcon from '@/components/icons/SearchIcon';
 import React from 'react';
 
-const SearchIconButton = () => {
+interface SearchIconButtonProps
+  extends React.ComponentProps<typeof SearchIcon>,
+    React.HTMLAttributes<HTMLButtonElement> {
+  className?: string;
+}
+
+const SearchIconButton = ({
+  type,
+  className,
+  ...props
+}: SearchIconButtonProps) => {
   return (
-    <button className="mr-[_-8px] p-[8px]">
-      <SearchIcon type="black" />
+    <button className={`mr-[_-8px] p-[8px] ${className}`} {...props}>
+      <SearchIcon type={type} />
     </button>
   );
 };

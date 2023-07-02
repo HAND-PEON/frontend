@@ -27,7 +27,7 @@ const EventCategoryPage = ({
       headerRight={
         <div className="flex items-center">
           <HomeIconButton />
-          <SearchIconButton />
+          <SearchIconButton type="white" />
         </div>
       }
     >
