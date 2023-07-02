@@ -1,7 +1,7 @@
 'use client';
-
-import SearchIconButton from '../SearchIconButton';
+import React from 'react';
 import SearchIcon from '../icons/SearchIcon';
+import XcircleIcon from '../icons/XcircleIcon';
 
 interface SearchInputProps {
   disabled?: boolean;
@@ -26,7 +26,7 @@ export default function SearchInput({
 
   return (
     <div
-      className={`relative flex w-full items-center justify-between rounded-full bg-white pl-[20px] text-[17px] ${inputSize}`}
+      className={`relative flex w-full items-center justify-between rounded-full bg-white pl-[20px] pr-[80px] text-[17px] ${inputSize}`}
       onClick={onClick}
     >
       <input
@@ -34,9 +34,14 @@ export default function SearchInput({
         className="placeholder-[#D9D9D9]} w-full bg-transparent text-black"
         {...props}
       />
-      <button className="absolute right-[10px] p-1" onClick={onSearch}>
-        <SearchIcon type="black" />
-      </button>
+      <div className="absolute right-[10px] flex">
+        <button className="p-2">
+          <XcircleIcon />
+        </button>
+        <button className="p-1" onClick={onSearch}>
+          <SearchIcon type="black" />
+        </button>
+      </div>
     </div>
   );
 }
