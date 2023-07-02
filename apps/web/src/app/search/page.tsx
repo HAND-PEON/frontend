@@ -5,7 +5,7 @@ import PerfectMatchSection from './components/PerfectMatchSection';
 
 const SearchPage = () => {
   return (
-    <BasicLayout isSearchHeader>
+    <BasicLayout hasSearchHeader>
       <div className="flex-1 bg-white pb-[134px]">
         <div className="px-[20px] pb-[52px] pt-[37px]">
           <HotTrendSection />

@@ -6,7 +6,7 @@ import SearchHeader from '../SearchHeader';
 interface Props extends React.ComponentProps<typeof BasicHeader> {
   children: React.ReactNode;
   hasBackButton?: boolean;
-  isSearchHeader?: boolean;
+  hasSearchHeader?: boolean;
 }
 
 const BasicLayout = ({
@@ -14,12 +14,12 @@ const BasicLayout = ({
   hasBackButton,
   headerCenter,
   headerRight,
-  isSearchHeader = false,
+  hasSearchHeader = false,
 }: Props) => {
   return (
     <>
       <div className="sticky top-0 z-30">
-        {isSearchHeader ? (
+        {hasSearchHeader ? (
           <SearchHeader />
         ) : (
           <BasicHeader
