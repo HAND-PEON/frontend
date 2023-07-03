@@ -17,7 +17,7 @@ export const mainHotTrendData: {
     convenience: 'CU',
   },
   {
-    id: 1,
+    id: 2,
     rank: 1,
     imageUrl: '/image/8801007423180.jpg',
     price: 5000,
@@ -25,7 +25,7 @@ export const mainHotTrendData: {
     convenience: 'GS25',
   },
   {
-    id: 1,
+    id: 3,
     rank: 1,
     imageUrl: '/image/MzE2MTE=.jpg',
     price: 5000,
@@ -33,7 +33,7 @@ export const mainHotTrendData: {
     convenience: '7Eleven',
   },
   {
-    id: 1,
+    id: 4,
     rank: 1,
     imageUrl: '/image/671843.jpg',
     price: 5000,
@@ -41,7 +41,7 @@ export const mainHotTrendData: {
     convenience: 'Emart24',
   },
   {
-    id: 1,
+    id: 5,
     rank: 2,
     imageUrl: '/image/GD_2800100153426_001.jpg',
     price: 5000,
@@ -49,7 +49,7 @@ export const mainHotTrendData: {
     convenience: 'CU',
   },
   {
-    id: 1,
+    id: 6,
     rank: 2,
     imageUrl: '/image/GD_8801056150013_007.jpg',
     price: 5000,
