@@ -20,11 +20,13 @@ export default function HotTrendCategoryLayout({
 }: HotTrendCategoryLayoutProps) {
   return (
     <div>
-      <TabCategory
-        categoryData={categoryInfoList}
-        currentCategory={category}
-        isRouterReplace
-      />
+      <div className="sticky top-[58px] z-40">
+        <TabCategory
+          categoryData={categoryInfoList}
+          currentCategory={category}
+          isRouterReplace
+        />
+      </div>
       {children}
     </div>
   );
