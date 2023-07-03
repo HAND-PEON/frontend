@@ -14,7 +14,7 @@ export default function HotTrendLayout({ children }: HotTrendLayoutProps) {
       headerRight={
         <div className="flex items-center">
           <HomeIconButton />
-          <SearchIconButton />
+          <SearchIconButton type="white" />
         </div>
       }
     >
