@@ -9,7 +9,7 @@ interface TabBarProps {
 
 export default function TabBar({ currentIndex, onClick }: TabBarProps) {
   return (
-    <div className="flex rounded-full bg-white p-[5px]">
+    <div className="p-5px flex rounded-full bg-white">
       <OneBar isActive={0 === currentIndex} onClick={() => onClick(0)}>
         이번주 Hot Trend
       </OneBar>

@@ -25,7 +25,7 @@ export default function HotTrendCard({
   return (
     <div className="min-h-[165px]  w-full">
       <Link href={`/hottrend/${convenience}/${rank}`}>
-        <div className="relative flex  h-[165px] rounded-[9px] border-2 border-b-[3px] border-r-[7px] border-[#1E1C1C] p-[10px]">
+        <div className="p-10px relative  flex h-[165px] rounded-[9px] border-2 border-b-[3px] border-r-[7px] border-[#1E1C1C]">
           <div className="relative my-2 ml-[27px] flex-1">
             <Image
               className="object-contain"
@@ -36,7 +36,7 @@ export default function HotTrendCard({
           </div>
           <div className="mt-[46px] w-[168px]">
             <div>
-              <span className="rounded-sm border-[1px] border-[#1E1C1C] px-[7px] py-[2px] font-bold leading-none">
+              <span className="px-7px py-2px rounded-sm border-[1px]  border-[#1E1C1C]  font-bold leading-none">
                 {convenience}
               </span>
             </div>
@@ -44,7 +44,7 @@ export default function HotTrendCard({
               {title}
             </div>
             <div className="mt-[2px] leading-none">
-              <span className="text-[22px] font-bold ">
+              <span className="text-xl2 font-bold ">
                 {formatNumberWithComma(price)}
               </span>
               <span>원</span>

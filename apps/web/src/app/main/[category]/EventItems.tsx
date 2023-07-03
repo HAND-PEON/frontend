@@ -15,7 +15,7 @@ export default function EventItems({ convenience }: EventItemsProps) {
     router.push(`/event/${convenience}`);
   };
   return (
-    <div className="rounded-t-[30px] bg-white px-[20px] pb-[10px] pt-[27px]">
+    <div className="pb-10px rounded-t-[30px] bg-white px-[20px] pt-[27px]">
       <div className="mb-[50px] flex flex-wrap items-start justify-start gap-x-[18px] gap-y-[50px]">
         {Array.from({ length: 8 }).map((_, i) => (
           <EventItemCard
