@@ -12,7 +12,7 @@ export default function HotTrendRankList({ category }: HotTrendRankListProps) {
   );
 
   return (
-    <div className="hdr s mt-4 bg-white px-5 py-9">
+    <div className="mt-4 bg-white px-5 py-9">
       <div className="text-xl2 font-bold">
         <div className="flex items-center">
           이번주 [
