@@ -46,7 +46,6 @@ const PerfectMatchSlides = ({ data }: BannerSlidesProps) => {
                   sizes="(min-width: 768px) 100vw, (max-width: 1200px) 100vw"
                 />
               </div>
-              {/* sizes="(min-width: 768px) 100vw, (max-width: 1200px) 100vw" */}
             </Link>
           </SwiperSlide>
         ))}
