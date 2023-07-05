@@ -3,10 +3,12 @@ import React from 'react';
 import SearchIcon from '../icons/SearchIcon';
 import XcircleIcon from '../icons/XcircleIcon';
 
-interface SearchInputProps {
+interface SearchInputProps
+  extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   disabled?: boolean;
   placeholder?: string;
   onClick?: () => void;
+  onResetValue?: () => void;
   onSearch?: () => void;
   size?: 'small' | 'normal';
 }
@@ -20,6 +22,7 @@ export default function SearchInput({
   onClick,
   onSearch,
   size = 'normal',
+  onResetValue,
   ...props
 }: SearchInputProps) {
   const inputSize = sizeClasses[size];
@@ -35,9 +38,12 @@ export default function SearchInput({
         {...props}
       />
       <div className="absolute right-[10px] flex">
-        <button className="p-2">
-          <XcircleIcon />
-        </button>
+        {props.value && (
+          <button className="p-2" onClick={onResetValue}>
+            <XcircleIcon />
+          </button>
+        )}
+
         <button className="p-1" onClick={onSearch}>
           <SearchIcon type="black" />
         </button>
