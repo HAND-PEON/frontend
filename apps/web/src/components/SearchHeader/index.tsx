@@ -20,7 +20,7 @@ const SearchHeader = () => {
     }
   };
   const handleSearch = () => {
-    router.replace(
+    router.push(
       `/search?word=${searchValue}&category=${category ? category : 'ALL'}`,
     );
   };
