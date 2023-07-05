@@ -1,10 +1,9 @@
 'use client';
 import Chip from '@/components/Chip';
 import EventItemCard from '@/components/EventItemCard';
+import { EVENT_TYPE_LIST } from '@/constants/conveniences';
 import { pyeonImage } from '@/dummy/image';
 import React from 'react';
-import { EVENT_TYPE_LIST } from '@/constants/conveniences';
-import Link from 'next/link';
 
 const EventItemSection = () => {
   return (
