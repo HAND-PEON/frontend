@@ -98,11 +98,9 @@ export default function HotTrendDetailForm({
               <ul className="flex border-b-2 border-slate-400">
                 <li className="w-40 bg-slate-300 p-5">{'description'}</li>
                 <li className="flex-1  p-5">
-                  <input
-                    className="border-2"
-                    type="text"
-                    defaultValue={data.description}
-                  />
+                  <textarea className="h-full w-full resize-none border">
+                    {data.description}
+                  </textarea>
                 </li>
               </ul>
             </li>

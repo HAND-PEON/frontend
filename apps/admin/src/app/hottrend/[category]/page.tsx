@@ -14,16 +14,16 @@ export default function HotTrendCategoryPage({
   const dateList = getHotTrendDataByCategory(category);
   const router = useRouter();
   return (
-    <div>
+    <div className="pt-3">
       <div className="w-full">
         <table className="w-full border-2 border-black">
           <thead>
             <tr className="border-b border-black text-center">
-              <th>순위</th>
-              <th>번호</th>
-              <th>등록일</th>
-              <th>제목</th>
-              <th>삭제 </th>
+              <th className="p-2">순위</th>
+              <th className="p-2">번호</th>
+              <th className="p-2">등록일</th>
+              <th className="p-2">제목</th>
+              <th className="p-2">삭제 </th>
             </tr>
           </thead>
           <tbody>
@@ -35,7 +35,7 @@ export default function HotTrendCategoryPage({
                   router.push(`/hottrend/${category}/${oneData.id}`)
                 }
               >
-                <td>
+                <td className="p-2">
                   <select
                     className="border-2"
                     name="rank"
@@ -52,14 +52,14 @@ export default function HotTrendCategoryPage({
                     <option value="except">제외</option>
                   </select>
                 </td>
-                <td>{oneData.id}</td>
-                <td>{oneData.createdAt}</td>
-                <td>{oneData.title}</td>
+                <td className="p-2">{oneData.id}</td>
+                <td className="p-2">{oneData.createdAt}</td>
+                <td className="p-2">{oneData.title}</td>
                 <td
-                  className="text-center "
+                  className="bg-blue-400 p-2 text-center"
                   onClick={(event) => event.stopPropagation()}
                 >
-                  <button className="w-full bg-black" type="button">
+                  <button className="w-full" type="button">
                     삭제
                   </button>
                 </td>
