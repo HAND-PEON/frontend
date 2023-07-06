@@ -1,4 +1,4 @@
-import { Convenience } from '../hottrend/[category]/page';
+import { Convenience } from '../hottrend/types';
 
 export interface HotTrendData {
   rank: number | string;
