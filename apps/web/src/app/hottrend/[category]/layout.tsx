@@ -10,6 +10,7 @@ interface HotTrendCategoryLayoutProps {
 
 const conveniences: Convenience[] = ['CU', 'GS25', '7Eleven', 'Emart24'];
 const categoryInfoList = conveniences.map((convenience) => ({
+  category: convenience,
   label: convenience,
   href: `/hottrend/${convenience}/1`,
 }));

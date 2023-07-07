@@ -9,6 +9,7 @@ import SearchIconButton from '@/components/SearchIconButton';
 import { CONVENIENCE } from '@/constants/conveniences';
 
 const categoryInfoList = CONVENIENCE.map((convenience) => ({
+  category: convenience,
   label: convenience,
   href: `/event/${convenience}`,
 }));
