@@ -17,6 +17,10 @@ const sizeClasses = {
   small: 'h-[37px]',
   normal: 'h-[48px]',
 } as const;
+const positionClasses = {
+  small: 'right-[4px]',
+  normal: 'right-[8px]',
+} as const;
 
 export default function SearchInput({
   onClick,
@@ -26,6 +30,7 @@ export default function SearchInput({
   ...props
 }: SearchInputProps) {
   const inputSize = sizeClasses[size];
+  const inputPosition = positionClasses[size];
 
   return (
     <div
@@ -37,7 +42,7 @@ export default function SearchInput({
         className="placeholder-[#D9D9D9]} w-full bg-transparent text-black"
         {...props}
       />
-      <div className="absolute right-[10px] flex">
+      <div className={`absolute ${inputPosition} flex`}>
         {props.value && (
           <button className="p-2" onClick={onResetValue}>
             <XcircleIcon />

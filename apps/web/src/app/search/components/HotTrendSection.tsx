@@ -23,7 +23,7 @@ const HotTrendSection = () => {
           <li className={i < 3 && `font-bold`} key={i}>
             <div className="flex justify-start gap-5">
               <span>{i + 1}</span>
-              <span>{item}</span>
+              <span className="w-full truncate">{item}</span>
             </div>
           </li>
         ))}
