@@ -18,7 +18,7 @@ export default function HotTrendLayout({ children }: HotTrendLayoutProps) {
         </div>
       }
     >
-      {children}
+      <div className="h-full bg-white">{children}</div>
     </BasicLayout>
   );
 }

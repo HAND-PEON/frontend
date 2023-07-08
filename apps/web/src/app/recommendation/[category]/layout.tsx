@@ -10,9 +10,9 @@ interface HotTrendCategoryLayoutProps {
 
 const categories: RecommendationCategory[] = ['honey', 'now', 'situation'];
 const categoryNames = {
-  honey: '꿀조합🍯',
-  now: '지금 유행💎',
-  situation: '상황별 추천🌕',
+  honey: '꿀조합',
+  now: '지금 유행',
+  situation: '상황별 추천',
 };
 const categoryInfoList = categories.map((category) => ({
   category,
@@ -33,7 +33,7 @@ export default function HotTrendCategoryLayout({
           isRouterReplace
         />
       </div>
-      {children}
+      <div className="px-[22px]">{children}</div>
     </div>
   );
 }
