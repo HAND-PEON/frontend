@@ -19,7 +19,7 @@ const SearchResultView = () => {
   const isScroll = useScrollDriectionDetect();
 
   return (
-    <div className="flex-1 bg-white pb-[134px]">
+    <div className="flex-1 bg-white pb-[20px]">
       <div className={`sticky z-30 ${isScroll ? 'top-0' : 'top-[72px]'}`}>
         <TabCategory
           categoryData={categoryInfoList}
