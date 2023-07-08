@@ -13,11 +13,31 @@ export default function HoneyPage({ category }: HoneyPageProps) {
         <div>편의점 꿀조합</div>
       </div>
       <div className="mt-[30px] flex flex-col gap-[30px]">
-        <ContentItem />
-        <ContentItem />
-        <ContentItem />
-        <ContentItem />
-        <ContentItem />
+        <ContentItem
+          imageURL={''}
+          subTitle={'편의점 꿀조합의 정석!'}
+          mainTitle={'마크정식'}
+        />
+        <ContentItem
+          imageURL={''}
+          subTitle={'편의점 꿀조합의 정석!'}
+          mainTitle={'마크정식'}
+        />
+        <ContentItem
+          imageURL={''}
+          subTitle={'편의점 꿀조합의 정석!'}
+          mainTitle={'마크정식'}
+        />
+        <ContentItem
+          imageURL={''}
+          subTitle={'편의점 꿀조합의 정석!'}
+          mainTitle={'마크정식'}
+        />
+        <ContentItem
+          imageURL={''}
+          subTitle={'편의점 꿀조합의 정석!'}
+          mainTitle={'마크정식'}
+        />
       </div>
     </div>
   );
