@@ -11,7 +11,7 @@ export default function HomeLayout({ children }: HomeLayoutProps) {
     <div className="flex-1">
       <Header />
       <div className="h-[178px]">
-        <BannerSlides data={BANNER_DATA} totalViewURL="/recommend" />
+        <BannerSlides data={BANNER_DATA} totalViewURL="/recommendation" />
       </div>
       <div>{children}</div>
     </div>
