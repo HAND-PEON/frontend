@@ -4,7 +4,6 @@ import EventItemCard from '@/components/EventItemCard';
 import TabCategory from '@/components/TabCategory';
 import { CONVENIENCE } from '@/constants/conveniences';
 import { pyeonImage } from '@/dummy/image';
-import useScrollDriectionDetect from '@/hooks/useScrollDriectionDetect';
 import { useSearchParams } from 'next/navigation';
 
 const SearchResultView = () => {
@@ -16,11 +15,9 @@ const SearchResultView = () => {
     href: `/search?word=${word}&category=${convenience}`,
   }));
 
-  const isScroll = useScrollDriectionDetect();
-
   return (
     <div className="flex-1 bg-white pb-[20px]">
-      <div className={`sticky z-30 ${isScroll ? 'top-0' : 'top-[72px]'}`}>
+      <div className="sticky top-[72px] z-30">
         <TabCategory
           categoryData={categoryInfoList}
           currentCategory={category}
