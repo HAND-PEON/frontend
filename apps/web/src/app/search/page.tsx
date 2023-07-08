@@ -1,12 +1,12 @@
-import BasicLayout from '@/components/BasicLayout';
 import React from 'react';
 import SearchRenderer from './SearchRenderer';
+import SearchLayout from '@/components/SearchLayout';
 
 const SearchPage = () => {
   return (
-    <BasicLayout hasSearchHeader>
+    <SearchLayout>
       <SearchRenderer />
-    </BasicLayout>
+    </SearchLayout>
   );
 };
 
