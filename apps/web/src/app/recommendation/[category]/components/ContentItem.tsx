@@ -1,8 +1,6 @@
 import HoneyTextIcon from '@/components/icons/HoneyTextIcon';
 import Image from 'next/image';
 
-interface ContentItemProps {}
-
 interface ContentItemProps {
   imageURL: string;
   subTitle: string;
