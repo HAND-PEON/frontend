@@ -34,7 +34,7 @@ export default function SearchInput({
     >
       <input
         type="text"
-        className="placeholder-[#D9D9D9]} w-full bg-transparent text-black"
+        className="w-full bg-transparent  text-black placeholder-[##AEAEAE] placeholder:font-normal"
         {...props}
       />
       <div className="absolute right-[10px] flex">
