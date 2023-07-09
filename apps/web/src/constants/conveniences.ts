@@ -4,8 +4,8 @@ import { EventType } from '@/app/type';
 export const CONVENIENCE: Convenience[] = [
   'ALL',
   'CU',
-  'GS25',
   '7Eleven',
+  'GS25',
   'Emart24',
 ];
 

@@ -8,7 +8,7 @@ interface HotTrendCategoryLayoutProps {
   children: ReactNode;
 }
 
-const conveniences: Convenience[] = ['CU', 'GS25', '7Eleven', 'Emart24'];
+const conveniences: Convenience[] = ['CU', '7Eleven', 'GS25', 'Emart24'];
 const categoryInfoList = conveniences.map((convenience) => ({
   category: convenience,
   label: convenience,
