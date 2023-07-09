@@ -24,8 +24,9 @@ export default function HotTrendCard({
 }: HotTrendCardProps) {
   return (
     <div className="min-h-[165px]  w-full">
-      <Link href={`/hottrend/${convenience}/${rank}`}>
-        <div className="p-10px relative  flex h-[165px] rounded-[9px] border-2 border-b-[3px] border-r-[7px] border-[#1E1C1C]">
+      <Link className="relative" href={`/hottrend/${convenience}/${rank}`}>
+        <div className="border-main1 bg-main1 absolute left-[2px] top-[1px] h-full w-[calc(100%+3px)] rounded-[9px] border-2"></div>
+        <div className="p-10px relative  flex h-[165px] rounded-[9px] border-2 border-[#1E1C1C]  bg-white">
           <div className="relative my-2 ml-[27px] flex-1">
             <Image
               className="object-contain"
