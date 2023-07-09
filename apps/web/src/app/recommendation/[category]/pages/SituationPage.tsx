@@ -32,7 +32,7 @@ export default function SituationPage({ category }: SituationPageProps) {
           ))}
         </Chip>
       </div>
-      <div className="mt-[17px] flex flex-wrap justify-between gap-y-10 [&>*]:w-[calc(50%-7px)]">
+      <div className="mb-[50px] mt-[17px] flex flex-wrap justify-between gap-y-10 [&>*]:w-[calc(50%-7px)]">
         <ContentItem
           subTitle="맛있게 살빼고 싶은 사람"
           mainTitle="다이어트 레시피"

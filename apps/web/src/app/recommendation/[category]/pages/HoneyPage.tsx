@@ -12,7 +12,7 @@ export default function HoneyPage({ category }: HoneyPageProps) {
         <div>뻔한 재료들의 놀라운 변신</div>
         <div>편의점 꿀조합</div>
       </div>
-      <div className="mt-[30px] flex flex-col gap-[30px]">
+      <div className="mb-[50px] mt-[30px] flex flex-col gap-[30px]">
         <ContentItem
           imageURL={''}
           subTitle={'편의점 꿀조합의 정석!'}
