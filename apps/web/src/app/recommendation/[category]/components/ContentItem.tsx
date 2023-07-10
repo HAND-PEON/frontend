@@ -14,8 +14,8 @@ export default function ContentItem({
 }: ContentItemProps) {
   return (
     <div className="border-main1 border-2">
-      <div className="min-h-[122px] bg-[#73F69D]">
-        <Image src={imageURL} alt={''} />
+      <div className="relative  min-h-[122px]">
+        <Image src={imageURL} alt={''} fill className="object-cover" />
       </div>
       <div className="px-10px py-15px">
         <div className="text-main1 text-[12px] font-medium">{subTitle}</div>

@@ -14,8 +14,8 @@ export default function HoneyContentItem({
 }: ContentItemProps) {
   return (
     <div className="border-main1 border-2">
-      <div className="min-h-[122px] bg-[#E2F981]">
-        <Image src={imageURL} alt={''} />
+      <div className="relative min-h-[122px]">
+        <Image src={imageURL} alt={''} fill className="object-cover" />
       </div>
       <div className="p-15px flex items-center gap-[15px]">
         <div className="flex">
