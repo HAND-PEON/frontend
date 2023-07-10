@@ -1,16 +1,27 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
+
 import BasicLayout from '@/components/BasicLayout';
 import HomeIconButton from '@/components/HomeIconButton';
 import SearchIconButton from '@/components/SearchIconButton';
 
-interface HotTrendLayoutProps {
+interface RecommendationLayoutProps {
   children: React.ReactNode;
 }
 
-export default function HotTrendLayout({ children }: HotTrendLayoutProps) {
+export default function RecommendationLayout({
+  children,
+}: RecommendationLayoutProps) {
+  const pathname = usePathname();
+  const headerText = pathname.includes('/recommendation/contents')
+    ? ''
+    : '편슐랭 가이드';
+
   return (
     <BasicLayout
       hasBackButton
-      headerCenter={'편슐랭 가이드'}
+      headerCenter={headerText}
       headerRight={
         <div className="flex items-center">
           <HomeIconButton />
@@ -18,7 +29,7 @@ export default function HotTrendLayout({ children }: HotTrendLayoutProps) {
         </div>
       }
     >
-      <div className="h-full bg-white">{children}</div>
+      <div className="h-full">{children}</div>
     </BasicLayout>
   );
 }
