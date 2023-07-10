@@ -21,7 +21,7 @@ const EventItemDetailSection = () => {
       </div>
       <div className=" pb-[30px]">
         <div className="h-[178px] overflow-hidden rounded-[10px]">
-          <BannerSlides data={BANNER_DATA} totalViewURL="/recommend" />
+          <BannerSlides data={BANNER_DATA} totalViewURL="/recommendation" />
         </div>
       </div>
     </div>

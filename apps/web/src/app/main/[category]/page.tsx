@@ -13,6 +13,7 @@ interface CategoryPageProps {
 }
 
 const categoryInfoList = CONVENIENCE.map((convenience) => ({
+  category: convenience,
   label: convenience,
   href: `/main/${convenience}`,
 }));
