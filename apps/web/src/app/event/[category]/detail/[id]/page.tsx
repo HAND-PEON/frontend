@@ -10,6 +10,7 @@ import EventItemDetailSection from './components/EventItemDetailSection';
 import EventItemTotalSection from './components/EventItemTotalSection';
 
 const categoryInfoList = CONVENIENCE.map((convenience) => ({
+  category: convenience,
   label: convenience,
   href: `/event/${convenience}`,
 }));

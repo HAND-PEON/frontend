@@ -1,20 +1,20 @@
 'use client';
 
-import { Convenience } from '@/app/type';
 import OneCategory from './OneCategory';
 
 export type CategoryInfo<T> = {
-  label: T;
+  category: T;
+  label: string;
   href?: string;
 };
 
 interface TabCategoryProps<T> {
   categoryData: CategoryInfo<T>[];
-  currentCategory: Convenience;
+  currentCategory: T;
   isRouterReplace?: boolean;
 }
 
-export default function TabCategory<T extends string>({
+export default function TabCategory<T>({
   categoryData,
   currentCategory,
   isRouterReplace = false,
@@ -22,11 +22,11 @@ export default function TabCategory<T extends string>({
   return (
     <div className="bg-white ">
       <div className="flex border-b-[1px] border-[#EEEEEE] bg-white px-5">
-        {categoryData.map(({ label, href }) => (
+        {categoryData.map(({ category, label, href }) => (
           <OneCategory
             key={label}
             href={href}
-            isActive={label === currentCategory}
+            isActive={category === currentCategory}
             isRouterReplace={isRouterReplace}
           >
             {label}

@@ -11,6 +11,7 @@ const SearchResultView = () => {
   const word = searchParams.get('word');
   const category = searchParams.get('category') as Convenience;
   const categoryInfoList = CONVENIENCE.map((convenience) => ({
+    category: convenience,
     label: convenience,
     href: `/search?word=${word}&category=${convenience}`,
   }));

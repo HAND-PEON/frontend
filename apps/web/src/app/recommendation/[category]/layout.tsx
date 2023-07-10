@@ -1,18 +1,23 @@
 import { ReactNode } from 'react';
 
-import { Convenience } from '@/app/type';
+import { RecommendationCategory } from '@/app/type';
 import TabCategory from '@/components/TabCategory';
 
 interface HotTrendCategoryLayoutProps {
-  params: { category: Convenience };
+  params: { category: RecommendationCategory };
   children: ReactNode;
 }
 
-const conveniences: Convenience[] = ['CU', '7Eleven', 'GS25', 'Emart24'];
-const categoryInfoList = conveniences.map((convenience) => ({
-  category: convenience,
-  label: convenience,
-  href: `/hottrend/${convenience}/1`,
+const categories: RecommendationCategory[] = ['honey', 'now', 'situation'];
+const categoryNames = {
+  honey: '꿀조합',
+  now: '지금 유행',
+  situation: '상황별 추천',
+};
+const categoryInfoList = categories.map((category) => ({
+  category,
+  label: categoryNames[category],
+  href: `/recommendation/${category}`,
 }));
 
 export default function HotTrendCategoryLayout({
@@ -28,7 +33,7 @@ export default function HotTrendCategoryLayout({
           isRouterReplace
         />
       </div>
-      {children}
+      <div className="px-[22px]">{children}</div>
     </div>
   );
 }
