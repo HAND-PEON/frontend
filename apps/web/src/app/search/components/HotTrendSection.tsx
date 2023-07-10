@@ -16,7 +16,7 @@ const HotTrendSection = () => {
           <span className="px-1 shadow-[inset_0_-0.8rem_0_0_#E2F982]">CU</span>{' '}
           ]
         </span>
-        <br /> <span className="font-bold">Hot Trend</span>🔥 어떠세요?
+        <span className="font-bold">&nbsp;Hot Trend</span>🔥
       </p>
       <ul className="flex flex-col gap-[25px] pt-[25px]">
         {dummy.map((item, i) => (
