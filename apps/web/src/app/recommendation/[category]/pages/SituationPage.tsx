@@ -36,42 +36,42 @@ export default function SituationPage({ category }: SituationPageProps) {
         <ContentItem
           subTitle="맛있게 살빼고 싶은 사람"
           mainTitle="다이어트 레시피"
-          imageURL={''}
+          imageURL={'/image/banner5.png'}
         />
         <ContentItem
           subTitle="맛있게 살빼고 싶은 사람"
           mainTitle="다이어트 레시피"
-          imageURL={''}
+          imageURL={'/image/banner5.png'}
         />
         <ContentItem
           subTitle="맛있게 살빼고 싶은 사람"
           mainTitle="다이어트 레시피"
-          imageURL={''}
+          imageURL={'/image/banner5.png'}
         />
         <ContentItem
           subTitle="맛있게 살빼고 싶은 사람"
           mainTitle="다이어트 레시피"
-          imageURL={''}
+          imageURL={'/image/banner5.png'}
         />
         <ContentItem
           subTitle="맛있게 살빼고 싶은 사람"
           mainTitle="다이어트 레시피"
-          imageURL={''}
+          imageURL={'/image/banner5.png'}
         />
         <ContentItem
           subTitle="맛있게 살빼고 싶은 사람"
           mainTitle="다이어트 레시피"
-          imageURL={''}
+          imageURL={'/image/banner5.png'}
         />
         <ContentItem
           subTitle="맛있게 살빼고 싶은 사람"
           mainTitle="다이어트 레시피"
-          imageURL={''}
+          imageURL={'/image/banner5.png'}
         />
         <ContentItem
           subTitle="맛있게 살빼고 싶은 사람"
           mainTitle="다이어트 레시피"
-          imageURL={''}
+          imageURL={'/image/banner5.png'}
         />
       </div>
     </div>
