@@ -14,29 +14,34 @@ export default function HoneyPage({ category }: HoneyPageProps) {
       </div>
       <div className="mb-[50px] mt-[30px] flex flex-col gap-[30px]">
         <ContentItem
-          imageURL={'/image/banner4.png'}
-          subTitle={'편의점 꿀조합의 정석!'}
-          mainTitle={'마크정식'}
+          href="/recommendation/contents/1"
+          imageURL="/image/banner4.png"
+          subTitle="편의점 꿀조합의 정석!"
+          mainTitle="마크정식"
         />
         <ContentItem
-          imageURL={'/image/banner4.png'}
-          subTitle={'편의점 꿀조합의 정석!'}
-          mainTitle={'마크정식'}
+          href="/recommendation/contents/1"
+          imageURL="/image/banner4.png"
+          subTitle="편의점 꿀조합의 정석!"
+          mainTitle="마크정식"
         />
         <ContentItem
-          imageURL={'/image/banner4.png'}
-          subTitle={'편의점 꿀조합의 정석!'}
-          mainTitle={'마크정식'}
+          href="/recommendation/contents/1"
+          imageURL="/image/banner4.png"
+          subTitle="편의점 꿀조합의 정석!"
+          mainTitle="마크정식"
         />
         <ContentItem
-          imageURL={'/image/banner4.png'}
-          subTitle={'편의점 꿀조합의 정석!'}
-          mainTitle={'마크정식'}
+          href="/recommendation/contents/1"
+          imageURL="/image/banner4.png"
+          subTitle="편의점 꿀조합의 정석!"
+          mainTitle="마크정식"
         />
         <ContentItem
-          imageURL={'/image/banner4.png'}
-          subTitle={'편의점 꿀조합의 정석!'}
-          mainTitle={'마크정식'}
+          href="/recommendation/contents/1"
+          imageURL="/image/banner4.png"
+          subTitle="편의점 꿀조합의 정석!"
+          mainTitle="마크정식"
         />
       </div>
     </div>
