@@ -37,7 +37,7 @@ const SearchResultView = () => {
                 imageUrl: pyeonImage,
                 price: 20000,
                 title: 'asdfasdf',
-                convenience: '7Eleven',
+                convenience: '7ELEVEN',
               }}
             />
           ))}

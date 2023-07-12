@@ -1,11 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
-import { Convenience, EventType } from '@/app/type';
+import { Convenience } from '@/app/type';
 import { formatNumberWithComma } from '@/utils/numberFormatter';
 import { EVENT_TYPE_MAP } from '@/constants/conveniences';
 import Link from 'next/link';
+import { type PromotionType } from '@/apis/type';
 interface EventItem {
-  eventType: EventType;
+  eventType: PromotionType;
   imageUrl: string;
   price: number;
   title: string;

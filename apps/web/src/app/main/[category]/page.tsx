@@ -7,7 +7,7 @@ import CategoryChildren from '../CategoryChildren';
 import EventItems from './EventItems';
 import HotTrend from './HotTrend';
 import { CONVENIENCE } from '@/constants/conveniences';
-import httpClient from '@/http/client';
+import { Suspense } from 'react';
 
 interface CategoryPageProps {
   params: { category: Convenience };
@@ -32,7 +32,9 @@ export default function CategoryPage({
       </div>
       <CategoryChildren convenience={category}>
         <HotTrend convenience={category} />
-        <EventItems convenience={category} />
+        <Suspense fallback={<p>Loading...</p>}>
+          <EventItems convenience={category} />
+        </Suspense>
       </CategoryChildren>
     </div>
   );

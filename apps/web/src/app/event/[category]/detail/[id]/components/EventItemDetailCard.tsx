@@ -1,11 +1,12 @@
-import { Convenience, EventType } from '@/app/type';
+import { Convenience } from '@/app/type';
 import { formatNumberWithComma } from '@/utils/numberFormatter';
 import Image from 'next/image';
 import { EVENT_TYPE_MAP } from '@/constants/conveniences';
+import { type PromotionType } from '@/apis/type';
 
 interface EventItemDetailCardProps {
   category: Convenience;
-  eventType: EventType;
+  eventType: PromotionType;
   imageUrl: string;
   productName: string;
   price: number;
