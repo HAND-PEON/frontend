@@ -3,7 +3,7 @@ import { ReactNode } from 'react';
 import { RecommendationCategory } from '@/app/type';
 import TabCategory from '@/components/TabCategory';
 
-interface HotTrendCategoryLayoutProps {
+interface RecommendationCategoryLayoutProps {
   params: { category: RecommendationCategory };
   children: ReactNode;
 }
@@ -20,12 +20,12 @@ const categoryInfoList = categories.map((category) => ({
   href: `/recommendation/${category}`,
 }));
 
-export default function HotTrendCategoryLayout({
+export default function RecommendationCategoryLayout({
   children,
   params: { category },
-}: HotTrendCategoryLayoutProps) {
+}: RecommendationCategoryLayoutProps) {
   return (
-    <div>
+    <div className="bg-white">
       <div className="sticky top-[58px] z-40">
         <TabCategory
           categoryData={categoryInfoList}

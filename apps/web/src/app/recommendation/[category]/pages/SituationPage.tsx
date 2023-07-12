@@ -34,44 +34,52 @@ export default function SituationPage({ category }: SituationPageProps) {
       </div>
       <div className="mb-[50px] mt-[17px] flex flex-wrap justify-between gap-y-10 [&>*]:w-[calc(50%-7px)]">
         <ContentItem
+          href="/recommendation/contents/1"
           subTitle="맛있게 살빼고 싶은 사람"
           mainTitle="다이어트 레시피"
-          imageURL={'/image/banner5.png'}
+          imageURL="/image/banner5.png"
         />
         <ContentItem
+          href="/recommendation/contents/1"
           subTitle="맛있게 살빼고 싶은 사람"
           mainTitle="다이어트 레시피"
-          imageURL={'/image/banner5.png'}
+          imageURL="/image/banner5.png"
         />
         <ContentItem
+          href="/recommendation/contents/1"
           subTitle="맛있게 살빼고 싶은 사람"
           mainTitle="다이어트 레시피"
-          imageURL={'/image/banner5.png'}
+          imageURL="/image/banner5.png"
         />
         <ContentItem
+          href="/recommendation/contents/1"
           subTitle="맛있게 살빼고 싶은 사람"
           mainTitle="다이어트 레시피"
-          imageURL={'/image/banner5.png'}
+          imageURL="/image/banner5.png"
         />
         <ContentItem
+          href="/recommendation/contents/1"
           subTitle="맛있게 살빼고 싶은 사람"
           mainTitle="다이어트 레시피"
-          imageURL={'/image/banner5.png'}
+          imageURL="/image/banner5.png"
         />
         <ContentItem
+          href="/recommendation/contents/1"
           subTitle="맛있게 살빼고 싶은 사람"
           mainTitle="다이어트 레시피"
-          imageURL={'/image/banner5.png'}
+          imageURL="/image/banner5.png"
         />
         <ContentItem
+          href="/recommendation/contents/1"
           subTitle="맛있게 살빼고 싶은 사람"
           mainTitle="다이어트 레시피"
-          imageURL={'/image/banner5.png'}
+          imageURL="/image/banner5.png"
         />
         <ContentItem
+          href="/recommendation/contents/1"
           subTitle="맛있게 살빼고 싶은 사람"
           mainTitle="다이어트 레시피"
-          imageURL={'/image/banner5.png'}
+          imageURL="/image/banner5.png"
         />
       </div>
     </div>
