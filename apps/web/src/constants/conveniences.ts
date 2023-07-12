@@ -1,4 +1,3 @@
-import { Convenience } from '@/app/type';
 import { EventType } from '@/app/type';
 
 export const CONVENIENCE = ['ALL', 'CU', '7Eleven', 'GS25', 'Emart24'] as const;

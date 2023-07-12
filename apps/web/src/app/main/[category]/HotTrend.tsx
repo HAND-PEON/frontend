@@ -1,7 +1,7 @@
 import HotTrendCard from '@/components/HotTrendItem';
 import ChevronIcon from '@/components/icons/ChevronIcon';
 
-import { Convenience } from '../../type';
+import { Convenience } from '@/app/type';
 import { mainHotTrendData } from '@/dummy/hotTrend';
 
 interface HotTrendProps {

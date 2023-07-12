@@ -1,4 +1,4 @@
-export type Convenience = 'CU' | 'GS25' | '7ELEVEN' | 'EMART24';
+export type storeName = 'CU' | 'GS25' | '7ELEVEN' | 'EMART24';
 export type PromotionType =
   | 'ONE_PLUS_ONE'
   | 'TWO_PLUS_ONE'
@@ -14,5 +14,5 @@ export interface PromotionGoods {
   goodsPrice: number;
   goodsImageUrl: string;
   promotionType: PromotionType;
-  storeName: Convenience;
+  storeName: storeName;
 }
