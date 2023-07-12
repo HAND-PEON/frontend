@@ -1,13 +1,7 @@
 import { Convenience } from '@/app/type';
 import { EventType } from '@/app/type';
 
-export const CONVENIENCE: Convenience[] = [
-  'ALL',
-  'CU',
-  '7Eleven',
-  'GS25',
-  'Emart24',
-];
+export const CONVENIENCE = ['ALL', 'CU', '7Eleven', 'GS25', 'Emart24'] as const;
 
 export const EVENT_TYPE_LIST = ['1+1', '2+1', '할인', '+덤'];
 

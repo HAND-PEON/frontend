@@ -14,9 +14,9 @@ interface CategoryPageProps {
 }
 
 const categoryInfoList = CONVENIENCE.map((convenience) => ({
-  category: convenience,
+  category: convenience.toUpperCase(),
   label: convenience,
-  href: `/main/${convenience}`,
+  href: `/main/${convenience.toUpperCase()}`,
 }));
 
 export default function CategoryPage({
