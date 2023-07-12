@@ -32,7 +32,7 @@ export const mainHotTrendData: MainHotTrendInfo[] = [
     imageUrl: '/image/MzE2MTE=.jpg',
     price: 5000,
     title: '혜장라면',
-    convenience: '7Eleven',
+    convenience: '7ELEVEN',
   },
   {
     id: 4,
@@ -40,7 +40,7 @@ export const mainHotTrendData: MainHotTrendInfo[] = [
     imageUrl: '/image/671843.jpg',
     price: 5000,
     title: '빙그레 딸기타임',
-    convenience: 'Emart24',
+    convenience: 'EMART24',
   },
   {
     id: 5,
@@ -107,7 +107,7 @@ export const hotTrendInfoData: HotTrendInfo[] = [
     imageUrl: '/image/MzE2MTE=.jpg',
     price: 5000,
     title: '혜장라면',
-    convenience: '7Eleven',
+    convenience: '7ELEVEN',
   },
   {
     id: 4,
@@ -119,7 +119,7 @@ export const hotTrendInfoData: HotTrendInfo[] = [
     imageUrl: '/image/671843.jpg',
     price: 5000,
     title: '빙그레 딸기타임',
-    convenience: 'Emart24',
+    convenience: 'EMART24',
   },
   {
     id: 5,
