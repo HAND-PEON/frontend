@@ -7,6 +7,7 @@ import CategoryChildren from '../CategoryChildren';
 import EventItems from './EventItems';
 import HotTrend from './HotTrend';
 import { CONVENIENCE } from '@/constants/conveniences';
+import httpClient from '@/http/client';
 
 interface CategoryPageProps {
   params: { category: Convenience };
