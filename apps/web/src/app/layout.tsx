@@ -37,7 +37,7 @@ export default function RootLayout({
             <div className="h-[87px]"></div>
             <div className="relative">
               <Image
-                src="/image/handpyeon2.png"
+                src="/image/handpyeon-text.png"
                 alt="handpyeon-text"
                 width={300}
                 height={113}
