@@ -2,6 +2,7 @@ import 'ui/styles.css';
 import './globals.css';
 
 import localFont from 'next/font/local';
+import AppProviders from './appProviders';
 
 const pretendard = localFont({
   src: '../../public/font/PretendardVariable.woff2',
@@ -22,7 +23,7 @@ export default function RootLayout({
       <body className={`${pretendard.className} h-full`}>
         <main className="flex min-h-full w-full justify-center">
           <div className="flex w-full min-w-[360px] max-w-[390px] flex-col">
-            {children}
+            <AppProviders>{children}</AppProviders>
           </div>
         </main>
       </body>

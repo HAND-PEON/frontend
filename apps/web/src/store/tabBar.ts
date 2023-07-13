@@ -15,8 +15,8 @@ const initTabState: TabBarIndexs = {
   ALL: 0,
   CU: 0,
   GS25: 0,
-  '7Eleven': 0,
-  Emart24: 0,
+  '7ELEVEN': 0,
+  EMART24: 0,
 };
 
 export const createTabBarSlice: StateCreatorDevTool<TabBarSlice> = devtools(

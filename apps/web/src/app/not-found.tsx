@@ -7,6 +7,8 @@ export default function NotFound() {
   const segmentList = usePathname().split('/');
 
   switch (true) {
+    case segmentList.includes('main'):
+      return redirect('/main/ALL');
     case segmentList.includes('hottrend'):
       return redirect('/hottrend/CU/1');
     case segmentList.includes('event'):

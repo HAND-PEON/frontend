@@ -3,6 +3,7 @@ import { Convenience } from '@/app/type';
 import EventItemCard from '@/components/EventItemCard';
 import ChevronIcon from '@/components/icons/ChevronIcon';
 import { pyeonImage } from '@/dummy/image';
+import { useGetPromotionGoods } from '@/hooks/query/usePromotion';
 import { useRouter } from 'next/navigation';
 
 interface EventItemsProps {
@@ -11,21 +12,22 @@ interface EventItemsProps {
 
 export default function EventItems({ convenience }: EventItemsProps) {
   const router = useRouter();
+  const { data } = useGetPromotionGoods(convenience);
   const goEventPage = () => {
     router.push(`/event/${convenience}`);
   };
   return (
-    <div className="pb-10px rounded-t-[30px] bg-white px-[20px] pt-[27px]">
+    <div>
       <div className="mb-[50px] flex flex-wrap items-start justify-start gap-x-[18px] gap-y-[50px]">
-        {Array.from({ length: 8 }).map((_, i) => (
+        {data?.map((promotion) => (
           <EventItemCard
-            key={i}
+            key={promotion.goodsNo}
             eventItem={{
-              eventType: 'BONUS',
-              imageUrl: pyeonImage,
-              price: 20000,
-              title: 'asdfasdf',
-              convenience: '7Eleven',
+              eventType: promotion.promotionType,
+              imageUrl: promotion.goodsImageUrl,
+              price: promotion.goodsPrice,
+              title: promotion.goodsName,
+              convenience: promotion.storeName,
             }}
           />
         ))}

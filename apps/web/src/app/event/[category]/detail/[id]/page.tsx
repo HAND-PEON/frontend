@@ -10,9 +10,9 @@ import EventItemDetailSection from './components/EventItemDetailSection';
 import EventItemTotalSection from './components/EventItemTotalSection';
 
 const categoryInfoList = CONVENIENCE.map((convenience) => ({
-  category: convenience,
+  category: convenience.toUpperCase(),
   label: convenience,
-  href: `/event/${convenience}`,
+  href: `/event/${convenience.toUpperCase()}`,
 }));
 
 interface EventItemDetailPageProps {

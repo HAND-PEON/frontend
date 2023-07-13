@@ -1,11 +1,12 @@
 import React from 'react';
 import Image from 'next/image';
-import { Convenience, EventType } from '@/app/type';
+import { Convenience } from '@/app/type';
 import { formatNumberWithComma } from '@/utils/numberFormatter';
 import { EVENT_TYPE_MAP } from '@/constants/conveniences';
 import Link from 'next/link';
+import { type PromotionType } from '@/apis/type';
 interface EventItem {
-  eventType: EventType;
+  eventType: PromotionType;
   imageUrl: string;
   price: number;
   title: string;
@@ -21,7 +22,7 @@ const EventItemCard = ({
 }: Props) => {
   return (
     <div className="w-[calc(50%_-_9px)]">
-      <Link href={'/event/7Eleven/detail/1'}>
+      <Link href={`/event/${convenience}/detail/1`}>
         <div className="mb-[12px] aspect-square w-full rounded-[9px] border-2 border-b-[4px] border-r-[4px] border-black p-[5px]">
           <div className="relative flex h-full w-full items-center justify-center">
             <div

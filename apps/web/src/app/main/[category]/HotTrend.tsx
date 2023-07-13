@@ -1,7 +1,7 @@
 import HotTrendCard from '@/components/HotTrendItem';
 import ChevronIcon from '@/components/icons/ChevronIcon';
 
-import { Convenience } from '../../type';
+import { Convenience } from '@/app/type';
 import { mainHotTrendData } from '@/dummy/hotTrend';
 
 interface HotTrendProps {
@@ -10,7 +10,7 @@ interface HotTrendProps {
 
 export default function HotTrend({ convenience }: HotTrendProps) {
   return (
-    <div className="rounded-t-[30px] bg-white px-5 pb-10 pt-[27px]">
+    <div>
       <div className="flex flex-wrap items-start justify-start gap-y-5">
         {mainHotTrendData.map((props) => (
           <HotTrendCard key={props.id} {...props} />

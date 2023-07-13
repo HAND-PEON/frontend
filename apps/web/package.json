@@ -10,6 +10,7 @@
     "lint-fix": "eslint --fix \"./**/*.{js,jsx,ts,tsx}\" --ignore-path .gitignore"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.29.19",
     "next": "13.4.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -19,6 +20,7 @@
   },
   "devDependencies": {
     "@svgr/webpack": "^8.0.1",
+    "@tanstack/react-query-devtools": "^4.29.19",
     "@types/node": "20.1.4",
     "@types/react": "18.2.6",
     "@types/react-dom": "18.2.4",

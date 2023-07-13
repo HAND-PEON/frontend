@@ -30,7 +30,9 @@ export default function CategoryChildren({
       <div className="top-[53px] z-auto px-[20px] py-[19px]">
         <TabBar currentIndex={currentIndex} onClick={handleTabBarClick} />
       </div>
-      <div>{children[currentIndex]}</div>
+      <div className="pb-10px rounded-t-[30px] bg-white px-[20px] pt-[27px]">
+        {children[currentIndex]}
+      </div>
     </div>
   );
 }

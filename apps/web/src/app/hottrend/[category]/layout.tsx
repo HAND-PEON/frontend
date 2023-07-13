@@ -2,17 +2,19 @@ import { ReactNode } from 'react';
 
 import { Convenience } from '@/app/type';
 import TabCategory from '@/components/TabCategory';
+import { CONVENIENCE } from '@/constants/conveniences';
 
 interface HotTrendCategoryLayoutProps {
   params: { category: Convenience };
   children: ReactNode;
 }
 
-const conveniences: Convenience[] = ['CU', '7Eleven', 'GS25', 'Emart24'];
-const categoryInfoList = conveniences.map((convenience) => ({
-  category: convenience,
+const convenienceList = CONVENIENCE.filter((item) => item !== 'ALL');
+
+const categoryInfoList = convenienceList.map((convenience) => ({
+  category: convenience.toUpperCase(),
   label: convenience,
-  href: `/hottrend/${convenience}/1`,
+  href: `/hottrend/${convenience.toUpperCase()}/1`,
 }));
 
 export default function HotTrendCategoryLayout({
