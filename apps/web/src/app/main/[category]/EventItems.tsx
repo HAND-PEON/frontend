@@ -19,9 +19,9 @@ export default function EventItems({ convenience }: EventItemsProps) {
   return (
     <div>
       <div className="mb-[50px] flex flex-wrap items-start justify-start gap-x-[18px] gap-y-[50px]">
-        {data?.map((promotion) => (
+        {data?.map((promotion, idx) => (
           <EventItemCard
-            key={promotion.goodsNo}
+            key={`${idx}-${promotion.goodsNo}`}
             eventItem={{
               eventType: promotion.promotionType,
               imageUrl: promotion.goodsImageUrl,
