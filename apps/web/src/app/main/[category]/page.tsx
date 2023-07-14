@@ -1,15 +1,17 @@
 'use client';
 
+import { Suspense } from 'react';
+
 import { Convenience } from '@/app/type';
+import ApiErrorBoundary from '@/components/ApiErrorBoundary';
+import Loading from '@/components/Loading';
 import TabCategory from '@/components/TabCategory';
+import { CONVENIENCE } from '@/constants/conveniences';
+import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 
 import CategoryChildren from '../CategoryChildren';
 import EventItems from './EventItems';
 import HotTrend from './HotTrend';
-import { CONVENIENCE } from '@/constants/conveniences';
-import { Suspense } from 'react';
-import ApiErrorBoundary from '@/components/ApiErrorBoundary';
-import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 
 interface CategoryPageProps {
   params: { category: Convenience };
@@ -34,9 +36,13 @@ export default function CategoryPage({
         />
       </div>
       <CategoryChildren convenience={category}>
-        <HotTrend convenience={category} />
         <ApiErrorBoundary onReset={reset}>
-          <Suspense fallback={<p>Loading...</p>}>
+          <Suspense fallback={<Loading />}>
+            <HotTrend convenience={category} />
+          </Suspense>
+        </ApiErrorBoundary>
+        <ApiErrorBoundary onReset={reset}>
+          <Suspense fallback={<Loading />}>
             <EventItems convenience={category} />
           </Suspense>
         </ApiErrorBoundary>
