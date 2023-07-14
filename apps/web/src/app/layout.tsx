@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko" className="h-full">
-      <body className={`${pretendard.className} h-ful bg-[#FEF9E5]`}>
+      <body className={`${pretendard.className} h-full bg-[#FEF9E5]`}>
         <aside className="fixed left-1/2 z-0 ml-[_-500px] hidden h-full w-[423px] lg:flex lg:items-center">
           <div>
             <div>

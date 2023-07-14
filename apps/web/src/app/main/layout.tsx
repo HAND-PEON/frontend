@@ -8,7 +8,7 @@ interface HomeLayoutProps {
 
 export default function HomeLayout({ children }: HomeLayoutProps) {
   return (
-    <div className="flex-1">
+    <div className="flex-1 bg-[#F7F7F7]">
       <Header />
       <div className="h-[178px]">
         <BannerSlides data={BANNER_DATA} totalViewURL="/recommendation" />
