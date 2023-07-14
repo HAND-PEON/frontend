@@ -16,3 +16,12 @@ export interface PromotionGoods {
   promotionType: PromotionType;
   storeName: StoreName;
 }
+export type HotTrendCategory = StoreName | 'ALL';
+
+export interface HotTrendGoods {
+  rank: number;
+  storeName: StoreName;
+  goodsName: string;
+  goodsPrice: number;
+  goodsImageUrl: string;
+}

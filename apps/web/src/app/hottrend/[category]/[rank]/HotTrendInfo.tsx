@@ -8,13 +8,13 @@ import { hotTrendInfoData } from '@/dummy/hotTrend';
 import { formatNumberWithComma, prefixZero } from '@/utils/numberFormatter';
 
 interface HotTrendInfoProps {
-  convenience: Convenience;
+  category: Convenience;
   rank: number;
 }
 
-export default function HotTrendInfo({ convenience, rank }: HotTrendInfoProps) {
+export default function HotTrendInfo({ category, rank }: HotTrendInfoProps) {
   const info = hotTrendInfoData.find(
-    (data) => data.rank === Number(rank) && data.convenience === convenience,
+    (data) => data.rank === Number(rank) && data.storeName === category,
   );
 
   return (
@@ -34,16 +34,16 @@ export default function HotTrendInfo({ convenience, rank }: HotTrendInfoProps) {
               {info.hottrendTitle}
             </div>
             <div className="border-main1 px-17px py-4px border-t-2 font-medium">
-              <div>{info.title}</div>
-              <div>{formatNumberWithComma(info.price)}원</div>
+              <div>{info.goodsName}</div>
+              <div>{formatNumberWithComma(info.goodsPrice)}원</div>
             </div>
           </div>
           <div className="border-main1 min-w-[152px] border-l-2 p-2">
             <div className="relative flex h-full w-full ">
               <Image
                 className="object-contain"
-                src={info.imageUrl}
-                alt={info.title}
+                src={info.goodsImageUrl}
+                alt={info.goodsName}
                 fill
               />
             </div>
