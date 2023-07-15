@@ -31,10 +31,6 @@ class GlobalErrorBoundary extends React.Component<
   }
 
   render() {
-    // if (!this.state.shouldHandleError) {
-    //   return this.props.children;
-    // }
-    console.log('global!!', this.state);
     if (this.state.error) {
       return <div>글로벌 에러!!</div>;
     }
