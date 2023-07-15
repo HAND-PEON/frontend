@@ -1,4 +1,4 @@
-export type storeName = 'CU' | 'GS25' | '7ELEVEN' | 'EMART24';
+export type StoreName = 'CU' | 'GS25' | '7ELEVEN' | 'EMART24';
 export type PromotionType =
   | 'ONE_PLUS_ONE'
   | 'TWO_PLUS_ONE'
@@ -14,5 +14,19 @@ export interface PromotionGoods {
   goodsPrice: number;
   goodsImageUrl: string;
   promotionType: PromotionType;
-  storeName: storeName;
+  storeName: StoreName;
+}
+export type HotTrendCategory = StoreName | 'ALL';
+
+export interface HotTrendGoods {
+  rank: number;
+  storeName: StoreName;
+  goodsName: string;
+  goodsPrice: number;
+  goodsImageUrl: string;
+}
+
+export interface RecommendationBanner {
+  bannerImage: string;
+  contentsNumber: number;
 }

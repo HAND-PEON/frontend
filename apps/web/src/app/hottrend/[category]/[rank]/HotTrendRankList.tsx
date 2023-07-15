@@ -8,7 +8,7 @@ interface HotTrendRankListProps {
 
 export default function HotTrendRankList({ category }: HotTrendRankListProps) {
   const hotTrendData = mainHotTrendData.filter(
-    (one) => one.convenience === category,
+    (one) => one.storeName === category,
   );
 
   return (

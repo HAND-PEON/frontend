@@ -12,7 +12,7 @@ export default function HotTrendCategoryRankInfoPage({
 }: CategoryPageProps) {
   return (
     <>
-      <HotTrendInfo convenience={category} rank={rank} />
+      <HotTrendInfo category={category} rank={rank} />
       <HotTrendRankList category={category} />
     </>
   );
