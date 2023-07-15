@@ -1,17 +1,25 @@
-import BannerSlides, { BannerInfo } from '@/components/BannerSlides';
-import { BANNER_DATA } from '@/constants/assets';
+import { Suspense } from 'react';
+
+import { getRecommendationBanners } from '@/apis/recommendation';
+import BannerSlides from '@/components/BannerSlides';
+import Loading from '@/components/Loading';
+
 import Header from './Header';
 
 interface HomeLayoutProps {
   children: React.ReactNode;
 }
 
-export default function HomeLayout({ children }: HomeLayoutProps) {
+export default async function HomeLayout({ children }: HomeLayoutProps) {
+  const data = await getRecommendationBanners();
+
   return (
     <div className="flex-1">
       <Header />
       <div className="h-[178px]">
-        <BannerSlides data={BANNER_DATA} totalViewURL="/recommendation" />
+        <Suspense fallback={<Loading />}>
+          <BannerSlides data={data} totalViewURL="/recommendation" />
+        </Suspense>
       </div>
       <div>{children}</div>
     </div>
