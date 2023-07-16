@@ -4,7 +4,6 @@ import './globals.css';
 import localFont from 'next/font/local';
 import AppProviders from './appProviders';
 import Image from 'next/image';
-import LoadingIndicator from '@/components/LoadingIndicator';
 
 const pretendard = localFont({
   src: '../../public/font/PretendardVariable.woff2',
@@ -79,7 +78,6 @@ export default function RootLayout({
             <AppProviders>{children}</AppProviders>
           </div>
         </main>
-        <LoadingIndicator />
       </body>
     </html>
   );

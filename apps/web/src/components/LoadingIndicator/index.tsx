@@ -23,8 +23,8 @@ const LoadingIndicator = () => {
   }, [currentIndex]);
 
   return (
-    <div className="fixed right-0 top-0 z-50 flex h-full w-full items-center justify-center bg-black/50">
-      <div className="flex h-[90px] w-[90px] items-center justify-center rounded-full bg-white">
+    <div className="fixed right-0 top-0 z-[9999] flex h-full w-full items-center justify-center bg-black/50 lg:justify-normal">
+      <div className="flex h-[90px] w-[90px] items-center justify-center rounded-full bg-white lg:ml-[calc(55%_+_150px)]">
         {iconList[currentIndex]}
       </div>
     </div>
