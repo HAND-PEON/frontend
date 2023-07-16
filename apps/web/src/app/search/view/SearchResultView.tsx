@@ -11,9 +11,9 @@ const SearchResultView = () => {
   const word = searchParams.get('word');
   const category = searchParams.get('category') as Convenience;
   const categoryInfoList = CONVENIENCE.map((convenience) => ({
-    category: convenience.toUpperCase(),
+    category: convenience,
     label: convenience,
-    href: `/search?word=${word}&category=${convenience.toUpperCase()}`,
+    href: `/search?word=${word}&category=${convenience}`,
   }));
 
   return (
@@ -37,7 +37,7 @@ const SearchResultView = () => {
                 imageUrl: pyeonImage,
                 price: 20000,
                 title: 'asdfasdf',
-                convenience: '7ELEVEN',
+                convenience: '7Eleven',
               }}
             />
           ))}

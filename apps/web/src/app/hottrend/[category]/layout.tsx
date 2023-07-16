@@ -12,9 +12,9 @@ interface HotTrendCategoryLayoutProps {
 const convenienceList = CONVENIENCE.filter((item) => item !== 'ALL');
 
 const categoryInfoList = convenienceList.map((convenience) => ({
-  category: convenience.toUpperCase(),
+  category: convenience,
   label: convenience,
-  href: `/hottrend/${convenience.toUpperCase()}/1`,
+  href: `/hottrend/${convenience}/1`,
 }));
 
 export default function HotTrendCategoryLayout({

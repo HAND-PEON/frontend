@@ -33,7 +33,7 @@ const EventItemSection = () => {
               imageUrl: pyeonImage,
               price: 20000,
               title: 'asdfasdf',
-              convenience: '7ELEVEN',
+              convenience: '7Eleven',
             }}
           />
         ))}

@@ -1,24 +1,25 @@
 import Link from 'next/link';
 
-import { HotTrendCategory } from '@/apis/type';
 import HotTrendCard from '@/components/HotTrendItem';
 import ChevronIcon from '@/components/icons/ChevronIcon';
 import { useGetHotTrendGoods } from '@/hooks/query/useHotTrends';
+import { HotTrendMapping } from '@/constants/conveniences';
+import { Convenience } from '@/app/type';
 
 interface HotTrendProps {
-  convenience: HotTrendCategory;
+  convenience: Convenience;
 }
 
-const mappingSegments: Record<HotTrendCategory, string> = {
+const mappingSegments: Record<Convenience, string> = {
   ALL: 'CU',
   CU: 'CU',
   GS25: 'GS25',
-  '7ELEVEN': '7ELEVEN',
-  EMART24: 'EMART24',
-};
+  '7Eleven': '7Eleven',
+  Emart24: 'Emart24',
+} as const;
 
 export default function HotTrend({ convenience }: HotTrendProps) {
-  const { data } = useGetHotTrendGoods(convenience);
+  const { data } = useGetHotTrendGoods(HotTrendMapping[convenience]);
 
   return (
     <div>

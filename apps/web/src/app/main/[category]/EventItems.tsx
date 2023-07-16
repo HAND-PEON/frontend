@@ -1,7 +1,9 @@
 'use client';
+import { HotTrendCategory } from '@/apis/type';
 import { Convenience } from '@/app/type';
 import EventItemCard from '@/components/EventItemCard';
 import ChevronIcon from '@/components/icons/ChevronIcon';
+import { EventMapping } from '@/constants/conveniences';
 import { useGetPromotionGoods } from '@/hooks/query/usePromotion';
 import { useRouter } from 'next/navigation';
 
@@ -9,9 +11,17 @@ interface EventItemsProps {
   convenience: Convenience;
 }
 
+const mappingSegments: Record<HotTrendCategory, Convenience> = {
+  ALL: 'ALL',
+  CU: 'CU',
+  GS25: 'GS25',
+  SEVEN11: '7Eleven',
+  EMART24: 'Emart24',
+} as const;
+
 export default function EventItems({ convenience }: EventItemsProps) {
   const router = useRouter();
-  const { data } = useGetPromotionGoods(convenience);
+  const { data } = useGetPromotionGoods(EventMapping[convenience]);
   const goEventPage = () => {
     router.push(`/event/${convenience}`);
   };
@@ -26,7 +36,7 @@ export default function EventItems({ convenience }: EventItemsProps) {
               imageUrl: promotion.goodsImageUrl,
               price: promotion.goodsPrice,
               title: promotion.goodsName,
-              convenience: promotion.storeName,
+              convenience: mappingSegments[promotion.storeName],
             }}
           />
         ))}
