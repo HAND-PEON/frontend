@@ -2,7 +2,6 @@
 import { Convenience } from '@/app/type';
 import EventItemCard from '@/components/EventItemCard';
 import ChevronIcon from '@/components/icons/ChevronIcon';
-import { pyeonImage } from '@/dummy/image';
 import { useGetPromotionGoods } from '@/hooks/query/usePromotion';
 import { useRouter } from 'next/navigation';
 
