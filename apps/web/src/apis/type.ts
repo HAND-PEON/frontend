@@ -1,4 +1,4 @@
-export type StoreName = 'CU' | 'GS25' | '7ELEVEN' | 'EMART24';
+export type StoreName = 'CU' | 'GS25' | 'SEVEN11' | 'EMART24';
 export type PromotionType =
   | 'ONE_PLUS_ONE'
   | 'TWO_PLUS_ONE'
@@ -8,6 +8,7 @@ export type PromotionType =
   | 'PB'
   | 'GIFT';
 
+export type PromotionGoodsCategory = StoreName | 'ALL';
 export interface PromotionGoods {
   goodsNo: number;
   goodsName: string;
@@ -16,6 +17,7 @@ export interface PromotionGoods {
   promotionType: PromotionType;
   storeName: StoreName;
 }
+
 export type HotTrendCategory = StoreName | 'ALL';
 
 export interface HotTrendGoods {

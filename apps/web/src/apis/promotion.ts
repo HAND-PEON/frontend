@@ -1,7 +1,7 @@
 import httpClient from '@/http/client';
-import type { StoreName, PromotionGoods } from './type';
+import type { PromotionGoods, PromotionGoodsCategory } from './type';
 
-export type PromotionGoodsParams = StoreName | 'ALL';
+export type PromotionGoodsParams = PromotionGoodsCategory;
 
 export const getPromotionGoods = async (params: PromotionGoodsParams) => {
   const { data } = await httpClient.get<{ data: PromotionGoods[] }>(

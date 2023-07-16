@@ -1,6 +1,23 @@
-import { EventType } from '@/app/type';
+import { HotTrendCategory } from '@/apis/type';
+import { Convenience, EventType } from '@/app/type';
 
 export const CONVENIENCE = ['ALL', 'CU', '7Eleven', 'GS25', 'Emart24'] as const;
+
+export const EventMapping: Record<Convenience, HotTrendCategory> = {
+  ALL: 'ALL',
+  CU: 'CU',
+  GS25: 'GS25',
+  '7Eleven': 'SEVEN11',
+  Emart24: 'EMART24',
+} as const;
+
+export const HotTrendMapping: Record<Convenience, HotTrendCategory> = {
+  ALL: 'ALL',
+  CU: 'CU',
+  GS25: 'GS25',
+  '7Eleven': 'SEVEN11',
+  Emart24: 'EMART24',
+} as const;
 
 export const EVENT_TYPE_LIST = ['1+1', '2+1', '할인', '+덤'];
 

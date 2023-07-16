@@ -29,7 +29,7 @@ export interface HttpClient {
 }
 
 const httpClient: HttpClient = {
-  baseUrl: 'http://api.handpyeon.com',
+  baseUrl: 'https://api.handpyeon.com',
   async get<T>(url: string, config: RequestConfig = {}) {
     const queryString = config?.params
       ? qs.stringify(config.params, { addQueryPrefix: true })

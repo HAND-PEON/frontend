@@ -12,7 +12,7 @@ const EventItemDetailSection = () => {
       </div>
       <div className="pb-[37px]">
         <EventItemDetailCard
-          category="EMART24"
+          category="Emart24"
           eventType="BONUS"
           imageUrl={pyeonImage}
           productName="스프라이트P500ml"

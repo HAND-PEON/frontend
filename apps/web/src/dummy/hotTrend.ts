@@ -32,7 +32,7 @@ export const mainHotTrendData: MainHotTrendInfo[] = [
     goodsImageUrl: '/image/MzE2MTE=.jpg',
     goodsPrice: 5000,
     goodsName: '혜장라면',
-    storeName: '7ELEVEN',
+    storeName: 'SEVEN11',
   },
   {
     id: 4,
@@ -109,7 +109,7 @@ export const hotTrendInfoData: HotTrendInfo[] = [
     goodsImageUrl: '/image/MzE2MTE=.jpg',
     goodsPrice: 5000,
     goodsName: '혜장라면',
-    storeName: '7ELEVEN',
+    storeName: 'SEVEN11',
   },
   {
     id: 4,
