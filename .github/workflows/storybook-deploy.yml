@@ -1,18 +1,18 @@
 # Name of our action
-name: "Chromatic storybook workflow"
+name: 'Chromatic storybook workflow'
 # The event that will trigger the action
 env:
-  CACHED_DEPENDENCY_PATHS: "**/node_modules"
+  CACHED_DEPENDENCY_PATHS: '**/node_modules'
 
 on:
   pull_request:
     types: [opened, synchronize]
     paths:
-      - "apps/**"
-      - "packages/**"
+      - 'packages/tailwind-config/**'
+      - 'packages/ui/**'
       - .npmrc
       - .nvmrc
-      - "*.config.js"
+      - '*.config.js'
       - .github/workflows/storybook-deploy.yml
 
 jobs:
