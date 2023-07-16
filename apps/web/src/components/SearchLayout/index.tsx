@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import BasicHeader from '../BasicHeader';
 import SearchHeader from '../SearchHeader';

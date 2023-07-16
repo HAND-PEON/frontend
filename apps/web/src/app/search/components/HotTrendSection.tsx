@@ -18,7 +18,7 @@ const HotTrendSection = () => {
         </span>
         <span className="font-bold">&nbsp;Hot Trend</span>🔥
       </p>
-      <ul className="flex flex-col gap-[25px] pt-[25px]">
+      <ul className="flex flex-col gap-[22px] pt-[25px]">
         {dummy.map((item, i) => (
           <li className={i < 3 && `font-bold`} key={i}>
             <div className="flex justify-start gap-5">
