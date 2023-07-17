@@ -13,7 +13,8 @@ interface SituationPageProps {
 }
 
 const subCategoryKeyList = ['exercise', 'nightFood', 'homeParty', 'broadcast'];
-const subCategoryNameList = ['💪🏻운동', '🌝야식', '🎉홈파티', '방송'];
+const subCategoryEmojiList = ['💪🏻', '🌝', '🎉'];
+const subCategoryNameList = ['운동', '야식', '홈파티', '방송'];
 
 export default function SituationPage({ category }: SituationPageProps) {
   const [subCategory, setSubCategory] = useState(subCategoryKeyList[0]);
@@ -30,7 +31,12 @@ export default function SituationPage({ category }: SituationPageProps) {
               key={index}
               onClickChipItem={() => setSubCategory(item)}
             >
-              {subCategoryNameList[index]}
+              <div className="gap-4px flex">
+                {subCategoryEmojiList[index] && (
+                  <div>{subCategoryEmojiList[index]}</div>
+                )}
+                <div>{subCategoryNameList[index]}</div>
+              </div>
             </Chip.Item>
           ))}
         </Chip>
