@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import { RecommendationCategory } from '@/app/type';
 import Chip from '@/components/Chip';
+import { useGetRecommendationList } from '@/hooks/query/useRecommendation';
 
 import ContentItem from '../components/ContentItem';
 
@@ -12,10 +13,13 @@ interface SituationPageProps {
 }
 
 const subCategoryKeyList = ['exercise', 'nightFood', 'homeParty', 'broadcast'];
-const subCategoryNameList = ['💪🏻운동', '🌝야식', '🎉홈파티', '방송'];
+const subCategoryEmojiList = ['💪🏻', '🌝', '🎉'];
+const subCategoryNameList = ['운동', '야식', '홈파티', '방송'];
 
 export default function SituationPage({ category }: SituationPageProps) {
   const [subCategory, setSubCategory] = useState(subCategoryKeyList[0]);
+  const { data } = useGetRecommendationList({ category, subCategory });
+
   return (
     <div>
       <div className="mt-6 text-[22px] font-medium">상황별 추천</div>
@@ -27,60 +31,27 @@ export default function SituationPage({ category }: SituationPageProps) {
               key={index}
               onClickChipItem={() => setSubCategory(item)}
             >
-              {subCategoryNameList[index]}
+              <div className="gap-4px flex">
+                {subCategoryEmojiList[index] && (
+                  <div>{subCategoryEmojiList[index]}</div>
+                )}
+                <div>{subCategoryNameList[index]}</div>
+              </div>
             </Chip.Item>
           ))}
         </Chip>
       </div>
       <div className="mb-[50px] mt-[17px] flex flex-wrap justify-between gap-y-10 [&>*]:w-[calc(50%-7px)]">
-        <ContentItem
-          href="/recommendation/contents/1"
-          subTitle="맛있게 살빼고 싶은 사람"
-          mainTitle="다이어트 레시피"
-          imageURL="/image/banner5.png"
-        />
-        <ContentItem
-          href="/recommendation/contents/1"
-          subTitle="맛있게 살빼고 싶은 사람"
-          mainTitle="다이어트 레시피"
-          imageURL="/image/banner5.png"
-        />
-        <ContentItem
-          href="/recommendation/contents/1"
-          subTitle="맛있게 살빼고 싶은 사람"
-          mainTitle="다이어트 레시피"
-          imageURL="/image/banner5.png"
-        />
-        <ContentItem
-          href="/recommendation/contents/1"
-          subTitle="맛있게 살빼고 싶은 사람"
-          mainTitle="다이어트 레시피"
-          imageURL="/image/banner5.png"
-        />
-        <ContentItem
-          href="/recommendation/contents/1"
-          subTitle="맛있게 살빼고 싶은 사람"
-          mainTitle="다이어트 레시피"
-          imageURL="/image/banner5.png"
-        />
-        <ContentItem
-          href="/recommendation/contents/1"
-          subTitle="맛있게 살빼고 싶은 사람"
-          mainTitle="다이어트 레시피"
-          imageURL="/image/banner5.png"
-        />
-        <ContentItem
-          href="/recommendation/contents/1"
-          subTitle="맛있게 살빼고 싶은 사람"
-          mainTitle="다이어트 레시피"
-          imageURL="/image/banner5.png"
-        />
-        <ContentItem
-          href="/recommendation/contents/1"
-          subTitle="맛있게 살빼고 싶은 사람"
-          mainTitle="다이어트 레시피"
-          imageURL="/image/banner5.png"
-        />
+        {data &&
+          data.map(({ id, title, subTitle, imageUrl }, idx) => (
+            <ContentItem
+              key={`${idx}-${id}`}
+              href={`/recommendation/contents/${id}`}
+              imageURL={imageUrl}
+              subTitle={subTitle}
+              mainTitle={title}
+            />
+          ))}
       </div>
     </div>
   );

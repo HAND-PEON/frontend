@@ -1,4 +1,8 @@
+'use client';
+
 import { RecommendationCategory } from '@/app/type';
+import { useGetRecommendationList } from '@/hooks/query/useRecommendation';
+
 import ContentItem from '../components/ContentItem';
 
 interface NowPageProps {
@@ -6,58 +10,22 @@ interface NowPageProps {
 }
 
 export default function NowPage({ category }: NowPageProps) {
+  const { data } = useGetRecommendationList({ category });
+
   return (
     <div>
       <div className="mt-10 text-[22px] font-medium">지금 유행하는건 뭐지?</div>
       <div className="mb-[50px] mt-[30px] flex flex-wrap justify-between gap-y-10 [&>*]:w-[calc(50%-7px)]">
-        <ContentItem
-          href="/recommendation/contents/1"
-          imageURL="/image/highball.jpg"
-          subTitle="집에서 분위기 낼 수 있는"
-          mainTitle="하이볼 레시피"
-        />
-        <ContentItem
-          href="/recommendation/contents/1"
-          imageURL="/image/highball.jpg"
-          subTitle="집에서 분위기 낼 수 있는"
-          mainTitle="하이볼 레시피"
-        />
-        <ContentItem
-          href="/recommendation/contents/1"
-          imageURL="/image/highball.jpg"
-          subTitle="집에서 분위기 낼 수 있는"
-          mainTitle="하이볼 레시피"
-        />
-        <ContentItem
-          href="/recommendation/contents/1"
-          imageURL="/image/highball.jpg"
-          subTitle="집에서 분위기 낼 수 있는"
-          mainTitle="하이볼 레시피"
-        />
-        <ContentItem
-          href="/recommendation/contents/1"
-          imageURL="/image/highball.jpg"
-          subTitle="집에서 분위기 낼 수 있는"
-          mainTitle="하이볼 레시피"
-        />
-        <ContentItem
-          href="/recommendation/contents/1"
-          imageURL="/image/highball.jpg"
-          subTitle="집에서 분위기 낼 수 있는"
-          mainTitle="하이볼 레시피"
-        />
-        <ContentItem
-          href="/recommendation/contents/1"
-          imageURL="/image/highball.jpg"
-          subTitle="집에서 분위기 낼 수 있는"
-          mainTitle="하이볼 레시피"
-        />
-        <ContentItem
-          href="/recommendation/contents/1"
-          imageURL="/image/highball.jpg"
-          subTitle="집에서 분위기 낼 수 있는"
-          mainTitle="하이볼 레시피"
-        />
+        {data &&
+          data.map(({ id, title, subTitle, imageUrl }, idx) => (
+            <ContentItem
+              key={`${idx}-${id}`}
+              href={`/recommendation/contents/${id}`}
+              imageURL={imageUrl}
+              subTitle={subTitle}
+              mainTitle={title}
+            />
+          ))}
       </div>
     </div>
   );

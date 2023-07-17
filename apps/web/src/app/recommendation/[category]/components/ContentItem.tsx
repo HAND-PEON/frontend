@@ -18,7 +18,13 @@ export default function ContentItem({
     <Link href={href}>
       <div className="border-main1 border-2">
         <div className="relative  min-h-[122px]">
-          <Image src={imageURL} alt={''} fill className="object-cover" />
+          <Image
+            src={imageURL}
+            alt={''}
+            fill
+            className="object-cover"
+            priority
+          />
         </div>
         <div className="px-10px py-15px">
           <div className="text-main1 text-[12px] font-medium">{subTitle}</div>
