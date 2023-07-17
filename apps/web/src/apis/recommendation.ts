@@ -1,7 +1,11 @@
 import { RecommendationCategory } from '@/app/type';
 import httpClient from '@/http/client';
 
-import { RecommendationBanner, RecommendationSummary } from './type';
+import {
+  RecommendationBanner,
+  RecommendationDetail,
+  RecommendationSummary,
+} from './type';
 
 export const getRecommendationBanners = async () => {
   const { data } = await httpClient.get<{ data: RecommendationBanner[] }>(
@@ -26,6 +30,13 @@ export const getRecommendationList = async (
   const { data } = await httpClient.get<{ data: RecommendationSummary[] }>(
     '/handpyeon/api/recommends',
     { params },
+  );
+  return data.data;
+};
+
+export const getRecommendationContents = async (id: number) => {
+  const { data } = await httpClient.get<{ data: RecommendationDetail }>(
+    `/handpyeon/api/recommends/${id}`,
   );
   return data.data;
 };
