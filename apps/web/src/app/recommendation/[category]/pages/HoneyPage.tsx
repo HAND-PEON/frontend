@@ -1,4 +1,8 @@
+'use client';
+
 import { RecommendationCategory } from '@/app/type';
+import { useGetRecommendationList } from '@/hooks/query/useRecommendation';
+
 import ContentItem from '../components/HoneyContentItem';
 
 interface HoneyPageProps {
@@ -6,6 +10,8 @@ interface HoneyPageProps {
 }
 
 export default function HoneyPage({ category }: HoneyPageProps) {
+  const { data } = useGetRecommendationList({ category });
+
   return (
     <div>
       <div className="mt-10 text-[22px] font-medium">
@@ -13,36 +19,16 @@ export default function HoneyPage({ category }: HoneyPageProps) {
         <div>편의점 꿀조합</div>
       </div>
       <div className="mb-[50px] mt-[30px] flex flex-col gap-[30px]">
-        <ContentItem
-          href="/recommendation/contents/1"
-          imageURL="/image/banner4.png"
-          subTitle="편의점 꿀조합의 정석!"
-          mainTitle="마크정식"
-        />
-        <ContentItem
-          href="/recommendation/contents/1"
-          imageURL="/image/banner4.png"
-          subTitle="편의점 꿀조합의 정석!"
-          mainTitle="마크정식"
-        />
-        <ContentItem
-          href="/recommendation/contents/1"
-          imageURL="/image/banner4.png"
-          subTitle="편의점 꿀조합의 정석!"
-          mainTitle="마크정식"
-        />
-        <ContentItem
-          href="/recommendation/contents/1"
-          imageURL="/image/banner4.png"
-          subTitle="편의점 꿀조합의 정석!"
-          mainTitle="마크정식"
-        />
-        <ContentItem
-          href="/recommendation/contents/1"
-          imageURL="/image/banner4.png"
-          subTitle="편의점 꿀조합의 정석!"
-          mainTitle="마크정식"
-        />
+        {data &&
+          data.map(({ id, title, subTitle, imageUrl }, idx) => (
+            <ContentItem
+              key={`${idx}-${id}`}
+              href={`/recommendation/contents/${id}`}
+              imageURL={imageUrl}
+              subTitle={subTitle}
+              mainTitle={title}
+            />
+          ))}
       </div>
     </div>
   );
