@@ -32,3 +32,24 @@ export interface RecommendationBanner {
   bannerImage: string;
   contentsNumber: number;
 }
+
+export interface RecommendationSummary {
+  id: number;
+  title: string;
+  subTitle: string;
+  imageUrl: string;
+}
+
+export interface RecommendationDetailContent {
+  content: string;
+  contentsImageUrls: string[];
+  goodsInfo: PromotionGoods;
+}
+
+export interface RecommendationDetail {
+  recommendType: string;
+  title: string;
+  recommendStartDate: string;
+  recommendEndDate: string;
+  contentsList: RecommendationDetailContent[];
+}
