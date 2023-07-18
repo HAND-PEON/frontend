@@ -1,11 +1,19 @@
 'use client';
+import { type Convenience } from '@/app/type';
 import Chip from '@/components/Chip';
-import EventItemCard from '@/components/EventItemCard';
 import { EVENT_TYPE_LIST } from '@/constants/conveniences';
-import { pyeonImage } from '@/dummy/image';
-import React from 'react';
+import React, { Suspense } from 'react';
+import EventItems from './EventItems';
+import { useQueryErrorResetBoundary } from '@tanstack/react-query';
+import ApiErrorBoundary from '@/components/ApiErrorBoundary';
+import LoadingIndicator from '@/components/LoadingIndicator';
 
-const EventItemSection = () => {
+interface EventItemSectionProps {
+  category: Convenience;
+}
+
+const EventItemSection = ({ category }: EventItemSectionProps) => {
+  const { reset } = useQueryErrorResetBoundary();
   return (
     <div className="px-[20px]">
       <div className="pb-[18px] pt-[40px]">
@@ -24,20 +32,11 @@ const EventItemSection = () => {
           ))}
         </Chip>
       </div>
-      <div className="flex flex-wrap items-start justify-start gap-x-[18px] gap-y-[50px]">
-        {Array.from({ length: 8 }).map((_, i) => (
-          <EventItemCard
-            key={i}
-            eventItem={{
-              eventType: 'ONE_PLUS_ONE',
-              imageUrl: pyeonImage,
-              price: 20000,
-              title: 'asdfasdf',
-              convenience: '7Eleven',
-            }}
-          />
-        ))}
-      </div>
+      <ApiErrorBoundary onReset={reset}>
+        <Suspense fallback={<LoadingIndicator />}>
+          <EventItems category={category} />
+        </Suspense>
+      </ApiErrorBoundary>
     </div>
   );
 };

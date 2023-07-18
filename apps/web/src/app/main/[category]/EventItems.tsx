@@ -1,5 +1,5 @@
 'use client';
-import { HotTrendCategory } from '@/apis/type';
+import { PromotionGoodsCategory } from '@/apis/type';
 import { Convenience } from '@/app/type';
 import EventItemCard from '@/components/EventItemCard';
 import ChevronIcon from '@/components/icons/ChevronIcon';
@@ -11,7 +11,7 @@ interface EventItemsProps {
   convenience: Convenience;
 }
 
-const mappingSegments: Record<HotTrendCategory, Convenience> = {
+const mappingSegments: Record<PromotionGoodsCategory, Convenience> = {
   ALL: 'ALL',
   CU: 'CU',
   GS25: 'GS25',
