@@ -16,6 +16,7 @@ export const useGetPromotionGoods = (params: PromotionGoodsParams) => {
   return useQuery({
     queryKey: promotionQueryKey.list(params),
     queryFn: () => getPromotionGoods(params),
+    suspense: true,
     useErrorBoundary: true,
   });
 };
