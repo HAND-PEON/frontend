@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
-import { getPromotionGoods } from '@/apis/promotion';
-import { PromotionGoodsParams } from '@/apis/promotion';
+import { type PromotionGoodsParams, getPromotionGoods } from '@/apis/promotion';
 
 export const promotionQueryKey = {
   all: ['promotion'] as const,
@@ -12,10 +11,14 @@ export const promotionQueryKey = {
     [...promotionQueryKey.details(), goodsNo] as const,
 };
 
-export const useGetPromotionGoods = (params: PromotionGoodsParams) => {
+export const useGetPromotionGoods = ({
+  type,
+  keyword,
+  cursor,
+}: PromotionGoodsParams) => {
   return useQuery({
-    queryKey: promotionQueryKey.list(params),
-    queryFn: () => getPromotionGoods(params),
+    queryKey: promotionQueryKey.list({ type, keyword, cursor }),
+    queryFn: () => getPromotionGoods({ type, keyword, cursor }),
     suspense: true,
     useErrorBoundary: true,
   });

@@ -21,7 +21,7 @@ const mappingSegments: Record<HotTrendCategory, Convenience> = {
 
 function EventItems({ convenience }: EventItemsProps) {
   const router = useRouter();
-  const { data } = useGetPromotionGoods(EventMapping[convenience]);
+  const { data } = useGetPromotionGoods({ type: EventMapping[convenience] });
   const goEventPage = () => {
     router.push(`/event/${convenience}`);
   };
