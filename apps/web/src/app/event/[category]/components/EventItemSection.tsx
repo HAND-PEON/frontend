@@ -6,7 +6,6 @@ import React, { Suspense } from 'react';
 import EventItems from './EventItems';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import ApiErrorBoundary from '@/components/ApiErrorBoundary';
-import LoadingIndicator from '@/components/LoadingIndicator';
 
 interface EventItemSectionProps {
   category: Convenience;
@@ -33,7 +32,7 @@ const EventItemSection = ({ category }: EventItemSectionProps) => {
         </Chip>
       </div>
       <ApiErrorBoundary onReset={reset}>
-        <Suspense fallback={<LoadingIndicator />}>
+        <Suspense fallback={<EventItems.Skeleton />}>
           <EventItems category={category} />
         </Suspense>
       </ApiErrorBoundary>

@@ -2,7 +2,7 @@
 import { PromotionGoodsCategory } from '@/apis/type';
 import { type Convenience } from '@/app/type';
 import EventItemCard from '@/components/EventItemCard';
-import { EVENT_TYPE_LIST, EventMapping } from '@/constants/conveniences';
+import { EventMapping } from '@/constants/conveniences';
 import { useGetPromotionGoods } from '@/hooks/query/usePromotion';
 import React from 'react';
 
@@ -30,6 +30,7 @@ const EventItems = ({ category }: EventItemsProps) => {
             imageUrl: promotion.goodsImageUrl,
             price: promotion.goodsPrice,
             title: promotion.goodsName,
+            goodsNo: promotion.goodsNo,
             convenience: mappingSegments[promotion.storeName],
           }}
         />
@@ -37,5 +38,17 @@ const EventItems = ({ category }: EventItemsProps) => {
     </div>
   );
 };
+
+const EventItemsSkeleton = () => {
+  return (
+    <div className="mb-[50px] flex flex-wrap items-start justify-start gap-x-[18px] gap-y-[50px]">
+      {Array.from({ length: 8 }, (_, i) => i).map((_, k) => (
+        <EventItemCard.Skeleton key={k} />
+      ))}
+    </div>
+  );
+};
+
+EventItems.Skeleton = EventItemsSkeleton;
 
 export default EventItems;
