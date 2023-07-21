@@ -7,6 +7,13 @@ export interface PromotionGoodsParams {
   cursor?: number;
 }
 
+export const getPromotionGoods = async (goodsNo: number) => {
+  const { data } = await httpClient.get<{ data: PromotionGoods }>(
+    `/handpyeon/api/promotionGoods/${goodsNo}`,
+  );
+  return data.data;
+};
+
 export const getPromotionGoodsList = async (params: PromotionGoodsParams) => {
   const { data } = await httpClient.get<{ data: PromotionGoods[] }>(
     '/handpyeon/api/promotionGoods',

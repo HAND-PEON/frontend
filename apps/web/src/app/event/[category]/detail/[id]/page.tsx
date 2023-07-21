@@ -1,19 +1,10 @@
 import { Convenience } from '@/app/type';
-import BasicLayout from '@/components/BasicLayout';
-import HomeIconButton from '@/components/HomeIconButton';
-import SearchIconButton from '@/components/SearchIconButton';
-import TabCategory from '@/components/TabCategory';
 import TopButton from '@/components/TopButton';
-import { CONVENIENCE } from '@/constants/conveniences';
-import React from 'react';
+import React, { Suspense } from 'react';
 import EventItemDetailSection from './components/EventItemDetailSection';
 import EventItemTotalSection from './components/EventItemTotalSection';
-
-const categoryInfoList = CONVENIENCE.map((convenience) => ({
-  category: convenience,
-  label: convenience,
-  href: `/event/${convenience}`,
-}));
+import LoadingIndicator from '@/components/LoadingIndicator';
+import ApiErrorBoundary from '@/components/ApiErrorBoundary';
 
 interface EventItemDetailPageProps {
   params: { category: Convenience; id: string };
@@ -25,7 +16,9 @@ const EventItemDetailPage = ({
   return (
     <div>
       <div className="border-b border-[#D7D7D7] bg-white">
-        <EventItemDetailSection />
+        <Suspense fallback={<LoadingIndicator />}>
+          <EventItemDetailSection goodsNo={Number(id)} />
+        </Suspense>
       </div>
       <div className="mt-[15px] bg-white">
         <EventItemTotalSection />
