@@ -4,7 +4,7 @@ import { Convenience } from '@/app/type';
 import EventItemCard from '@/components/EventItemCard';
 import ChevronIcon from '@/components/icons/ChevronIcon';
 import { EventMapping } from '@/constants/conveniences';
-import { useGetPromotionGoods } from '@/hooks/query/usePromotion';
+import { useGetPromotionGoodsList } from '@/hooks/query/usePromotion';
 import { useRouter } from 'next/navigation';
 
 interface EventItemsProps {
@@ -21,7 +21,9 @@ const mappingSegments: Record<PromotionGoodsCategory, Convenience> = {
 
 function EventItems({ convenience }: EventItemsProps) {
   const router = useRouter();
-  const { data } = useGetPromotionGoods({ type: EventMapping[convenience] });
+  const { data } = useGetPromotionGoodsList({
+    type: EventMapping[convenience],
+  });
   const goEventPage = () => {
     router.push(`/event/${convenience}`);
   };

@@ -3,7 +3,7 @@ import { PromotionGoodsCategory } from '@/apis/type';
 import { type Convenience } from '@/app/type';
 import EventItemCard from '@/components/EventItemCard';
 import { EventMapping } from '@/constants/conveniences';
-import { useGetPromotionGoods } from '@/hooks/query/usePromotion';
+import { useGetPromotionGoodsList } from '@/hooks/query/usePromotion';
 import React from 'react';
 
 interface EventItemsProps {
@@ -19,7 +19,7 @@ const mappingSegments: Record<PromotionGoodsCategory, Convenience> = {
 } as const;
 
 const EventItems = ({ category }: EventItemsProps) => {
-  const { data } = useGetPromotionGoods({ type: EventMapping[category] });
+  const { data } = useGetPromotionGoodsList({ type: EventMapping[category] });
   return (
     <div className="flex flex-wrap items-start justify-start gap-x-[18px] gap-y-[50px]">
       {data?.map((promotion, idx) => (

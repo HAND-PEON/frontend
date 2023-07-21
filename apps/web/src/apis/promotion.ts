@@ -7,7 +7,7 @@ export interface PromotionGoodsParams {
   cursor?: number;
 }
 
-export const getPromotionGoods = async (params: PromotionGoodsParams) => {
+export const getPromotionGoodsList = async (params: PromotionGoodsParams) => {
   const { data } = await httpClient.get<{ data: PromotionGoods[] }>(
     '/handpyeon/api/promotionGoods',
     {
