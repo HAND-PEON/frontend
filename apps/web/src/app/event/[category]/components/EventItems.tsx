@@ -4,7 +4,8 @@ import { EventType, type Convenience } from '@/app/type';
 import EventItemCard from '@/components/EventItemCard';
 import { EventMapping } from '@/constants/conveniences';
 import { useGetPromotionGoodsList } from '@/hooks/query/usePromotion';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 
 interface EventItemsProps {
   category: Convenience;
@@ -24,24 +25,35 @@ const EventItems = ({ category, eventType }: EventItemsProps) => {
     type: EventMapping[category],
     promotionType: eventType,
   });
+  const { ref, inView } = useInView();
+
+  useEffect(() => {
+    if (inView && data?.pages) {
+      fetchNextPage();
+    }
+  }, [inView]);
+
   return (
-    <div className="flex flex-wrap items-start justify-start gap-x-[18px] gap-y-[50px]">
-      {data?.pages.map((page) =>
-        page.data.map((promotion, idx) => (
-          <EventItemCard
-            key={`${idx}-${promotion.goodsNo}`}
-            eventItem={{
-              eventType: promotion.promotionType,
-              imageUrl: promotion.goodsImageUrl,
-              price: promotion.goodsPrice,
-              title: promotion.goodsName,
-              goodsNo: promotion.goodsNo,
-              convenience: mappingSegments[promotion.storeName],
-            }}
-          />
-        )),
-      )}
-    </div>
+    <>
+      <div className="flex flex-wrap items-start justify-start gap-x-[18px] gap-y-[50px]">
+        {data?.pages.map((page) =>
+          page.data.map((promotion, idx) => (
+            <EventItemCard
+              key={`${idx}-${promotion.goodsNo}`}
+              eventItem={{
+                eventType: promotion.promotionType,
+                imageUrl: promotion.goodsImageUrl,
+                price: promotion.goodsPrice,
+                title: promotion.goodsName,
+                goodsNo: promotion.goodsNo,
+                convenience: mappingSegments[promotion.storeName],
+              }}
+            />
+          )),
+        )}
+      </div>
+      {isFetchingNextPage ? <div>Loading...</div> : <div ref={ref} />}
+    </>
   );
 };
 
