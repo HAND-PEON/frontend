@@ -8,6 +8,7 @@ import { formatNumberWithComma } from '@/utils/numberFormatter';
 interface HotTrendCardProps extends HotTrendGoods {}
 
 export default function HotTrendCard({
+  id,
   rank,
   storeName,
   goodsName,

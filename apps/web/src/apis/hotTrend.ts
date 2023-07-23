@@ -1,9 +1,14 @@
 import httpClient from '@/http/client';
 
-import { HotTrendCategory, HotTrendGoods } from './type';
+import { HotTrendCategory, HotTrendGoods, PageInfo } from './type';
+
+interface HotTrendGoodsResponse {
+  pageInfo: PageInfo | null;
+  data: HotTrendGoods[];
+}
 
 export const getHotTrendGoods = async (params: HotTrendCategory) => {
-  const { data } = await httpClient.get<{ data: HotTrendGoods[] }>(
+  const { data } = await httpClient.get<HotTrendGoodsResponse>(
     '/handpyeon/api/hotTrends',
     {
       params: {

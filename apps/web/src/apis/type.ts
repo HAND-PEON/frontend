@@ -21,6 +21,7 @@ export interface PromotionGoods {
 export type HotTrendCategory = StoreName | 'ALL';
 
 export interface HotTrendGoods {
+  id: number;
   rank: number;
   storeName: StoreName;
   goodsName: string;
