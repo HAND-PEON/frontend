@@ -13,7 +13,7 @@ interface EventItemSectionProps {
 
 const EventItemSection = ({ category }: EventItemSectionProps) => {
   const { reset } = useQueryErrorResetBoundary();
-  const [eventType, setEventType] = useState<EventType>();
+  const [eventType, setEventType] = useState<EventType>('ONE_PLUS_ONE');
   return (
     <div className="px-[20px]">
       <div className="pb-[18px] pt-[40px]">
