@@ -1,8 +1,13 @@
 import httpClient from '@/http/client';
-import type { PromotionGoods, PromotionGoodsCategory } from './type';
+import type {
+  PromotionGoods,
+  PromotionGoodsCategory,
+  PromotionType,
+} from './type';
 
 export interface PromotionGoodsParams {
   type: PromotionGoodsCategory;
+  promotionType?: PromotionType;
   keyword?: string;
   cursor?: number;
 }

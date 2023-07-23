@@ -13,12 +13,13 @@ export const promotionQueryKey = {
 
 export const useGetPromotionGoods = ({
   type,
+  promotionType,
   keyword,
   cursor,
 }: PromotionGoodsParams) => {
   return useQuery({
-    queryKey: promotionQueryKey.list({ type, keyword, cursor }),
-    queryFn: () => getPromotionGoods({ type, keyword, cursor }),
+    queryKey: promotionQueryKey.list({ type, promotionType, keyword, cursor }),
+    queryFn: () => getPromotionGoods({ type, promotionType, keyword, cursor }),
     suspense: true,
     useErrorBoundary: true,
   });
