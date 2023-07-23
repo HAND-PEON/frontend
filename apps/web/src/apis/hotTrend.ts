@@ -1,6 +1,11 @@
 import httpClient from '@/http/client';
 
-import { HotTrendCategory, HotTrendGoods, PageInfo } from './type';
+import {
+  HotTrendCategory,
+  HotTrendGoods,
+  HotTrendGoodsDetail,
+  PageInfo,
+} from './type';
 
 interface HotTrendGoodsResponse {
   pageInfo: PageInfo | null;
@@ -15,6 +20,18 @@ export const getHotTrendGoods = async (params: HotTrendCategory) => {
         type: params,
       },
     },
+  );
+  return data.data;
+};
+
+interface HotTrendGoodsDetailResponse {
+  pageInfo: PageInfo | null;
+  data: HotTrendGoodsDetail;
+}
+
+export const getHotTrendGoodsDetail = async (id: number) => {
+  const { data } = await httpClient.get<HotTrendGoodsDetailResponse>(
+    `/handpyeon/api/hotTrends/${id}`,
   );
   return data.data;
 };

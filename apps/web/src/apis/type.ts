@@ -29,6 +29,12 @@ export interface HotTrendGoods {
   goodsImageUrl: string;
 }
 
+export interface HotTrendGoodsDetail extends HotTrendGoods {
+  title: string;
+  content: string;
+  linkUrl: string;
+}
+
 export interface RecommendationBanner {
   id: number;
   bannerImageUrl: string;
