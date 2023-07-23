@@ -29,7 +29,8 @@ export interface HotTrendGoods {
 }
 
 export interface RecommendationBanner {
-  bannerImage: string;
+  id: number;
+  bannerImageUrl: string;
   contentsNumber: number;
 }
 
@@ -52,4 +53,9 @@ export interface RecommendationDetail {
   recommendStartDate: string;
   recommendEndDate: string;
   contentsList: RecommendationDetailContent[];
+}
+
+export interface PageInfo {
+  totalElements: number;
+  totalPages: number;
 }
