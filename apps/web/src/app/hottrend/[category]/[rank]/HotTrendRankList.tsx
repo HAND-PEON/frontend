@@ -10,7 +10,7 @@ interface HotTrendRankListProps {
 }
 
 export default function HotTrendRankList({ category }: HotTrendRankListProps) {
-  const { data: hotTrendData } = useGetHotTrendGoods(HotTrendMapping[category]);
+  const { data } = useGetHotTrendGoods(HotTrendMapping[category]);
 
   return (
     <div className="mt-4 bg-white px-5 py-9">
@@ -26,7 +26,7 @@ export default function HotTrendRankList({ category }: HotTrendRankListProps) {
         <div>Hot Trend🔥 랭킹</div>
       </div>
       <div className="mt-8 flex flex-col gap-5">
-        {hotTrendData.map((props) => (
+        {data.map((props) => (
           <HotTrendCard key={props.id} {...props} />
         ))}
       </div>
