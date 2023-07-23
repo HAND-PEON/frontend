@@ -25,6 +25,5 @@ export const getPromotionGoodsList = async (params: PromotionGoodsParams) => {
     data,
     pageInfo,
     nextCursor: params.cursor + 1,
-    currentPage: params.cursor,
   };
 };

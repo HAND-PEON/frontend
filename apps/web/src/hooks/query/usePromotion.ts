@@ -30,7 +30,7 @@ export const useGetPromotionGoodsList = ({
         cursor: pageParam,
       }),
     getNextPageParam: (lastPage) =>
-      lastPage.pageInfo.totalPages !== lastPage.currentPage
+      lastPage.pageInfo.totalPages !== lastPage.nextCursor
         ? lastPage.nextCursor
         : undefined,
     suspense: true,
