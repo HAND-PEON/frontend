@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { Convenience } from '@/app/type';
 import ChevronRightIcon from '@/components/icons/ChevronRightIcon';
 import CrownIcon from '@/components/icons/CrownIcon';
+import { HotTrendMapping } from '@/constants/conveniences';
 import { hotTrendInfoData } from '@/dummy/hotTrend';
 import { formatNumberWithComma, prefixZero } from '@/utils/numberFormatter';
 
@@ -14,7 +15,9 @@ interface HotTrendInfoProps {
 
 export default function HotTrendInfo({ category, rank }: HotTrendInfoProps) {
   const info = hotTrendInfoData.find(
-    (data) => data.rank === Number(rank) && data.storeName === category,
+    (data) =>
+      data.rank === Number(rank) &&
+      data.storeName === HotTrendMapping[category],
   );
 
   return (
