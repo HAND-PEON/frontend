@@ -37,3 +37,19 @@ export const useGetPromotionGoodsList = ({
     useErrorBoundary: true,
   });
 };
+
+export const useGetFirstPagePromotionGoodsList = ({
+  type,
+}: PromotionGoodsParams) => {
+  return useQuery({
+    queryKey: promotionQueryKey.list({
+      type,
+    }),
+    queryFn: () =>
+      getPromotionGoodsList({
+        type,
+      }),
+    suspense: true,
+    useErrorBoundary: true,
+  });
+};

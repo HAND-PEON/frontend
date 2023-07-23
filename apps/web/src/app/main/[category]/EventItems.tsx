@@ -4,7 +4,7 @@ import { Convenience } from '@/app/type';
 import EventItemCard from '@/components/EventItemCard';
 import ChevronIcon from '@/components/icons/ChevronIcon';
 import { EventMapping } from '@/constants/conveniences';
-import { useGetPromotionGoodsList } from '@/hooks/query/usePromotion';
+import { useGetFirstPagePromotionGoodsList } from '@/hooks/query/usePromotion';
 import { useRouter } from 'next/navigation';
 
 interface EventItemsProps {
@@ -21,7 +21,7 @@ const mappingSegments: Record<PromotionGoodsCategory, Convenience> = {
 
 function EventItems({ convenience }: EventItemsProps) {
   const router = useRouter();
-  const { data } = useGetPromotionGoodsList({
+  const { data } = useGetFirstPagePromotionGoodsList({
     type: EventMapping[convenience],
   });
   const goEventPage = () => {
@@ -30,7 +30,7 @@ function EventItems({ convenience }: EventItemsProps) {
   return (
     <div>
       <div className="mb-[50px] flex flex-wrap items-start justify-start gap-x-[18px] gap-y-[50px]">
-        {data?.map((promotion, idx) => (
+        {data?.data.map((promotion, idx) => (
           <EventItemCard
             key={`${idx}-${promotion.goodsNo}`}
             eventItem={{
