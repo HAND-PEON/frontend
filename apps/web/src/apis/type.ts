@@ -17,6 +17,13 @@ export interface PromotionGoods {
   promotionType: PromotionType;
   storeName: StoreName;
 }
+export interface PromotionGoodsList {
+  data: PromotionGoods[];
+  pageInfo: {
+    totalElements: number;
+    totalPages: number;
+  };
+}
 
 export type HotTrendCategory = StoreName | 'ALL';
 
