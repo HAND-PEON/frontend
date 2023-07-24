@@ -7,16 +7,16 @@ import HotTrendInfo from './HotTrendInfo';
 import HotTrendRankList from './HotTrendRankList';
 
 interface CategoryPageProps {
-  params: { category: Convenience; rank: number };
+  params: { category: Convenience; id: number };
 }
 
 export default function HotTrendCategoryRankInfoPage({
-  params: { category, rank },
+  params: { category, id },
 }: CategoryPageProps) {
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <HotTrendInfo category={category} rank={rank} />
+        {id.toString() !== '0' && <HotTrendInfo category={category} id={id} />}
         <HotTrendRankList category={category} />
       </Suspense>
     </>

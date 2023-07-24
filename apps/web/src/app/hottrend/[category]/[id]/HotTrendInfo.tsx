@@ -11,11 +11,11 @@ import { formatNumberWithComma, prefixZero } from '@/utils/numberFormatter';
 
 interface HotTrendInfoProps {
   category: Convenience;
-  rank: number;
+  id: number;
 }
 
-export default function HotTrendInfo({ category, rank }: HotTrendInfoProps) {
-  const { data: info } = useGetHotTrendGoodsDetail(rank);
+export default function HotTrendInfo({ category, id }: HotTrendInfoProps) {
+  const { data: info } = useGetHotTrendGoodsDetail(id);
 
   return (
     <div className="bg-white px-5 pb-9 pt-5 font-bold">
