@@ -1,8 +1,11 @@
 'use client';
 
-import HotTrendCard from '@/components/HotTrendItem';
+import Image from 'next/image';
+
 import Loading from '@/components/Loading';
 import { useGetRecommendationContents } from '@/hooks/query/useRecommendation';
+
+import ContentsDetailCard from './ContentsDetailCard';
 
 interface ContentsDetailPageProps {
   params: { id: number };
@@ -54,17 +57,21 @@ export default function ContentsDetailPage({
             <div key={`${idx}`}>
               <div className="text-[15px]">
                 {contents.content}
-                <div className="h-[290px] bg-[#7EAE89] text-center leading-[290px]">
-                  사진
-                  {/* TODO: 임시 데이터에 Image가 깨지는 문제가 있어서 추후 수정 */}
-                </div>
+                {contents.contentsImageUrls.map((one, idx) => (
+                  <div key={idx} className="relative h-[290px]">
+                    <Image
+                      className="object-contain"
+                      sizes="(min-width: 768px) 100vw, (max-width: 1200px) 100vw"
+                      priority
+                      src={one}
+                      alt={`contentsImages-${idx}`}
+                      fill
+                    />
+                  </div>
+                ))}
               </div>
               <div className="mt-6 pr-[5px]">
-                <HotTrendCard
-                  rank={idx + 1}
-                  id={contents.goodsInfo.goodsNo}
-                  {...contents.goodsInfo}
-                />
+                <ContentsDetailCard {...contents.goodsInfo} />
               </div>
             </div>
           ))}
