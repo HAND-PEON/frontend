@@ -1,6 +1,8 @@
-import { useQuery } from '@tanstack/react-query';
-import { getPromotionGoods } from '@/apis/promotion';
-import { PromotionGoodsParams } from '@/apis/promotion';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
+import {
+  type PromotionGoodsParams,
+  getPromotionGoodsList,
+} from '@/apis/promotion';
 
 export const promotionQueryKey = {
   all: ['promotion'] as const,
@@ -12,10 +14,42 @@ export const promotionQueryKey = {
     [...promotionQueryKey.details(), goodsNo] as const,
 };
 
-export const useGetPromotionGoods = (params: PromotionGoodsParams) => {
+export const useGetPromotionGoodsList = ({
+  type,
+  promotionType,
+  keyword,
+  cursor,
+}: PromotionGoodsParams) => {
+  return useInfiniteQuery({
+    queryKey: promotionQueryKey.list({ type, promotionType, keyword, cursor }),
+    queryFn: ({ pageParam = 0 }) =>
+      getPromotionGoodsList({
+        type,
+        promotionType,
+        keyword,
+        cursor: pageParam,
+      }),
+    getNextPageParam: (lastPage) =>
+      lastPage.pageInfo.totalPages !== lastPage.nextCursor
+        ? lastPage.nextCursor
+        : undefined,
+    suspense: true,
+    useErrorBoundary: true,
+  });
+};
+
+export const useGetFirstPagePromotionGoodsList = ({
+  type,
+}: PromotionGoodsParams) => {
   return useQuery({
-    queryKey: promotionQueryKey.list(params),
-    queryFn: () => getPromotionGoods(params),
+    queryKey: promotionQueryKey.list({
+      type,
+    }),
+    queryFn: () =>
+      getPromotionGoodsList({
+        type,
+      }),
+    suspense: true,
     useErrorBoundary: true,
   });
 };

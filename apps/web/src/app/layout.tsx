@@ -30,7 +30,6 @@ export default function RootLayout({
                 alt="intro-contents"
                 width={345}
                 height={190}
-                priority
               />
             </div>
             {/* spacing block */}
@@ -41,7 +40,6 @@ export default function RootLayout({
                 alt="handpyeon-text"
                 width={300}
                 height={113}
-                priority
               />
               <div className="absolute right-[_-80px] top-[_-65px] h-[84px] w-[84px]">
                 <Image
@@ -49,7 +47,6 @@ export default function RootLayout({
                   alt="left-arrow"
                   width={68}
                   height={68}
-                  priority
                 />
               </div>
               <div className="absolute bottom-[_-130px] left-[_-80px] h-[84px] w-[84px]">
@@ -58,7 +55,6 @@ export default function RootLayout({
                   alt="right-arrow"
                   width={68}
                   height={68}
-                  priority
                 />
               </div>
             </div>
@@ -70,7 +66,6 @@ export default function RootLayout({
             alt="brand-contents"
             width={746}
             height={226}
-            priority
           />
         </div>
         <main className="flex min-h-full w-full justify-center lg:justify-normal">

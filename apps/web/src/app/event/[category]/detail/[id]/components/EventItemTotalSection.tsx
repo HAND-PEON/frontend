@@ -15,7 +15,7 @@ const EventItemTotalSection = () => {
         </Link>
       </div>
       <div className="flex flex-wrap items-start justify-start gap-x-[18px] gap-y-[50px]">
-        {Array.from({ length: 8 }).map((_, i) => (
+        {/* {Array.from({ length: 8 }).map((_, i) => (
           <EventItemCard
             key={i}
             eventItem={{
@@ -26,7 +26,7 @@ const EventItemTotalSection = () => {
               convenience: '7Eleven',
             }}
           />
-        ))}
+        ))} */}
       </div>
     </div>
   );

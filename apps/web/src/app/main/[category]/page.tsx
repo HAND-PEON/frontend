@@ -42,7 +42,7 @@ export default function CategoryPage({
           </Suspense>
         </ApiErrorBoundary>
         <ApiErrorBoundary onReset={reset}>
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<EventItems.Skeleton />}>
             <EventItems convenience={category} />
           </Suspense>
         </ApiErrorBoundary>

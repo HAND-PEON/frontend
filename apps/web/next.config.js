@@ -16,6 +16,18 @@ const nextConfig = {
         port: '',
         pathname: '/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'image.woodongs.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'http',
+        hostname: 'www.emart24.co.kr',
+        port: '',
+        pathname: '/**',
+      },
     ],
   },
 };

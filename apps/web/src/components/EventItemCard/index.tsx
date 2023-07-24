@@ -6,6 +6,7 @@ import { EVENT_TYPE_MAP } from '@/constants/conveniences';
 import Link from 'next/link';
 import { type PromotionType } from '@/apis/type';
 interface EventItem {
+  goodsNo: number;
   eventType: PromotionType;
   imageUrl: string;
   price: number;
@@ -18,11 +19,11 @@ interface Props {
 }
 
 const EventItemCard = ({
-  eventItem: { eventType, imageUrl, convenience, title, price },
+  eventItem: { eventType, imageUrl, convenience, title, price, goodsNo },
 }: Props) => {
   return (
     <div className="w-[calc(50%_-_9px)]">
-      <Link href={`/event/${convenience}/detail/1`}>
+      <Link href={`/event/${convenience}/detail/${goodsNo}`}>
         <div className="mb-[12px] aspect-square w-full rounded-[9px] border-2 border-b-[4px] border-r-[4px] border-black p-[5px]">
           <div className="relative flex h-full w-full items-center justify-center">
             <div
@@ -61,5 +62,21 @@ const EventItemCard = ({
     </div>
   );
 };
+
+const EventItemCardSekelton = () => {
+  return (
+    <div className="w-[calc(50%_-_9px)] animate-pulse">
+      <div className="aspect-square w-full rounded bg-slate-200" />
+      <hr className="h-[10px]" />
+      <div className="flex flex-col gap-1">
+        <div className="h-[9px] w-[35px] rounded bg-slate-200"></div>
+        <div className="h-[12px] w-full rounded bg-slate-200"></div>
+        <div className="h-[12px] w-1/2 rounded bg-slate-200"></div>
+      </div>
+    </div>
+  );
+};
+
+EventItemCard.Skeleton = EventItemCardSekelton;
 
 export default EventItemCard;

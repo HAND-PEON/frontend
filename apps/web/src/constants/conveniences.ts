@@ -27,7 +27,12 @@ export const mappingSegments: Record<HotTrendCategory, Convenience> = {
   EMART24: 'Emart24',
 };
 
-export const EVENT_TYPE_LIST = ['1+1', '2+1', '할인', '+덤'];
+export const EVENT_TYPE_LIST: { text: string; type: EventType }[] = [
+  { text: '1+1', type: 'ONE_PLUS_ONE' },
+  { text: '2+1', type: 'TWO_PLUS_ONE' },
+  { text: '할인', type: 'SALE' },
+  { text: '+덤', type: 'BONUS' },
+];
 
 export const EVENT_TYPE_MAP: Record<EventType, { text: string; bg: string }> = {
   ONE_PLUS_ONE: { text: '1+1', bg: 'bg-[#73F69D]' },
