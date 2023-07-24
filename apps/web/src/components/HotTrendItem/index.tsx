@@ -8,6 +8,7 @@ import { formatNumberWithComma } from '@/utils/numberFormatter';
 interface HotTrendCardProps extends HotTrendGoods {}
 
 export default function HotTrendCard({
+  id,
   rank,
   storeName,
   goodsName,
@@ -16,7 +17,7 @@ export default function HotTrendCard({
 }: HotTrendCardProps) {
   return (
     <div className="min-h-[165px]  w-full">
-      <Link className="relative" href={`/hottrend/${storeName}/${rank}`}>
+      <Link className="relative" href={`/hottrend/${storeName}/${id}`}>
         <div className="border-main1 bg-main1 absolute left-[2px] top-[1px] h-full w-[calc(100%+3px)] rounded-[9px] border-2"></div>
         <div className="p-10px relative  flex h-[165px] rounded-[9px] border-2 border-[#1E1C1C]  bg-white">
           <div className="relative my-2 ml-[27px] flex-1">

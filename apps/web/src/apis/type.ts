@@ -21,11 +21,18 @@ export interface PromotionGoods {
 export type HotTrendCategory = StoreName | 'ALL';
 
 export interface HotTrendGoods {
+  id: number;
   rank: number;
   storeName: StoreName;
   goodsName: string;
   goodsPrice: number;
   goodsImageUrl: string;
+}
+
+export interface HotTrendGoodsDetail extends HotTrendGoods {
+  title: string;
+  content: string;
+  linkUrl: string;
 }
 
 export interface RecommendationBanner {

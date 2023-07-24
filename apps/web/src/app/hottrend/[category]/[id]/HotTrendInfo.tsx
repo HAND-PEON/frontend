@@ -1,21 +1,21 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { Convenience } from '@/app/type';
 import ChevronRightIcon from '@/components/icons/ChevronRightIcon';
 import CrownIcon from '@/components/icons/CrownIcon';
-import { hotTrendInfoData } from '@/dummy/hotTrend';
+import { useGetHotTrendGoodsDetail } from '@/hooks/query/useHotTrends';
 import { formatNumberWithComma, prefixZero } from '@/utils/numberFormatter';
 
 interface HotTrendInfoProps {
   category: Convenience;
-  rank: number;
+  id: number;
 }
 
-export default function HotTrendInfo({ category, rank }: HotTrendInfoProps) {
-  const info = hotTrendInfoData.find(
-    (data) => data.rank === Number(rank) && data.storeName === category,
-  );
+export default function HotTrendInfo({ category, id }: HotTrendInfoProps) {
+  const { data: info } = useGetHotTrendGoodsDetail(id);
 
   return (
     <div className="bg-white px-5 pb-9 pt-5 font-bold">
@@ -30,9 +30,7 @@ export default function HotTrendInfo({ category, rank }: HotTrendInfoProps) {
         </div>
         <div className="border-main1 flex border-2">
           <div>
-            <div className="px-17px py-21px break-keep">
-              {info.hottrendTitle}
-            </div>
+            <div className="px-17px py-21px break-keep">{info.title}</div>
             <div className="border-main1 px-17px py-4px border-t-2 font-medium">
               <div>{info.goodsName}</div>
               <div>{formatNumberWithComma(info.goodsPrice)}원</div>
@@ -50,12 +48,12 @@ export default function HotTrendInfo({ category, rank }: HotTrendInfoProps) {
           </div>
         </div>
         <div className="border-main1 py-9px px-40px text-15px break-keep border-x-2 text-center font-medium">
-          {info.hottrendContent}
+          {info.content}
         </div>
         <div className=" border-main1 border-2">
           <Link
             className="p-9px flex w-full items-center justify-center gap-1 bg-[#D3EB6E]"
-            href={''}
+            href={info.linkUrl}
           >
             <span className="text-15px font-bold">더 알아보기</span>
             <ChevronRightIcon />

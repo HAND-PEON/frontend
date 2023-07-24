@@ -1,15 +1,16 @@
+'use client';
+
 import { Convenience } from '@/app/type';
 import HotTrendCard from '@/components/HotTrendItem';
-import { mainHotTrendData } from '@/dummy/hotTrend';
+import { HotTrendMapping } from '@/constants/conveniences';
+import { useGetHotTrendGoods } from '@/hooks/query/useHotTrends';
 
 interface HotTrendRankListProps {
   category: Convenience;
 }
 
 export default function HotTrendRankList({ category }: HotTrendRankListProps) {
-  const hotTrendData = mainHotTrendData.filter(
-    (one) => one.storeName === category,
-  );
+  const { data } = useGetHotTrendGoods(HotTrendMapping[category]);
 
   return (
     <div className="mt-4 bg-white px-5 py-9">
@@ -25,7 +26,7 @@ export default function HotTrendRankList({ category }: HotTrendRankListProps) {
         <div>Hot Trend🔥 랭킹</div>
       </div>
       <div className="mt-8 flex flex-col gap-5">
-        {hotTrendData.map((props) => (
+        {data.map((props) => (
           <HotTrendCard key={props.id} {...props} />
         ))}
       </div>

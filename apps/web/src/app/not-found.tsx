@@ -10,7 +10,7 @@ export default function NotFound() {
     case segmentList.includes('main'):
       return redirect('/main/ALL');
     case segmentList.includes('hottrend'):
-      return redirect('/hottrend/CU/1');
+      return redirect('/main/ALL');
     case segmentList.includes('event'):
       return redirect('/event/ALL');
     default:
