@@ -16,7 +16,9 @@ export default function HotTrendCategoryRankInfoPage({
   return (
     <>
       <Suspense fallback={<Loading />}>
-        {id.toString() !== '0' && <HotTrendInfo category={category} id={id} />}
+        {id.toString() !== 'null' && (
+          <HotTrendInfo category={category} id={id} />
+        )}
         <HotTrendRankList category={category} />
       </Suspense>
     </>

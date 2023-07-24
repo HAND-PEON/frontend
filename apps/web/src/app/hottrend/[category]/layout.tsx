@@ -14,7 +14,7 @@ const convenienceList = CONVENIENCE.filter((item) => item !== 'ALL');
 const categoryInfoList = convenienceList.map((convenience) => ({
   category: convenience,
   label: convenience,
-  href: `/hottrend/${convenience}/1`,
+  href: `/hottrend/${convenience}`,
 }));
 
 export default function HotTrendCategoryLayout({
