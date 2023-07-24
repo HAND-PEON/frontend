@@ -49,12 +49,14 @@ export interface RecommendationSummary {
 }
 
 export interface RecommendationDetailContent {
+  id: number;
   content: string;
   contentsImageUrls: string[];
   goodsInfo: PromotionGoods;
 }
 
 export interface RecommendationDetail {
+  id: number;
   recommendType: string;
   title: string;
   recommendStartDate: string;
