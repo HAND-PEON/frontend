@@ -1,10 +1,12 @@
+'use client';
 import { Convenience } from '@/app/type';
+import ApiErrorBoundary from '@/components/ApiErrorBoundary';
+import LoadingIndicator from '@/components/LoadingIndicator';
 import TopButton from '@/components/TopButton';
+import { useQueryErrorResetBoundary } from '@tanstack/react-query';
 import React, { Suspense } from 'react';
 import EventItemDetailSection from './components/EventItemDetailSection';
 import EventItemTotalSection from './components/EventItemTotalSection';
-import LoadingIndicator from '@/components/LoadingIndicator';
-import ApiErrorBoundary from '@/components/ApiErrorBoundary';
 
 interface EventItemDetailPageProps {
   params: { category: Convenience; id: string };
@@ -13,16 +15,19 @@ interface EventItemDetailPageProps {
 const EventItemDetailPage = ({
   params: { category, id },
 }: EventItemDetailPageProps) => {
+  const { reset } = useQueryErrorResetBoundary();
   return (
     <div>
-      <div className="border-b border-[#D7D7D7] bg-white">
+      <ApiErrorBoundary onReset={reset}>
         <Suspense fallback={<LoadingIndicator />}>
-          <EventItemDetailSection goodsNo={Number(id)} />
+          <div className="border-b border-[#D7D7D7] bg-white">
+            <EventItemDetailSection goodsNo={Number(id)} />
+          </div>
+          <div className="mt-[15px] bg-white">
+            <EventItemTotalSection category={category} />
+          </div>
         </Suspense>
-      </div>
-      <div className="mt-[15px] bg-white">
-        <EventItemTotalSection />
-      </div>
+      </ApiErrorBoundary>
       <div className="fixed bottom-7 right-6 z-50 ml-auto mr-auto">
         <TopButton />
       </div>

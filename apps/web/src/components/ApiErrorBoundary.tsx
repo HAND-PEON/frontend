@@ -39,6 +39,7 @@ class ApiErrorBoundary extends React.Component<ApiErrorBoundaryProps, State> {
         error: apiError,
       };
     }
+
     return {
       shouldHandleError: true,
       shouldRethrow: false,
