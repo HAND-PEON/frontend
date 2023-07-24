@@ -9,7 +9,7 @@ export const EventMapping: Record<Convenience, HotTrendCategory> = {
   GS25: 'GS25',
   '7Eleven': 'SEVEN11',
   Emart24: 'EMART24',
-} as const;
+};
 
 export const HotTrendMapping: Record<Convenience, HotTrendCategory> = {
   ALL: 'ALL',
@@ -17,7 +17,15 @@ export const HotTrendMapping: Record<Convenience, HotTrendCategory> = {
   GS25: 'GS25',
   '7Eleven': 'SEVEN11',
   Emart24: 'EMART24',
-} as const;
+};
+
+export const mappingSegments: Record<HotTrendCategory, Convenience> = {
+  ALL: 'ALL',
+  CU: 'CU',
+  GS25: 'GS25',
+  SEVEN11: '7Eleven',
+  EMART24: 'Emart24',
+};
 
 export const EVENT_TYPE_LIST = ['1+1', '2+1', '할인', '+덤'];
 
