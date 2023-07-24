@@ -60,7 +60,11 @@ export default function ContentsDetailPage({
                 </div>
               </div>
               <div className="mt-6 pr-[5px]">
-                <HotTrendCard rank={idx + 1} {...contents.goodsInfo} />
+                <HotTrendCard
+                  rank={idx + 1}
+                  id={contents.goodsInfo.goodsNo}
+                  {...contents.goodsInfo}
+                />
               </div>
             </div>
           ))}
