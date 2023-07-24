@@ -6,6 +6,7 @@ import { BANNER_DATA } from '@/constants/assets';
 import { useGetPromotionGoods } from '@/hooks/query/usePromotion';
 import type { PromotionGoodsCategory } from '@/apis/type';
 import type { Convenience } from '@/app/type';
+import { useGetRecommendationContents } from '@/hooks/query/useRecommendation';
 
 interface EventItemDetailSectionProps {
   goodsNo: number;
@@ -21,6 +22,7 @@ const mappingSegments: Record<PromotionGoodsCategory, Convenience> = {
 
 const EventItemDetailSection = ({ goodsNo }: EventItemDetailSectionProps) => {
   const { data } = useGetPromotionGoods(goodsNo);
+  const { data: bannerData } = useGetRecommendationContents();
   return (
     <div className="px-[20px]">
       <div className="pb-[20px] pt-[29px]">
@@ -37,7 +39,7 @@ const EventItemDetailSection = ({ goodsNo }: EventItemDetailSectionProps) => {
       </div>
       <div className=" pb-[30px]">
         <div className="h-[178px] overflow-hidden rounded-[10px]">
-          <BannerSlides data={BANNER_DATA} totalViewURL="/recommendation" />
+          <BannerSlides data={bannerData} totalViewURL="/recommendation" />
         </div>
       </div>
     </div>
