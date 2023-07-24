@@ -38,18 +38,31 @@ interface RecommendationListParams {
   cursor?: number;
 }
 
+interface RecommendationListResponse {
+  pageInfo: PageInfo | null;
+  data: RecommendationSummary[];
+}
+
 export const getRecommendationList = async (
   params: RecommendationListParams,
 ) => {
-  const { data } = await httpClient.get<{ data: RecommendationSummary[] }>(
+  const { data } = await httpClient.get<RecommendationListResponse>(
     '/handpyeon/api/recommends',
     { params },
   );
-  return data.data;
+  return data.data.map((one) => ({
+    ...one,
+    imageUrl: checkTreshURL(one.imageUrl, DEFAULT_BANNER_IMAGE),
+  }));
 };
 
+interface RecommendationContentsResponse {
+  pageInfo: PageInfo | null;
+  data: RecommendationDetail;
+}
+
 export const getRecommendationContents = async (id: number) => {
-  const { data } = await httpClient.get<{ data: RecommendationDetail }>(
+  const { data } = await httpClient.get<RecommendationContentsResponse>(
     `/handpyeon/api/recommends/${id}`,
   );
   return data.data;
