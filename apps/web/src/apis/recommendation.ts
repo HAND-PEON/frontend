@@ -8,12 +8,11 @@ import {
   RecommendationSummary,
 } from './type';
 
-const TRESH_TEXTS = ['http://~', 'https://~', '://~'];
+const TRESH_TEXTS = ['http://~', 'https://~', '://~', 'test thumbnail'];
 const DEFAULT_BANNER_IMAGE = '/image/banner1.png';
 
-function checkTreshURL(url: string) {
-  if (TRESH_TEXTS.some((text) => url.includes(text)))
-    return DEFAULT_BANNER_IMAGE;
+export function checkTreshURL(url: string, alternativeURL: string) {
+  if (TRESH_TEXTS.some((text) => url.includes(text))) return alternativeURL;
   return url;
 }
 
@@ -28,7 +27,7 @@ export const getRecommendationBanners = async () => {
   );
 
   return data.data.map(({ bannerImageUrl, contentsNumber }) => ({
-    src: checkTreshURL(bannerImageUrl),
+    src: checkTreshURL(bannerImageUrl, DEFAULT_BANNER_IMAGE),
     url: `/recommendation/contents/${contentsNumber}`,
   }));
 };
