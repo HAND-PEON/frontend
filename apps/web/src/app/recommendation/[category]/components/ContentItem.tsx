@@ -16,7 +16,7 @@ export default function ContentItem({
 }: ContentItemProps) {
   return (
     <Link href={href}>
-      <div className="border-main1 border-2">
+      <div className="border-main1 overflow-hidden rounded-lg border-2">
         <div className="relative  min-h-[122px]">
           <Image
             src={imageURL}
