@@ -1,5 +1,6 @@
 import httpClient from '@/http/client';
 import type {
+  PromotionGoods,
   PromotionGoodsCategory,
   PromotionGoodsList,
   PromotionType,

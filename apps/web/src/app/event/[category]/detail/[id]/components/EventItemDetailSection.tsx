@@ -2,11 +2,10 @@
 import React from 'react';
 import EventItemDetailCard from './EventItemDetailCard';
 import BannerSlides from '@/components/BannerSlides';
-import { BANNER_DATA } from '@/constants/assets';
 import { useGetPromotionGoods } from '@/hooks/query/usePromotion';
 import type { PromotionGoodsCategory } from '@/apis/type';
 import type { Convenience } from '@/app/type';
-import { useGetRecommendationContents } from '@/hooks/query/useRecommendation';
+import { useGetRecommendationBanners } from '@/hooks/query/useRecommendation';
 
 interface EventItemDetailSectionProps {
   goodsNo: number;
@@ -22,7 +21,7 @@ const mappingSegments: Record<PromotionGoodsCategory, Convenience> = {
 
 const EventItemDetailSection = ({ goodsNo }: EventItemDetailSectionProps) => {
   const { data } = useGetPromotionGoods(goodsNo);
-  const { data: bannerData } = useGetRecommendationContents();
+  const { data: bannerData } = useGetRecommendationBanners();
   return (
     <div className="px-[20px]">
       <div className="pb-[20px] pt-[29px]">

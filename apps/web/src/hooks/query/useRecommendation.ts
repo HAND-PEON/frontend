@@ -38,7 +38,22 @@ export const useGetRecommendationList = (params: RecommendationListParams) => {
   });
 };
 
-export const useGetRecommendationContents = () => {
+export const useGetRecommendationContents = (id: number) => {
+  return useQuery({
+    queryKey: queryKeyRecommendationDetail(id),
+    queryFn: () => getRecommendationContents(id),
+    useErrorBoundary: true,
+    select(data) {
+      return {
+        ...data,
+        recommendStartDate: data.recommendStartDate.replaceAll('-', '.'),
+        recommendEndDate: data.recommendEndDate.replaceAll('-', '.'),
+      };
+    },
+  });
+};
+
+export const useGetRecommendationBanners = () => {
   return useQuery({
     queryKey: queryKeyBannerRecommendationList(),
     queryFn: () => getRecommendationBanners(),
