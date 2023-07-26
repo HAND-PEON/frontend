@@ -1,10 +1,27 @@
+'use client';
 import React from 'react';
 import EventItemDetailCard from './EventItemDetailCard';
 import BannerSlides from '@/components/BannerSlides';
-import { pyeonImage } from '@/dummy/image';
-import { BANNER_DATA } from '@/constants/assets';
+import { useGetPromotionGoods } from '@/hooks/query/usePromotion';
+import type { PromotionGoodsCategory } from '@/apis/type';
+import type { Convenience } from '@/app/type';
+import { useGetRecommendationBanners } from '@/hooks/query/useRecommendation';
 
-const EventItemDetailSection = () => {
+interface EventItemDetailSectionProps {
+  goodsNo: number;
+}
+
+const mappingSegments: Record<PromotionGoodsCategory, Convenience> = {
+  ALL: 'ALL',
+  CU: 'CU',
+  GS25: 'GS25',
+  SEVEN11: '7Eleven',
+  EMART24: 'Emart24',
+} as const;
+
+const EventItemDetailSection = ({ goodsNo }: EventItemDetailSectionProps) => {
+  const { data } = useGetPromotionGoods(goodsNo);
+  const { data: bannerData } = useGetRecommendationBanners();
   return (
     <div className="px-[20px]">
       <div className="pb-[20px] pt-[29px]">
@@ -12,16 +29,16 @@ const EventItemDetailSection = () => {
       </div>
       <div className="pb-[37px]">
         <EventItemDetailCard
-          category="Emart24"
-          eventType="BONUS"
-          imageUrl={pyeonImage}
-          productName="스프라이트P500ml"
-          price={2000}
+          category={mappingSegments[data.storeName]}
+          eventType={data.promotionType}
+          imageUrl={data.goodsImageUrl}
+          productName={data.goodsName}
+          price={data.goodsPrice}
         />
       </div>
       <div className=" pb-[30px]">
         <div className="h-[178px] overflow-hidden rounded-[10px]">
-          <BannerSlides data={BANNER_DATA} totalViewURL="/recommendation" />
+          <BannerSlides data={bannerData} totalViewURL="/recommendation" />
         </div>
       </div>
     </div>

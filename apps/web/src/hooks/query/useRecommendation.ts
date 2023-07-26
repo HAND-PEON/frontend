@@ -1,4 +1,5 @@
 import {
+  getRecommendationBanners,
   getRecommendationContents,
   getRecommendationList,
 } from '@/apis/recommendation';
@@ -20,6 +21,8 @@ const queryKeyRecommendationDetail = (id: number) => [
   'contents',
   id,
 ];
+const queryKeyBannerRecommendationList = () =>
+  [...queryKeyRecommendtaion, 'list', 'banner'] as const;
 
 export const useGetRecommendationList = (params: RecommendationListParams) => {
   const queryParams = {
@@ -47,5 +50,14 @@ export const useGetRecommendationContents = (id: number) => {
         recommendEndDate: data.recommendEndDate.replaceAll('-', '.'),
       };
     },
+  });
+};
+
+export const useGetRecommendationBanners = () => {
+  return useQuery({
+    queryKey: queryKeyBannerRecommendationList(),
+    queryFn: () => getRecommendationBanners(),
+    suspense: true,
+    useErrorBoundary: true,
   });
 };

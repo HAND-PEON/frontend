@@ -1,5 +1,6 @@
 import httpClient from '@/http/client';
 import type {
+  PromotionGoods,
   PromotionGoodsCategory,
   PromotionGoodsList,
   PromotionType,
@@ -11,6 +12,13 @@ export interface PromotionGoodsParams {
   keyword?: string;
   cursor?: number;
 }
+
+export const getPromotionGoods = async (goodsNo: number) => {
+  const { data } = await httpClient.get<{ data: PromotionGoods }>(
+    `/handpyeon/api/promotionGoods/${goodsNo}`,
+  );
+  return data.data;
+};
 
 export const getPromotionGoodsList = async (params: PromotionGoodsParams) => {
   const {
