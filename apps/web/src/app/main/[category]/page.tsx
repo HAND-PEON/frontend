@@ -4,7 +4,6 @@ import { Suspense } from 'react';
 
 import { Convenience } from '@/app/type';
 import ApiErrorBoundary from '@/components/ApiErrorBoundary';
-import Loading from '@/components/Loading';
 import TabCategory from '@/components/TabCategory';
 import { CONVENIENCE } from '@/constants/conveniences';
 import { useQueryErrorResetBoundary } from '@tanstack/react-query';
@@ -37,7 +36,7 @@ export default function CategoryPage({
       </div>
       <CategoryChildren convenience={category}>
         <ApiErrorBoundary onReset={reset}>
-          <Suspense fallback={<Loading />}>
+          <Suspense fallback={<HotTrend.Skeleton />}>
             <HotTrend convenience={category} />
           </Suspense>
         </ApiErrorBoundary>
