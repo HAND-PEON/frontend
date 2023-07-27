@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 
-import Loading from '@/components/Loading';
+import LoadingIndicator from '@/components/LoadingIndicator';
 import { useGetRecommendationContents } from '@/hooks/query/useRecommendation';
 
 import ContentsDetailCard from './ContentsDetailCard';
@@ -25,7 +25,7 @@ export default function ContentsDetailPage({
   if (isLoading) {
     return (
       <div className="bg-white p-5">
-        <Loading />
+        <LoadingIndicator />
       </div>
     );
   }
