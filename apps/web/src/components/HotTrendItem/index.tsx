@@ -1,9 +1,12 @@
+'use client';
+
 import Image from 'next/image';
 import Link from 'next/link';
 
 import { HotTrendGoods } from '@/apis/type';
 import RankBox from '@/components/RankBox';
 import { formatNumberWithComma } from '@/utils/numberFormatter';
+import WithRepeatComponent from '@/utils/WithRepeatComponent';
 
 interface HotTrendCardProps extends HotTrendGoods {}
 
@@ -71,6 +74,7 @@ function HotTrendCardSkeleton() {
   );
 }
 HotTrendCard.Skeleton = HotTrendCardSkeleton;
+const HotTrendCardSkeletons = WithRepeatComponent(HotTrendCardSkeleton);
 
 export default HotTrendCard;
-export { HotTrendCardSkeleton };
+export { HotTrendCardSkeleton, HotTrendCardSkeletons };

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
 import { Convenience } from '@/app/type';
-import HotTrendCard, { HotTrendCardSkeleton } from '@/components/HotTrendItem';
+import HotTrendCard, { HotTrendCardSkeletons } from '@/components/HotTrendItem';
 import ChevronIcon from '@/components/icons/ChevronIcon';
 import { HotTrendMapping } from '@/constants/conveniences';
 import { useGetHotTrendGoods } from '@/hooks/query/useHotTrends';
@@ -43,8 +43,6 @@ export default function HotTrend({ convenience }: HotTrendProps) {
     </div>
   );
 }
-
-const HotTrendCardSkeletons = WithRepeatComponent(HotTrendCardSkeleton);
 
 export function HotTrendSkeleton() {
   return (
