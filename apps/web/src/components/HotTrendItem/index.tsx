@@ -7,7 +7,7 @@ import { formatNumberWithComma } from '@/utils/numberFormatter';
 
 interface HotTrendCardProps extends HotTrendGoods {}
 
-export default function HotTrendCard({
+function HotTrendCard({
   id,
   rank,
   storeName,
@@ -52,3 +52,25 @@ export default function HotTrendCard({
     </div>
   );
 }
+
+function HotTrendCardSkeleton() {
+  return (
+    <div className="relative  min-h-[165px] w-full animate-pulse">
+      <div className="absolute left-[2px] top-[1px] h-full w-[calc(100%+3px)] rounded-[9px] border-2 border-slate-200 bg-slate-200"></div>
+      <div className="p-10px relative  flex h-[165px] rounded-[9px] border-2 border-slate-200  bg-white">
+        <div className="relative my-2 ml-[27px] flex-1">
+          <div className="h-full w-10/12 rounded bg-slate-200"></div>
+        </div>
+        <div className="mt-[46px] w-[168px]">
+          <div className="h-5 w-[35px] rounded bg-slate-200"></div>
+          <div className="mt-[11px] h-3 w-12 rounded bg-slate-200"></div>
+          <div className="mt-4px h-[12px] w-1/2 rounded bg-slate-200"></div>
+        </div>
+      </div>
+    </div>
+  );
+}
+HotTrendCard.Skeleton = HotTrendCardSkeleton;
+
+export default HotTrendCard;
+export { HotTrendCardSkeleton };

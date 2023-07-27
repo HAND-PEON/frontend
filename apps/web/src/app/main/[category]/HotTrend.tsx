@@ -1,10 +1,11 @@
 import Link from 'next/link';
 
-import HotTrendCard from '@/components/HotTrendItem';
-import ChevronIcon from '@/components/icons/ChevronIcon';
-import { useGetHotTrendGoods } from '@/hooks/query/useHotTrends';
-import { HotTrendMapping } from '@/constants/conveniences';
 import { Convenience } from '@/app/type';
+import HotTrendCard, { HotTrendCardSkeleton } from '@/components/HotTrendItem';
+import ChevronIcon from '@/components/icons/ChevronIcon';
+import { HotTrendMapping } from '@/constants/conveniences';
+import { useGetHotTrendGoods } from '@/hooks/query/useHotTrends';
+import WithRepeatComponent from '@/utils/WithRepeatComponent';
 
 interface HotTrendProps {
   convenience: Convenience;
@@ -42,3 +43,17 @@ export default function HotTrend({ convenience }: HotTrendProps) {
     </div>
   );
 }
+
+const HotTrendCardSkeletons = WithRepeatComponent(HotTrendCardSkeleton);
+
+export function HotTrendSkeleton() {
+  return (
+    <div>
+      <div className="flex flex-wrap items-start justify-start gap-y-5">
+        <HotTrendCardSkeletons length={3} />
+      </div>
+    </div>
+  );
+}
+
+HotTrend.Skeleton = HotTrendSkeleton;
