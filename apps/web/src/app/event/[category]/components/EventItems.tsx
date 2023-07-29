@@ -25,6 +25,7 @@ const EventItems = ({ category, eventType }: EventItemsProps) => {
     type: EventMapping[category],
     promotionType: eventType,
   });
+
   const { ref, inView } = useInView();
 
   useEffect(() => {
@@ -36,20 +37,24 @@ const EventItems = ({ category, eventType }: EventItemsProps) => {
   return (
     <>
       <div className="flex flex-wrap items-start justify-start gap-x-[18px] gap-y-[50px]">
-        {data?.pages.map((page) =>
-          page.data.map((promotion, idx) => (
-            <EventItemCard
-              key={`${idx}-${promotion.goodsNo}`}
-              eventItem={{
-                eventType: promotion.promotionType,
-                imageUrl: promotion.goodsImageUrl,
-                price: promotion.goodsPrice,
-                title: promotion.goodsName,
-                goodsNo: promotion.goodsNo,
-                convenience: mappingSegments[promotion.storeName],
-              }}
-            />
-          )),
+        {data?.pages[0].data.length ? (
+          data.pages.map((page) =>
+            page.data.map((promotion, idx) => (
+              <EventItemCard
+                key={`${idx}-${promotion.goodsNo}`}
+                eventItem={{
+                  eventType: promotion.promotionType,
+                  imageUrl: promotion.goodsImageUrl,
+                  price: promotion.goodsPrice,
+                  title: promotion.goodsName,
+                  goodsNo: promotion.goodsNo,
+                  convenience: mappingSegments[promotion.storeName],
+                }}
+              />
+            )),
+          )
+        ) : (
+          <div> 상품이 없습니다. </div>
         )}
       </div>
       {isFetchingNextPage ? <div>Loading...</div> : <div ref={ref} />}
