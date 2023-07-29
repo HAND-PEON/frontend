@@ -56,19 +56,24 @@ export default function ContentsDetailPage({
           contentsList.map((contents, idx) => (
             <div key={`${idx}`}>
               <div className="text-[15px]">
-                {contents.content}
-                {contents.contentsImageUrls.map((one, idx) => (
-                  <div key={idx} className="relative h-[290px]">
-                    <Image
-                      className="object-contain"
-                      sizes="(min-width: 768px) 100vw, (max-width: 1200px) 100vw"
-                      priority
-                      src={one}
-                      alt={`contentsImages-${idx}`}
-                      fill
-                    />
-                  </div>
-                ))}
+                <div
+                  className="whitespace-pre-line"
+                  dangerouslySetInnerHTML={{ __html: contents.content }}
+                />
+                <div>
+                  {contents.contentsImageUrls.map((one, idx) => (
+                    <div key={idx} className="relative h-[290px]">
+                      <Image
+                        className="object-contain"
+                        sizes="(min-width: 768px) 100vw, (max-width: 1200px) 100vw"
+                        priority
+                        src={one}
+                        alt={`contentsImages-${idx}`}
+                        fill
+                      />
+                    </div>
+                  ))}
+                </div>
               </div>
               <div className="mt-6 pr-[5px]">
                 <ContentsDetailCard {...contents.goodsInfo} />
