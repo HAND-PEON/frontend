@@ -8,6 +8,7 @@ import type {
 
 export interface PromotionGoodsParams {
   type: PromotionGoodsCategory;
+  size?: number;
   promotionType?: PromotionType;
   keyword?: string;
   cursor?: number;
