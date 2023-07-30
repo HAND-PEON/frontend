@@ -1,13 +1,11 @@
 import React from 'react';
+import { useGetHotTrendGoods } from '@/hooks/query/useHotTrends';
+import { getRandomFromArray } from '@/utils/getRandomFromArray';
+import { CONVENIENCE } from '@/constants/conveniences';
 
 const HotTrendSection = () => {
-  const dummy = [
-    '통통이 브라우니',
-    '고대 초코파이',
-    '신발 건조기',
-    '연세 크림빵',
-    '백종원의 열탄 도시락',
-  ];
+  const a = getRandomFromArray(CONVENIENCE);
+
   return (
     <div>
       <p className="text-[1.375rem]">
