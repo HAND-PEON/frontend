@@ -4,7 +4,7 @@ import LogoIcon from '../../components/icons/LogoIcon';
 
 export default function Header() {
   return (
-    <div className="bg-[#1E1C1C] px-[20px] pb-[15px] pt-[14px]">
+    <div className="h-[123px] bg-[#1E1C1C] px-[20px] pb-[15px] pt-[14px]">
       <div>
         <LogoIcon />
       </div>

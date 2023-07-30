@@ -18,7 +18,7 @@ interface BannerSlidesProps {
   data: BannerInfo[];
 }
 
-const PerfectMatchSlides = ({ data }: BannerSlidesProps) => {
+const RecommendSlides = ({ data }: BannerSlidesProps) => {
   return (
     <div className="h-full overflow-hidden">
       <Swiper
@@ -54,4 +54,4 @@ const PerfectMatchSlides = ({ data }: BannerSlidesProps) => {
   );
 };
 
-export default PerfectMatchSlides;
+export default RecommendSlides;
