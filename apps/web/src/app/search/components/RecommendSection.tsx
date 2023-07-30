@@ -1,7 +1,7 @@
 'use client';
+import { useGetRecommendationBanners } from '@/hooks/query/useRecommendation';
 import React from 'react';
 import RecommendSlides from './RecommendSlides';
-import { useGetRecommendationBanners } from '@/hooks/query/useRecommendation';
 
 const RecommendSection = () => {
   const { data } = useGetRecommendationBanners();

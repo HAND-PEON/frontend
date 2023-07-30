@@ -1,8 +1,8 @@
 'use client';
-import React from 'react';
+import { CONVENIENCE, HotTrendMapping } from '@/constants/conveniences';
 import { useGetHotTrendGoods } from '@/hooks/query/useHotTrends';
 import { getRandomFromArray } from '@/utils/getRandomFromArray';
-import { CONVENIENCE, HotTrendMapping } from '@/constants/conveniences';
+import React from 'react';
 
 const HotTrendSection = () => {
   const category = getRandomFromArray(CONVENIENCE);
