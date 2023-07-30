@@ -13,6 +13,7 @@ const DEFAULT_BANNER_IMAGE = '/image/banner1.png';
 
 export function checkTreshURL(url: string, alternativeURL: string) {
   if (TRESH_TEXTS.some((text) => url.includes(text))) return alternativeURL;
+  if (!url.includes('/')) return alternativeURL;
   return url;
 }
 
