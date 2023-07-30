@@ -9,7 +9,6 @@ import SearchResultList from '../components/SearchResultList';
 const SearchResultView = () => {
   const searchParams = useSearchParams();
   const word = searchParams.get('word');
-  console.log('word', word);
   const category = searchParams.get('category') as Convenience;
   const categoryInfoList = CONVENIENCE.map((convenience) => ({
     category: convenience,
