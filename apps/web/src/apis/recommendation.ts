@@ -23,7 +23,7 @@ interface RecommendationBannersResponse {
 
 export const getRecommendationBanners = async () => {
   const { data } = await httpClient.get<RecommendationBannersResponse>(
-    '/handpyeon/api/banners/recommend',
+    '/handpyeon/api/recommends/banners',
   );
 
   return data.data.map(({ bannerImageUrl, contentsNumber }) => ({

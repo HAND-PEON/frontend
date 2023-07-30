@@ -7,7 +7,6 @@ import { CONVENIENCE, HotTrendMapping } from '@/constants/conveniences';
 const HotTrendSection = () => {
   const category = getRandomFromArray(CONVENIENCE);
   const { data } = useGetHotTrendGoods(HotTrendMapping[category]);
-  console.log('data', data);
   return (
     <div>
       <p className="text-[1.375rem]">

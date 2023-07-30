@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import HotTrendSection from '../components/HotTrendSection';
-import PerfectMatchSection from '../components/PerfectMatchSection';
+import PerfectMatchSection from '../components/RecommendSection';
 
 const SearchView = () => {
   return (
@@ -11,7 +11,9 @@ const SearchView = () => {
         </Suspense>
       </div>
       <div className="pl-[20px]">
-        <PerfectMatchSection />
+        <Suspense>
+          <PerfectMatchSection />
+        </Suspense>
       </div>
     </div>
   );
