@@ -1,5 +1,4 @@
 import { getHotTrendGoods } from '@/apis/hotTrend';
-import { HotTrendGoods, StoreName } from '@/apis/type';
 import { Convenience } from '@/app/type';
 import { HotTrendMapping } from '@/constants/conveniences';
 import { redirect } from 'next/navigation';
@@ -16,7 +15,12 @@ function isConvenience(value): value is Omit<Convenience, 'ALL'> {
 }
 
 export async function GET(request: Request) {
-  const category = request.url.split('/').pop();
+  let category = request.url.split('/').pop();
+
+  if (category.includes('rsc')) {
+    category = category.split('?')[0];
+  }
+
   if (!isConvenience(category)) {
     return redirect('/main/ALL');
   }
