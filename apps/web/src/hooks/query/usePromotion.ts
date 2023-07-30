@@ -28,6 +28,7 @@ export const useGetPromotionGoodsList = ({
   type,
   promotionType,
   keyword,
+  size,
   cursor,
 }: PromotionGoodsParams) => {
   return useInfiniteQuery({
@@ -37,11 +38,11 @@ export const useGetPromotionGoodsList = ({
         type,
         promotionType,
         keyword,
+        size,
         cursor: pageParam,
       }),
     getNextPageParam: (lastPage) =>
-      lastPage.pageInfo.totalPages !== lastPage.nextCursor &&
-      lastPage.data.length
+      lastPage.pageInfo.totalPages !== lastPage.nextCursor
         ? lastPage.nextCursor
         : undefined,
     suspense: true,

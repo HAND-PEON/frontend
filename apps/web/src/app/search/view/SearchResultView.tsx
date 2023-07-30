@@ -1,10 +1,10 @@
 'use client';
 import { Convenience } from '@/app/type';
-import EventItemCard from '@/components/EventItemCard';
 import TabCategory from '@/components/TabCategory';
 import { CONVENIENCE } from '@/constants/conveniences';
-import { pyeonImage } from '@/dummy/image';
 import { useSearchParams } from 'next/navigation';
+import { Suspense } from 'react';
+import SearchResultList from '../components/SearchResultList';
 
 const SearchResultView = () => {
   const searchParams = useSearchParams();
@@ -25,23 +25,9 @@ const SearchResultView = () => {
         />
       </div>
       <div className="px-[20px]">
-        <div className="pb-[25px] pt-[40px] text-xl font-bold">
-          <span>292개의 검색결과</span>
-        </div>
-        <div className="flex flex-wrap items-start justify-start gap-x-[18px] gap-y-[50px]">
-          {/* {Array.from({ length: 8 }).map((_, i) => (
-            <EventItemCard
-              key={i}
-              eventItem={{
-                eventType: 'ONE_PLUS_ONE',
-                imageUrl: pyeonImage,
-                price: 20000,
-                title: 'asdfasdf',
-                convenience: '7Eleven',
-              }}
-            />
-          ))} */}
-        </div>
+        <Suspense>
+          <SearchResultList category={category} word={word} />
+        </Suspense>
       </div>
     </div>
   );
