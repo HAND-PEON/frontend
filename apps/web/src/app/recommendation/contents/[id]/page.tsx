@@ -2,7 +2,6 @@
 
 import Image from 'next/image';
 
-import LoadingIndicator from '@/components/LoadingIndicator';
 import { useGetRecommendationContents } from '@/hooks/query/useRecommendation';
 
 import ContentsDetailCard from './ContentsDetailCard';
@@ -20,23 +19,15 @@ const categoryNames = {
 export default function ContentsDetailPage({
   params: { id },
 }: ContentsDetailPageProps) {
-  const { isLoading, data } = useGetRecommendationContents(id);
-
-  if (isLoading) {
-    return (
-      <div className="bg-white p-5">
-        <LoadingIndicator />
-      </div>
-    );
-  }
-
   const {
-    title,
-    recommendType,
-    recommendStartDate,
-    recommendEndDate,
-    contentsList,
-  } = data;
+    data: {
+      title,
+      recommendType,
+      recommendStartDate,
+      recommendEndDate,
+      contentsList,
+    },
+  } = useGetRecommendationContents(id);
 
   return (
     <div>
@@ -53,15 +44,15 @@ export default function ContentsDetailPage({
 
       <div className="mt-[10px] flex flex-col gap-16 bg-white  px-5  py-[30px] text-[#1E1C1C]">
         {contentsList &&
-          contentsList.map((contents, idx) => (
+          contentsList.map(({ content, contentsImageUrls, goodsInfo }, idx) => (
             <div key={`${idx}`}>
               <div className="text-[15px]">
                 <div
                   className="whitespace-pre-line"
-                  dangerouslySetInnerHTML={{ __html: contents.content }}
+                  dangerouslySetInnerHTML={{ __html: content }}
                 />
                 <div>
-                  {contents.contentsImageUrls.map((one, idx) => (
+                  {contentsImageUrls.map((one, idx) => (
                     <div key={idx} className="relative h-[290px]">
                       <Image
                         className="object-contain"
@@ -75,9 +66,11 @@ export default function ContentsDetailPage({
                   ))}
                 </div>
               </div>
-              <div className="mt-6 pr-[5px]">
-                <ContentsDetailCard {...contents.goodsInfo} />
-              </div>
+              {goodsInfo && (
+                <div className="mt-6 pr-[5px]">
+                  <ContentsDetailCard {...goodsInfo} />
+                </div>
+              )}
             </div>
           ))}
       </div>
