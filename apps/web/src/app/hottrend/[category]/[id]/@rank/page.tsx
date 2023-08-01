@@ -28,9 +28,11 @@ export default function HotTrendRankList({
         <div>Hot Trend🔥 랭킹</div>
       </div>
       <div className="mt-8 flex flex-col gap-5">
-        {data.map((props) => (
-          <HotTrendCard key={props.id} {...props} />
-        ))}
+        {data.length > 0 &&
+          data.map((props) => <HotTrendCard key={props.id} {...props} />)}
+        {data.length === 0 && (
+          <div className="text-lg font-bold">등록된 데이터가 없어요</div>
+        )}
       </div>
     </div>
   );
