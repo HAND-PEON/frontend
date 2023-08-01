@@ -43,6 +43,7 @@ export const useGetRecommendationContents = (id: number) => {
     queryKey: queryKeyRecommendationDetail(id),
     queryFn: () => getRecommendationContents(id),
     useErrorBoundary: true,
+    suspense: true,
     select(data) {
       return {
         ...data,
