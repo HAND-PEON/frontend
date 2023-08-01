@@ -2,7 +2,7 @@
 
 export default function HotTrendInfoLoading() {
   return (
-    <div className="select-none bg-white px-5 pb-9 pt-5 font-bold ">
+    <div className="animate-pulse select-none bg-white px-5 pb-9 pt-5 font-bold ">
       <div className="text-xl2 py-10px ">이번주 Hot Trend</div>
       <div className="text-slate-200">
         <div className="px-15px  py-9px flex justify-between  border-2 border-slate-200 ">
