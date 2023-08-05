@@ -5,7 +5,7 @@ import React from 'react';
 
 const HomeIconButton = () => {
   return (
-    <Link href={'/main/ALL'}>
+    <Link href={'/'}>
       <button className="p-[8px]">
         <HomeIcon />
       </button>
