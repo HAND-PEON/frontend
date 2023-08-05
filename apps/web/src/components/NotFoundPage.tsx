@@ -1,4 +1,3 @@
-'use client';
 import React from 'react';
 import BasicLayout from './BasicLayout';
 import HomeIconButton from './HomeIconButton';
@@ -35,7 +34,7 @@ const NotFoundPage = () => {
             </span>
           </div>
           <div className="h-[30px]" />
-          <Link href="/main/ALL" className="w-full">
+          <Link href="/" className="w-full">
             <button className="w-full rounded-[7px] bg-black p-[10px]">
               <span className="font-bold text-white">홈으로 돌아가기</span>
             </button>
